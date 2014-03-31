@@ -5,5 +5,5 @@ Bibliothekssystem auf Basis von WordPress
 
 Grundlagen Content Management Systeme
 
-6. Semester Medieninformatik
+Medieninformatik 6. Semester
 Technische Hochschule Georg-Simon-Ohm Nürnberg
