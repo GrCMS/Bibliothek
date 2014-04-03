@@ -1,0 +1,5 @@
+AuthUserFile /www/htdocs/w00e6faa//jerrykies-sub/studium/grcms/usage//.htpasswd
+AuthGroupFile /dev/null
+AuthName 'ByPassword'
+AuthType Basic
+require valid-user
