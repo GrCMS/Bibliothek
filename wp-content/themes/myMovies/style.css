@@ -1,0 +1,362 @@
+/*
+Theme Name: myMovies (with Bootstrap)
+Theme URI: http://myMovies-theme.loc
+Author: Jerry Kies, Jörg Lautenschlager, Daniel Meier, Maxim Huber
+Description: A wordpress theme with simple movie rental functionality (bootstrap integrated).
+Version: 1.0
+*/
+
+/*
+
+COLORS
+======
+
+Primary/Link: #77b5b4;
+Text Hover: #456968;
+Content Text: #252427;
+Header Text: #fff;
+Borders/backgrounds: #b4b4b4;
+
+*/
+
+
+/*
+
+FONTS
+=====
+
+*/
+
+@font-face {
+	font-family: 'hn-bold';
+	src: url('fonts/HelveticaNeueLTStd-Bd.eot?') format('eot'), 
+	     url('fonts/HelveticaNeueLTStd-Bd.otf')  format('opentype'),
+	     url('fonts/HelveticaNeueLTStd-Bd.woff') format('woff'), 
+	     url('fonts/HelveticaNeueLTStd-Bd.ttf')  format('truetype'),
+	     url('fonts/HelveticaNeueLTStd-Bd.svg#HelveticaNeueLTStd-Bd') format('svg');
+}
+
+@font-face {
+	font-family: 'hn-light';
+	src: url('fonts/HelveticaNeueLTStd-LtIt.eot?') format('eot'), 
+	     url('fonts/HelveticaNeueLTStd-LtIt.otf')  format('opentype'),
+	     url('fonts/HelveticaNeueLTStd-LtIt.woff') format('woff'), 
+	     url('fonts/HelveticaNeueLTStd-LtIt.ttf')  format('truetype'),
+	     url('fonts/HelveticaNeueLTStd-LtIt.svg#HelveticaNeueLTStd-LtIt') format('svg');
+}
+
+
+@font-face {
+	font-family: 'hn-thin';
+	src: url('fonts/HelveticaNeueLTStd-Th.eot?') format('eot'), 
+	     url('fonts/HelveticaNeueLTStd-Th.otf')  format('opentype'),
+	     url('fonts/HelveticaNeueLTStd-Th.woff') format('woff'), 
+	     url('fonts/HelveticaNeueLTStd-Th.ttf')  format('truetype'),
+	     url('fonts/HelveticaNeueLTStd-Th.svg#HelveticaNeueLTStd-Th') format('svg');
+}
+
+/*
+
+BASIC THEME STYLES
+==================
+
+*/
+
+body {
+
+	/* fallback if background image not working */
+	background-color:#eee;
+	background: url('images/layout/body-background-pattern.jpg');
+	background-repeat: repeat;
+}
+
+#mm-page-wrapper {
+
+	padding-left:0px;
+	padding-right:0px;
+}
+
+#mm-header-wrapper {
+
+	background-color: #252427;
+	border-bottom: 1px dashed #444444;
+}
+
+/* BRAND COLUMN */
+/* sm, md, lg: logo => left */
+#mm-header-brand-col {
+
+	text-align: left;
+}
+
+/* xs: logo => center */	
+@media (max-width: 767px) {
+
+	#mm-header-brand-col {
+
+		text-align: center;
+	}
+}
+
+/* GENRE SLIDER COLUMN */
+#mm-header-genre-slider-col {
+
+	height: 50px;
+}
+
+#mm-header-genre-slider-anchor {
+
+	/*
+
+	- width must be the same as font size
+	- must be centered in column
+	- needed in order to calculate the center
+	for #mm-header-genre-slider-wrapper
+
+	*/
+
+	color:#fff;
+	width: 32px;
+	font-size: 32px;
+	position: relative;
+	margin: auto;
+	top:0px;
+}
+
+#mm-header-genre-slider-trigger {
+
+	line-height: 50px;
+	vertical-align: middle;
+	cursor: pointer;
+}
+
+#mm-header-genre-slider-wrapper {
+
+	display: none;
+	top:10px;
+	
+	/* 
+	- anchor (#mm-header-genre-slider-anchor) width: 32px
+	- left = -(width/2 - anchor width/2)
+	- left = -(250/2 - 32/2)
+	- left = -109px;
+
+	*/
+		
+	left: -109px;
+	width: 250px;
+	position: relative;
+	z-index: 1000;
+}
+
+/* SEARCH COLUMN */
+#mm-header-search-col {
+
+}
+
+/* xs: search icon => center */	
+@media (max-width: 767px) {
+
+	#mm-header-search-col {
+
+		line-height: 50px;
+	}
+}
+
+
+#mm-header-search-trigger {
+
+	vertical-align: middle;
+	font-size: 22px;
+	width: 22px;
+	color: #fff;
+	cursor: pointer;
+}
+
+/* ACCOUNT NAVIGATION COLUMN */
+#mm-header-account-navigation-col {
+
+	line-height: 50px;
+	color:#fff;
+}
+
+#mm-header-account-login {
+
+}
+
+#mm-login-modal {
+
+}
+
+#mm-header-account-wrapper {
+
+}
+
+#mm-header-account-navigation-trigger {
+	
+	cursor: pointer;
+}
+
+#mm-header-account-image {
+
+	padding-left:10px;
+	padding-right: 10px;
+}
+
+#mm-header-account-image img {
+
+	width:30px;
+	height: 30px;
+	border-radius: 50%;
+}
+
+#mm-header-account-name {
+
+}
+
+#mm-header-account-dropdown-icon:after {
+	
+	position: absolute;
+	margin-left: 10px;
+	font-family: 'icomoon';
+	content: "\e70a";
+	-moz-transform:rotate(90deg);
+	-ms-transform:rotate(90deg);
+	-o-transform:rotate(90deg);
+	-webkit-transform:rotate(90deg);
+	transform:rotate(90deg);
+}
+
+#mm-header-account-navigation-mobile-trigger {
+
+	vertical-align: middle;
+	font-size: 22px;
+	color: #fff;
+	cursor: pointer;
+}
+
+/* ACCOUNT NAVIGATOIN (sm, md, lg) */
+#mm-account-navigation-wrapper {
+
+	display: none;
+  	line-height: 50px;
+	position: relative;
+	background-color: #252427;
+}
+
+#mm-account-navigation-col {
+
+}
+
+/* MOBILE NAVIGATION (xs) */
+/* mobile genre slider, mobile search and mobile account navigation */
+#mm-mobile-navigation-wrapper {
+
+	background-color: #252427;
+}
+
+#mm-mobile-search-col {
+
+	display: none;
+	position: relative;
+	text-align: center;
+}
+
+#mm-mobile-account-navigation-col {
+
+	display: none;
+	position: relative;
+}
+
+#mm-mobile-genre-slider-col {
+	
+	display: none;
+	position: relative;
+}
+
+
+/* CONTAINER FOR CONTENT */
+#mm-content-container {
+
+}
+
+/* CONTAINER FOR FOOTER CONTENT */
+#mm-footer-container {
+
+}
+
+/*
+
+SEARCH BOX STYLES
+=================
+
+*/
+
+#mm-search-form-container {
+
+	text-align: center;
+	padding-top: 15px;
+	height: 50px;
+}
+
+#mm-search-form-container form{
+
+	height: 25px;
+}
+
+#mm-search-input {
+
+	width: 80%;
+	background-color: transparent;
+	border: solid #fff;
+	border-width: 0 0 1px 0;
+	font-family: hn-light;
+	font-size:12px;
+	color:#fff;
+}
+
+#mm-search-form-container input:focus {
+	
+	outline: 0;
+}
+
+#mm-search-button {
+
+	position: relative;
+	top: 5px;
+}
+
+/*
+
+MODALS
+======
+
+*/
+
+/* LOGIN */
+
+#mm-login-modal div {
+
+	background: #fff;
+	color:#252427;
+	max-width: 400px;
+	width: 90%;
+	height: 250px;
+}
+
+
+/*
+
+POST STYLES
+===========
+
+*/
+
+
+
+/*
+
+PAGE STYLES
+===========
+
+*/
