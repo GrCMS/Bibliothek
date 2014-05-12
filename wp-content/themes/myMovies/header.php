@@ -11,9 +11,8 @@
     <!-- BOOTSTRAP & CSS -->
     <link href="<?php bloginfo('template_url'); ?>/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="<?php bloginfo('template_url'); ?>/fonts/icomoon/style.css" rel="stylesheet">
-    <link href="<?php bloginfo('template_url'); ?>/css/stars.css" rel="stylesheet">
-    <link href="<?php bloginfo('template_url'); ?>/style.css" rel="stylesheet">
-    
+    <link href="<?php bloginfo('stylesheet_directory'); ?>/stars.css" rel="stylesheet">
+    <link href="<?php bloginfo('stylesheet_url'); ?>" rel="stylesheet">
 
   </head>
   <body>
@@ -45,7 +44,7 @@
             
           <div id="mm-header-brand-col" class="col-xs-12 col-sm-5">
               
-            <img class="logo" src="<?php bloginfo('template_url'); ?>/images/layout/myMovies-logo.svg" />
+              <a href="<?php echo bloginfo('url'); ?>"><img class="logo" src="<?php bloginfo('template_url'); ?>/images/layout/myMovies-logo.svg" /></a>
 
           </div><!-- end of mm-header-brand-col -->
 
