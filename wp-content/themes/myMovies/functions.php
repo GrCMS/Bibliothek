@@ -12,7 +12,6 @@ add_action('after_setup_theme', 'myMovies_theme_setup');
 
 
 // Add custom image sizes
-add_theme_support( 'post-thumbnails' );
 add_image_size( 'movie_poster', 685, 1000, true);
 
 /**

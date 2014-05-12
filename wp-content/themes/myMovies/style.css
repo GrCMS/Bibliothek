@@ -347,12 +347,12 @@ MODALS
 /* LOGIN */
 
 #mm-login-modal div {
-
 	background: #fff;
 	color:#252427;
 	max-width: 400px;
-	width: 90%;
-	height: 250px;
+}
+#mm-login-modal div.checkbox>label {
+    line-height: 20px;
 }
 
 
