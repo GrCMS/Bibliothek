@@ -68,6 +68,14 @@ body {
 	background-color:#eee;
 	background: url('images/layout/body-background-pattern.jpg');
 	background-repeat: repeat;
+	font-weight: 200;
+	color: #1c2a2b;
+	font-size: 18px;
+}
+
+.logo {
+	height: 40px;
+	margin: 5px 0px;
 }
 
 #mm-page-wrapper {
@@ -80,6 +88,7 @@ body {
 
 	background-color: #252427;
 	border-bottom: 1px dashed #444444;
+	background: url('images/layout/bg-menu.jpg');
 }
 
 /* BRAND COLUMN */
@@ -242,6 +251,8 @@ body {
   	line-height: 50px;
 	position: relative;
 	background-color: #252427;
+	background: url('images/layout/bg-menu.jpg');
+	background-position: 0px -50px;
 }
 
 #mm-account-navigation-col {
@@ -353,6 +364,109 @@ POST STYLES
 */
 
 
+/*
+
+MOVIE POST STYLE
+================
+
+*/
+
+h2, h3 {
+	font-weight: 100;
+}
+
+h2 {
+	margin: 0px 0px 10px 0px;
+	font-size: 250%;
+}
+
+h3 {
+	margin: 0px 0px 10px 0px;
+	font-size: 150%;
+}
+
+.movie-addon-block {
+	text-align: right;
+}
+
+.btn-disabled {
+	background-color: #aaaaaa;
+	cursor: default;
+	color: #ffffff;
+}
+
+@media (max-width: 767px) {
+	body {
+		font-size: 13px;
+	}
+
+	h2 {
+		font-size: 200%;
+	}
+	
+	h3 {
+		font-size: 150%;
+	}
+	
+	.btn {
+		font-size: 13px;
+	}
+	
+	.movie-addon-block .btn {
+		width: 100%;
+		margin-bottom: 5px;
+	}
+}
+
+@media (max-width: 991px) {
+	.movie-addon-block {
+		border-top: 1px solid #ffffff;
+		text-align: left;
+		padding-top: 15px;
+		margin-top: 15px;
+	}
+}
+
+.color-primary {
+	color: #77b5b4;
+}
+
+.color-secondary {
+	color: #456968;
+}
+
+.btn {
+	border: none;
+	font-weight: 200;
+}
+
+.border-bottom-white {
+	border-bottom: 1px solid #fff;
+}
+
+.padding-top-15 {
+	padding-top: 15px;
+}
+
+.padding-bottom-15 {
+	padding-bottom: 15px;
+}
+
+.rating ul {
+	margin: 0px 0px 0px 10px;
+	padding: 0px;
+	display: inline;
+}
+
+.rating ul li {
+	list-style: none;
+	display: inline;
+	margin: 0px;
+	padding: 0px;
+	font-size: 120%;
+}
+
+
 
 /*
 
@@ -360,3 +474,4 @@ PAGE STYLES
 ===========
 
 */
+
