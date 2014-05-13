@@ -22,6 +22,8 @@
   <script src="<?php bloginfo('template_url'); ?>/js/enquire.min.js"></script>
   <!-- Toggle navigation container script -->
   <script src="<?php bloginfo('template_url'); ?>/js/mm-toggle-navigation.js"></script>
+  <!-- Genre slider script -->
+  <script src="<?php bloginfo('template_url'); ?>/js/mm-genre-slider.js"></script>
 
   <script>
 
@@ -50,7 +52,8 @@
     $( document ).ready(function() {
 
       menu.setup.init();
-    
+      var gs = $('#menu-genre-slider-1').genreSlider("#slider-container", true, 250);
+          
     });
 
   </script>

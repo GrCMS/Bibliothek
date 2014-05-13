@@ -11,7 +11,8 @@
     <!-- BOOTSTRAP & CSS -->
     <link href="<?php bloginfo('template_url'); ?>/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="<?php bloginfo('template_url'); ?>/fonts/icomoon/style.css" rel="stylesheet">
-    <link href="<?php bloginfo('stylesheet_directory'); ?>/stars.css" rel="stylesheet">
+    <link href="<?php bloginfo('template_url'); ?>/css/stars.css" rel="stylesheet">
+    <link href="<?php bloginfo('template_url'); ?>/css/genre-slider.css" rel="stylesheet">
     <link href="<?php bloginfo('stylesheet_url'); ?>" rel="stylesheet">
 
   </head>
@@ -59,7 +60,23 @@
               <!-- wrapper for genre slider on sm, md and lg -->
               <div id="mm-header-genre-slider-wrapper">
                 
-                if(
+                <?php
+                
+                    if ( has_nav_menu( 'slider' ) ) {
+                    
+                        wp_nav_menu(array(
+				
+                            'theme_location'  	=> 'slider',
+                            'container' 	=> 'div',
+                            'container_id'	=> 'slider-container',
+                            'menu_id'           => 'menu-genre-slider-1',
+                            'echo' 		=> true,
+                            'depth'           	=> 0,
+                            'walker'          	=> new genre_slider_walker()
+			)); 	
+                    } 
+                
+                ?> 
 
               </div>
                 
@@ -182,7 +199,14 @@
 
           <div id="mm-account-navigation-col" class="col-xs-12">
             
-            WP_MENU => ACCOUNT NAVIGATION
+            <?php
+                
+                if ( has_nav_menu( 'account' ) ) {
+                    
+                    //get wp_nav_menu;
+                } 
+                
+            ?> 
 
           </div>
         
@@ -203,12 +227,29 @@
         </div>
 
         <div id="mm-mobile-account-navigation-col" class="col-xs-12">
-          WP_MENU => ACCOUNT NAVITION
+          
+            <?php
+                
+                if ( has_nav_menu( 'account' ) ) {
+                    
+                    //get wp_nav_menu;
+                } 
+                
+            ?> 
+            
         </div>
 
         <div id="mm-mobile-genre-slider-col" class="col-xs-12">
-          MOBILE
-          WP_MENU => GENRE SLIDER
+            
+            <?php
+                
+                if ( has_nav_menu( 'slider' ) ) {
+                    
+                    //get wp_nav_menu;
+                } 
+                
+            ?> 
+            
         </div>
         
       </div>

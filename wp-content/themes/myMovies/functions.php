@@ -5,28 +5,48 @@ require_once('genre-slider-walker.php');
 
 function myMovies_theme_setup() {
     
-    //Register menus (genre slider, account navigation and page navigation) for current theme
-    register_nav_menus(array(
-
-        'slider' => 'Genre slider',
-        'account' => 'Account navigation',
-        'page' => 'Page navigation'
-    ));
-
     //Allows post thumbnails
     add_theme_support('post-thumbnails');
 }
 
 add_action('after_setup_theme', 'myMovies_theme_setup');
 
+/**
+ * Init function
+ */
+function myMovies_init()
+{
+    create_post_type_movies();
+    create_taxonomy_genres();
+    register_menus();
+}
+
+/** 
+ * Init hook 
+ */
+
+add_action('init', 'myMovies_init');
 
 // Add custom image sizes
 add_image_size( 'movie_poster', 685, 1000, true);
 
 /**
+ * Register nav menus: 'genre slider', 'account navigation' and 'page navigation'
+ */
+
+function register_menus()
+{
+    register_nav_menus(array(
+
+        'slider' => 'Genre Slider',
+        'account' => 'Account Navigation',
+        'page' => 'Page Navigation'
+    ));
+}
+
+/**
  * Add custom post-type
  */
-add_action('init', 'create_post_type_movies');
 
 function create_post_type_movies() {
     register_post_type('movies', array(
@@ -49,7 +69,6 @@ function create_post_type_movies() {
 /**
  * Add taxonomy for movies
  */
-add_action('init', 'create_taxonomy_genres');
 
 function create_taxonomy_genres() {
     register_taxonomy(

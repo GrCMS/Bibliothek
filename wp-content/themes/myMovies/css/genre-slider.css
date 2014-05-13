@@ -22,6 +22,7 @@ GENRE SLIDER STYLE FOR: SM, MD, LG
   margin: 0px auto;
   width: 100%;
   position: relative;
+  font-size: 14px;
 }
    
 #slider-container ul {
@@ -82,6 +83,7 @@ GENRE SLIDER STYLE FOR: XS (mobile)
   margin: 0px auto;
   width: 100%;
   position: relative;
+  font-size: 14px;
 }
    
 #slider-container-mobile ul {
