@@ -11,6 +11,10 @@ GENRE SLIDER STYLE
     content: "";
 }
 
+#mm-slider-container-mobile li:not(.has) a:after {
+    content: "";
+}
+
 .sub li {
     
   display: none;

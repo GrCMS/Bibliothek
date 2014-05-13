@@ -244,7 +244,7 @@ body {
 	cursor: pointer;
 }
 
-/* ACCOUNT NAVIGATOIN (sm, md, lg) */
+/* ACCOUNT NAVIGATION (sm, md, lg) */
 #mm-account-navigation-wrapper {
 
 	display: none;
@@ -279,6 +279,12 @@ body {
 #mm-mobile-navigation-wrapper {
 
 	background-color: #252427;
+        padding:0px;
+}
+
+#mm-mobile-navigation-container {
+    
+        padding: 0px;
 }
 
 #mm-mobile-search-col {
@@ -294,10 +300,20 @@ body {
 	position: relative;
 }
 
+#mm-menu-account-mobile {
+    
+}
+
+#mm-menu-account-mobile li {
+        
+        line-height: 50px;
+}
+
 #mm-mobile-genre-slider-col {
 	
-	display: none;
-	position: relative;
+        display: none;
+        position: relative;
+        padding: 0px;
 }
 
 
@@ -320,36 +336,36 @@ SEARCH BOX STYLES
 
 #mm-search-form-container {
 
-	text-align: center;
-	padding-top: 15px;
-	height: 50px;
+    text-align: center;
+    padding-top: 15px;
+    height: 50px;
 }
 
 #mm-search-form-container form{
 
-	height: 25px;
+    height: 25px;
 }
 
 #mm-search-input {
 
-	width: 80%;
-	background-color: transparent;
-	border: solid #fff;
-	border-width: 0 0 1px 0;
-	font-family: hn-light;
-	font-size:12px;
-	color:#fff;
+    width: 80%;
+    background-color: transparent;
+    border: solid #fff;
+    border-width: 0 0 1px 0;
+    font-family: hn-light;
+    font-size:12px;
+    color:#fff;
 }
 
 #mm-search-form-container input:focus {
 	
-	outline: 0;
+    outline: 0;
 }
 
 #mm-search-button {
 
-	position: relative;
-	top: 5px;
+    position: relative;
+    top: 5px;
 }
 
 /*
@@ -362,9 +378,9 @@ MODALS
 /* LOGIN */
 
 #mm-login-modal div {
-	background: #fff;
-	color:#252427;
-	max-width: 400px;
+    background: #fff;
+    color:#252427;
+    max-width: 400px;
 }
 #mm-login-modal div.checkbox>label {
     line-height: 20px;

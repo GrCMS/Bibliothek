@@ -53,6 +53,7 @@
 
       menu.setup.init();
       var gs = $('#mm-menu-genre-slider-1').genreSlider("#mm-slider-container", true, 250);
+      var gsm = $('#mm-menu-genre-slider-2').genreSlider("#mm-slider-container-mobile", false, 250);
           
     });
 
