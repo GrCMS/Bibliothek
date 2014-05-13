@@ -59,7 +59,7 @@
               <!-- wrapper for genre slider on sm, md and lg -->
               <div id="mm-header-genre-slider-wrapper">
                 
-                WP_MENU => GENRE SLIDER
+                if(
 
               </div>
                 

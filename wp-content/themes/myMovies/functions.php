@@ -1,8 +1,17 @@
 <?php
 
+//Include custom nav walker for genre slider
+require_once('genre-slider-walker.php');
+
 function myMovies_theme_setup() {
-    //Register main menu for current theme
-    register_nav_menu('main', 'Main Navigation');
+    
+    //Register menus (genre slider, account navigation and page navigation) for current theme
+    register_nav_menus(array(
+
+        'slider' => 'Genre slider',
+        'account' => 'Account navigation',
+        'page' => 'Page navigation'
+    ));
 
     //Allows post thumbnails
     add_theme_support('post-thumbnails');
