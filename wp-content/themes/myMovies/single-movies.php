@@ -1,8 +1,9 @@
-<? get_header(); ?>
+<?php get_header();
 	
-<? 
+
 	the_post();
 	require("movie-template.php"); 
-?>
 
-<? get_footer(); ?>
+
+ get_footer(); 
+ ?>
