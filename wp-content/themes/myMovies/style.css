@@ -259,6 +259,21 @@ body {
 
 }
 
+#mm-menu-account {
+    
+    text-align: right;
+    list-style-type: none;
+    padding: 0px;
+    margin: 0px;
+}
+
+#mm-menu-account li {
+    
+    display: inline;
+    padding-left: 50px;
+    position:relative;
+}
+
 /* MOBILE NAVIGATION (xs) */
 /* mobile genre slider, mobile search and mobile account navigation */
 #mm-mobile-navigation-wrapper {

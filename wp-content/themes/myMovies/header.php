@@ -68,8 +68,8 @@
 				
                             'theme_location'  	=> 'slider',
                             'container' 	=> 'div',
-                            'container_id'	=> 'slider-container',
-                            'menu_id'           => 'menu-genre-slider-1',
+                            'container_id'	=> 'mm-slider-container',
+                            'menu_id'           => 'mm-menu-genre-slider-1',
                             'echo' 		=> true,
                             'depth'           	=> 0,
                             'walker'          	=> new genre_slider_walker()
@@ -203,7 +203,14 @@
                 
                 if ( has_nav_menu( 'account' ) ) {
                     
-                    //get wp_nav_menu;
+                    wp_nav_menu(array(
+				
+                        'theme_location'    => 'account',
+                        'container'         => false,
+                        'menu_id'           => 'mm-menu-account',
+                        'echo'              => true,
+                        'depth'             => 0
+                    ));
                 } 
                 
             ?> 

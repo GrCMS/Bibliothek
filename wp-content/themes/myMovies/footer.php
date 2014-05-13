@@ -52,7 +52,7 @@
     $( document ).ready(function() {
 
       menu.setup.init();
-      var gs = $('#menu-genre-slider-1').genreSlider("#slider-container", true, 250);
+      var gs = $('#mm-menu-genre-slider-1').genreSlider("#mm-slider-container", true, 250);
           
     });
 
