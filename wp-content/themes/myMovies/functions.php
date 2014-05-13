@@ -83,4 +83,35 @@ function create_taxonomy_genres() {
     );
 }
 
+add_action( 'after_switch_theme', 'create_rentals_table' );
+
+/**
+ * Creates the rentals table in the database
+ */
+function create_rentals_table() {
+    global $wpdb;
+    
+    $table_name = $wpdb->prefix . 'rentals';
+    
+    $sql = "CREATE TABLE $table_name (
+            id int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+            user int(11),
+            movie int(11),
+            rental_date date,
+            return_date date,
+            returned int(1) DEFAULT 0);";
+            
+    require_once(ABSPATH.'wp-admin/includes/upgrade.php');
+    dbDelta($sql);
+}
+
+add_action("switch_theme", "drop_rentals_table"); 
+
+/**
+ * Creates the rentals table in the database
+ */
+function drop_rentals_table() {
+    alert('HALT STOP');
+}
+
 ?>
