@@ -185,23 +185,20 @@ var menu = {
 
         close_menu : function(m, animate) {
             
-            if(!menu.settings.isAccount)
-            {
-                //console.log("Closing menu: [" + m + "]");
-                menu.settings.isMenuOpen = false;
-                //console.log("Menu Settings changed - isMenuOpen: [" + menu.settings.isMenuOpen + "]");
-                menu.settings.currentMenu = null;
-                //console.log("Menu Settings changed - currentMenu: [" + menu.settings.currentMenu + "]");
+            //console.log("Closing menu: [" + m + "]");
+            menu.settings.isMenuOpen = false;
+            //console.log("Menu Settings changed - isMenuOpen: [" + menu.settings.isMenuOpen + "]");
+            menu.settings.currentMenu = null;
+            //console.log("Menu Settings changed - currentMenu: [" + menu.settings.currentMenu + "]");
 
-                if(animate == true)
-                {
-                    menu.functions.animateOut(m);
-                }
-                else
-                {
-                    $(m).hide();
-                    menu.settings.callback.complete();
-                }
+            if(animate == true)
+            {
+                menu.functions.animateOut(m);
+            }
+            else
+            {
+                $(m).hide();
+                menu.settings.callback.complete();
             }
         },
 
