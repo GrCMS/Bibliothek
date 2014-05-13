@@ -38,7 +38,7 @@ var menu = {
                 complete:function() {}
             };
 
-            menu.settings.callback = $.extend( {}, _defaultArgs, f);;
+            menu.settings.callback = $.extend( {}, _defaultArgs, f);
 
             $.each(menu.triggers, function(i, item) {
 
@@ -172,21 +172,24 @@ var menu = {
         },
 
         close_menu : function(m, animate) {
-
-            //console.log("Closing menu: [" + m + "]");
-            menu.settings.isMenuOpen = false;
-            //console.log("Menu Settings changed - isMenuOpen: [" + menu.settings.isMenuOpen + "]");
-            menu.settings.currentMenu = null;
-            //console.log("Menu Settings changed - currentMenu: [" + menu.settings.currentMenu + "]");
-
-            if(animate == true)
+            
+            if(!menu.settings.isAccount)
             {
-                menu.functions.animateOut(m);
-            }
-            else
-            {
-                $(m).hide();
-                menu.settings.callback.complete();
+                //console.log("Closing menu: [" + m + "]");
+                menu.settings.isMenuOpen = false;
+                //console.log("Menu Settings changed - isMenuOpen: [" + menu.settings.isMenuOpen + "]");
+                menu.settings.currentMenu = null;
+                //console.log("Menu Settings changed - currentMenu: [" + menu.settings.currentMenu + "]");
+
+                if(animate == true)
+                {
+                    menu.functions.animateOut(m);
+                }
+                else
+                {
+                    $(m).hide();
+                    menu.settings.callback.complete();
+                }
             }
         },
 
