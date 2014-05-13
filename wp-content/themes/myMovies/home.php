@@ -6,7 +6,9 @@ get_header(); //gets header.php
 
 <!-- BODY START -->
 
-<p>FRONTPAGE</p>
+<h1>SOME MENU TESTS</h1>
+
+
 
 <!-- BODY END -->
 

@@ -1,0 +1,131 @@
+/*
+
+GENRE SLIDER STYLE
+==================
+
+*/
+
+.sub li {
+
+  display: none;
+}
+
+/*
+
+GENRE SLIDER STYLE FOR: SM, MD, LG
+==================================
+
+*/
+
+#slider-container  {
+
+  margin: 0px auto;
+  width: 100%;
+  position: relative;
+}
+   
+#slider-container ul {
+
+  width:100%;
+  list-style-type: none;
+  padding: 0px 0px 0px 0px;
+  margin: 0px 0px 0px 0px;
+  position: relative;
+  background: #000;
+}
+    
+#slider-container li {
+
+  line-height: 50px;
+  position: relative;
+  text-align: left;
+}
+
+/*#slider-container li a {
+
+  padding-left:15px;
+  color: #fff;
+  text-decoration: none;
+  font-size: 12pt;
+}*/
+
+#slider-container li a {
+
+  padding: 15px 20px;
+  line-height: 20px;
+  width: 100%;
+  position: relative;
+  display: block;
+}
+
+#slider-container li.has a:after {
+
+  position: absolute;
+  top:0;
+  line-height: 50px;
+  font-family: 'icomoon';
+  content: "\e70a";
+  color:#5e5e5e;
+  font-size: 12px;
+  right: 10px;
+}
+
+/*
+
+GENRE SLIDER STYLE FOR: XS (mobile)
+===================================
+
+*/
+
+#slider-container-mobile  {
+
+  margin: 0px auto;
+  width: 100%;
+  position: relative;
+}
+   
+#slider-container-mobile ul {
+
+  width:100%;
+  list-style-type: none;
+  padding: 0px 0px 0px 0px;
+  margin: 0px 0px 0px 0px;
+  position: relative;
+  background: #000;
+}
+    
+#slider-container-mobile li {
+
+  line-height: 50px;
+  position: relative;
+  text-align: left;
+}
+
+/*#slider-container li a {
+
+  padding-left:15px;
+  color: #fff;
+  text-decoration: none;
+  font-size: 12pt;
+}*/
+
+#slider-container-mobile li a {
+
+  padding: 15px 20px;
+  line-height: 20px;
+  width: 100%;
+  position: relative;
+  display: block;
+}
+
+#slider-container-mobile li.has a:after {
+
+  position: absolute;
+  top:0;
+  line-height: 50px;
+  font-family: 'icomoon';
+  content: "\e70a";
+  color:#5e5e5e;
+  font-size: 12px;
+  right: 10px;
+}
