@@ -111,7 +111,7 @@ add_action("switch_theme", "drop_rentals_table");
  * Creates the rentals table in the database
  */
 function drop_rentals_table() {
-    alert('HALT STOP');
+    echo '<script type="text/javascript">alert("Des war deine falsche Entscheidung mein kleiner Sportsfreund!")</script>';
 }
 
 ?>
