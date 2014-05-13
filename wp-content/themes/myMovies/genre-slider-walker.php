@@ -29,15 +29,17 @@ class genre_slider_walker extends Walker_Nav_Menu {
 
         global $wp_query;
 
-        //GET ATTRIBUTES
-        //BUILD LINK
-
+        $attributes  = ! empty ( $item->attr_title ) ? ' title="'  . esc_attr( $item->attr_title ) .'"' : '';
+        $attributes .= ! empty ( $item->target )     ? ' target="' . esc_attr( $item->target     ) .'"' : '';
+        $attributes .= ! empty ( $item->xfn )        ? ' rel="'    . esc_attr( $item->xfn        ) .'"' : '';
+        $attributes .= ! empty ( $item->url )        ? ' href="'   . esc_attr( $item->url        ) .'"' : '';
+        
         if ($item->hasChildren) {
             
-            $output .= "<li class='has'><a href='#'>" . esc_attr($item->title) . "</a>";
+            $output .= "<li class='has'><a" . $attributes . ">" . esc_attr($item->title) . "</a>";
         } else {
             
-            $output .= "<li><a href='#'>" . esc_attr($item->title) . "</a>";
+            $output .= "<li><a" . $attributes . ">" . esc_attr($item->title) . "</a>";
         }
     }
 
