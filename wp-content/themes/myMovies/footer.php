@@ -30,31 +30,36 @@
     //Register events fired for normal screens
     enquire.register("screen and (min-width:768px)", {
 
-      match : function() {
+        match : function() {
 
-        menu.settings.isMobile = false;
-        menu.functions.reset_menu();
-      }
+            menu.settings.isMobile = false;
+            menu.functions.reset_menu();
+        }
 
     });
 
     //Register events fired for mobile devices
     enquire.register("screen and (max-width:767px)", {
 
-      match : function() {
+        match : function() {
 
-        menu.settings.isMobile = true;
-        menu.functions.reset_menu();
-      }
+            menu.settings.isMobile = true;
+            menu.functions.reset_menu();
+        }
 
     });
-
+    
     $( document ).ready(function() {
-
-      menu.setup.init();
-      var gs = $('#mm-menu-genre-slider-1').genreSlider("#mm-slider-container", true, 250);
-      var gsm = $('#mm-menu-genre-slider-2').genreSlider("#mm-slider-container-mobile", false, 250);
-          
+        
+        var gs = $('#mm-menu-genre-slider-1').genreSlider("#mm-slider-container", true, 250);
+        var gsm = $('#mm-menu-genre-slider-2').genreSlider("#mm-slider-container-mobile", false, 250);
+        
+        menu.setup.init({complete:function(){
+              
+            //Callback function always called after any menu is closed
+            gs.functions.reset();
+            gsm.functions.reset();
+        }});  
     });
 
   </script>
