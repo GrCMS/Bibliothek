@@ -12,6 +12,12 @@ get_header(); //gets header.php
 
 ?>
 
+<script>
+
+    var isAccount = true;
+
+</script>
+
 <!-- BODY START -->
 
 <h1>Profile</h1>

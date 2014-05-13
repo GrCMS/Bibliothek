@@ -11,6 +11,12 @@ get_header(); //gets header.php
 
 ?>
 
+<script>
+
+    var isAccount = true;
+
+</script>
+
 <!-- BODY START -->
 
 <h1>Bookmarks</h1>

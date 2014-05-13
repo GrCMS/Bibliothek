@@ -39,6 +39,18 @@ var menu = {
             };
 
             menu.settings.callback = $.extend( {}, _defaultArgs, f);
+            
+            if(typeof isAccount !== 'undefined')
+            {
+                if(menu.settings.isMobile)
+                {
+                    menu.functions.open_menu(menu.containers._all.account_m, false);
+                }
+                else
+                {
+                    menu.functions.open_menu(menu.containers._all.account, false);
+                }
+            }
 
             $.each(menu.triggers, function(i, item) {
 
