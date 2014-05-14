@@ -66,8 +66,10 @@ for ($i = 1; $i < 6; $i++) {
                         </ul>
                     </div>
                     <div class="buttons col-md-12 col-sm-6">
-                        <span class="btn <? if(is_user_logged_in()) echo 'btn-primary'; else echo 'btn-disabled';?>">+ Merkliste</span>
-                        <span class="btn <? if(is_user_logged_in()) echo 'btn-info'; else echo 'btn-disabled';?>">+ Leihen</span>
+                        
+                        <button class="btn <? if(is_user_logged_in()) echo 'btn-primary'; else echo 'btn-disabled';?>">+ Merkliste</button>
+                        <button class="btn <? if(is_user_logged_in()) echo 'btn-info'; else echo 'btn-disabled';?>">+ Leihen</button>
+                                 
                     </div>
                 </div>
             </div>
