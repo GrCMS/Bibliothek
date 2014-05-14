@@ -19,6 +19,7 @@ function myMovies_init()
     create_post_type_movies();
     create_taxonomy_genres();
     register_menus();
+    hide_editor();
 }
 
 /** 
@@ -135,6 +136,44 @@ add_action("switch_theme", "drop_rentals_table");
  */
 function drop_rentals_table() {
     echo '<script type="text/javascript">alert("Des war deine falsche Entscheidung mein kleiner Sportsfreund!")</script>';
+}
+
+/**
+ * Hides the content editor if an account page template is chosen
+ * (WORK IN PROGRESS)
+ */
+function hide_editor() {
+
+    $post_id = $_GET['post'] ? $_GET['post'] : $_POST['post_ID'] ;
+    if( !isset( $post_id ) ) return;
+    $template_file = get_post_meta($post_id, '_wp_page_template', true);
+            
+    switch($template_file)
+    {
+        case 'template-bookmarks-page.php': {
+       
+            remove_post_type_support('page', 'editor');
+            break;
+        }
+        
+        case 'template-movies-on-loan-page.php': {
+       
+            remove_post_type_support('page', 'editor');
+            break;
+        }
+        
+        case 'template-my-profile-page.php': {
+            
+            remove_post_type_support('page', 'editor');
+            break;
+        }
+        
+        case 'template-notifications-page.php': {
+            
+            remove_post_type_support('page', 'editor');
+            break;
+        }
+    }
 }
 
 ?>
