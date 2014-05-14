@@ -28,7 +28,7 @@ function myMovies_init()
 add_action('init', 'myMovies_init');
 
 // Add custom image sizes
-add_image_size( 'movie_poster', 685, 1000, true);
+add_image_size( 'movie_poster', 263, 383, true);
 
 /**
  * Register nav menus: 'genre slider', 'account navigation' and 'page navigation'
@@ -83,8 +83,13 @@ function create_taxonomy_genres() {
     );
 }
 
-add_action( 'after_switch_theme', 'create_rentals_table' );
+add_action( 'after_switch_theme', 'create_tables' );
 
+
+function create_tables() {
+    create_rentals_table();
+    create_ratings_table();
+}
 /**
  * Creates the rentals table in the database
  */
@@ -100,6 +105,24 @@ function create_rentals_table() {
             rental_date date,
             return_date date,
             returned int(1) DEFAULT 0);";
+            
+    require_once(ABSPATH.'wp-admin/includes/upgrade.php');
+    dbDelta($sql);
+}
+
+/**
+ * Creates the rentals table in the database
+ */
+function create_ratings_table() {
+    global $wpdb;
+    
+    $table_name = $wpdb->prefix . 'ratings';
+    
+    $sql = "CREATE TABLE $table_name (
+            user int(11) NOT NULL,
+            movie int(11) NOT NULL,
+            rating int(11),
+            PRIMARY KEY(user,movie));";
             
     require_once(ABSPATH.'wp-admin/includes/upgrade.php');
     dbDelta($sql);
