@@ -149,7 +149,7 @@
                 <div class="modal fade" id="mm-login-modal" tabindex="-1" role="dialog">
                     <div class="modal-dialog">
                         <div class="modal-content">
-                            <form role="form" action="<?php echo wp_login_url( get_permalink() ); ?>" method="post">
+                            <form role="form" action="<?php echo wp_login_url( get_permalink(get_page($page_id_of_member_area)) ); ?>" method="post">
                                 <div class="modal-header text-left">
                                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                                     <h4 class="modal-title" id="myModalLabel">Login</h4>
