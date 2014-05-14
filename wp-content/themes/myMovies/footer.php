@@ -24,7 +24,14 @@
   <script src="<?php bloginfo('template_url'); ?>/js/mm-toggle-navigation.js"></script>
   <!-- Genre slider script -->
   <script src="<?php bloginfo('template_url'); ?>/js/mm-genre-slider.js"></script>
-
+  
+  <!-- Global var holding the template url -->
+  <script type="text/javascript">
+    
+    var templateUrl = "<?php bloginfo('template_url'); ?>";
+  
+  </script>
+  
   <script>
 
     //Register events fired for normal screens
@@ -61,7 +68,7 @@
             gsm.functions.reset();
         }});  
     });
-
+    
   </script>
   
   </body>
