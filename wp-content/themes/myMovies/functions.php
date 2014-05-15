@@ -2,6 +2,7 @@
 
 //Include custom nav walker for genre slider
 require_once('genre-slider-walker.php');
+require_once('extensions/bookmarks-service.php');
 
 function myMovies_theme_setup() {
 
@@ -227,7 +228,7 @@ function mm_enqueue_scripts()
     wp_register_script('enquire-js', get_template_directory_uri() . '/js/enquire.min.js', array('jquery'), '2.1.0', true);
     wp_register_script('toggle-navigation-js', get_template_directory_uri() . '/js/mm-toggle-navigation.js', array('jquery'), '1.0', true);
     wp_register_script('genre-slider-js', get_template_directory_uri() . '/js/mm-genre-slider.js', array('jquery'), '1.0', true);
-    wp_register_script( 'bookmarks-js', get_template_directory_uri() . '/js/bookmarks.js', array(), '1.0', true);
+    wp_register_script('bookmarks-js', get_template_directory_uri() . '/js/ajax/bookmarks.js', array(), '1.0', true);
             
     //localization for ajax scripts
     wp_localize_script( 'bookmarks-js', 'myAjax', array( 'ajaxurl' => admin_url( 'admin-ajax.php' )));
@@ -265,39 +266,6 @@ function mm_enqueue_scripts()
  */
 
 add_filter('show_admin_bar', '__return_false');
-
-/**
- * Add ajax bookmark hook and handle requests
- */
-
-add_filter('wp_ajax_mm_bookmark', 'mm_bookmark');
-        
-function mm_bookmark()
-{
-    $current_user = wp_get_current_user();
-    $option = get_user_option('bookmarks', $current_user->ID);
-    $post_id = $_REQUEST["post_id"];
-
-    if($option == false)
-    {
-        $result['type'] = "bool";
-        $result['option'] = $option;
-        $result['post_id'] = $post_id;
-        $result['current_user'] = $current_user->display_name;
-    }
-    else
-    {
-        $result['type'] = "value";
-        $result['option'] = $option;
-        $result['post_id'] = $post_id;
-        $result['current_user'] = $current_user->display_name;
-    }
-
-    $result = json_encode($result);
-    echo $result;
-	
-    die();
-}
 
 add_action('template_redirect', 'register_a_user');
 
