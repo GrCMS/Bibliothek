@@ -1,4 +1,4 @@
-<? 
+<?php
 
 /*
 Template Name: Movie List
@@ -27,4 +27,4 @@ endwhile;
 wp_reset_query();  // Restore global post data stomped by the_post().
 ?>
 
-<? get_footer(); ?>
+<?php get_footer(); ?>
