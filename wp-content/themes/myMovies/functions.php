@@ -297,5 +297,43 @@ function mm_bookmark()
     die();
 }
 
+add_action('template_redirect', 'register_a_user');
+
+function register_a_user(){
+  if(isset($_GET['action']) && $_GET['action'] == 'register'):
+    $errors = array();
+    if(empty($_POST['user']) || empty($_POST['email'])) $errors[] = 'provide a user and email';
+    if(!empty($_POST['spam'])) $errors[] = 'gtfo spammer';
+
+    $user_login = esc_attr($_POST['user']);
+    $user_email = esc_attr($_POST['email']);
+    require_once(ABSPATH.WPINC.'/registration.php');
+
+    $sanitized_user_login = sanitize_user($user_login);
+    $user_email = apply_filters('user_registration_email', $user_email);
+
+    if(!is_email($user_email)) $errors[] = 'invalid e-mail';
+    elseif(email_exists($user_email)) $errors[] = 'this email is already registered, bla bla...';
+
+    if(empty($sanitized_user_login) || !validate_username($user_login)) $errors[] = 'invalid user name';
+    elseif(username_exists($sanitized_user_login)) $errors[] = 'user name already exists';
+
+    if(empty($errors)):
+      $user_pass = wp_generate_password();
+      $user_id = wp_create_user($sanitized_user_login, $user_pass, $user_email);
+
+      if(!$user_id): 
+        $errors[] = 'registration failed...';
+      else:
+        update_user_option($user_id, 'default_password_nag', true, true);
+        wp_new_user_notification($user_id, $user_pass);
+      endif;
+    endif;
+
+    if(!empty($errors)) $GLOBALS['REGISTRATION_ERROR'] = serialize($errors);
+    else $GLOABLS['REGISTERED_A_USER'] = $user_email; 
+  endif;
+}
+
 
 ?>
