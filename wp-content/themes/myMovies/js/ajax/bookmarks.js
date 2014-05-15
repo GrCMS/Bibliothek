@@ -26,7 +26,17 @@ jQuery(document).ready( function() {
             {
                 if(jQuery(trigger).hasClass('removeable'))
                 {
-                    jQuery(trigger).hide(200);
+                    jQuery(trigger).animate({
+                        
+                        left: -200,
+                        opacity: 0
+                        
+                    }, 250, 
+                    
+                     function(){
+                         
+                         jQuery(trigger).hide();
+                     });
                 }
             }
          }
