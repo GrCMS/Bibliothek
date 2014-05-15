@@ -10,7 +10,7 @@
 
   </div><!-- end of mm-wrapper -->
         
-  <!-- Wordpress scripts -->
+  <!-- WORDPRESS SCRIPTS (JS) -->
   <?php wp_footer() ?>
   
   <script>

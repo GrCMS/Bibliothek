@@ -7,15 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <meta name="description" content="<?php bloginfo('description'); ?>">
     <title><?php bloginfo('name'); ?></title>
-
-    <!-- BOOTSTRAP & CSS -->
-    <link href="<?php bloginfo('template_url'); ?>/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="<?php bloginfo('template_url'); ?>/fonts/icomoon/style.css" rel="stylesheet">
-    <link href="<?php bloginfo('template_url'); ?>/css/stars.css" rel="stylesheet">
-    <link href="<?php bloginfo('template_url'); ?>/css/genre-slider.css" rel="stylesheet">
-    <link href="<?php bloginfo('stylesheet_url'); ?>" rel="stylesheet">
-    
-    <!-- Wordpress scripts -->
+        
+    <!-- WORDPRESS STYLES (CSS) -->
     <?php wp_head() ?>
     
   </head>
