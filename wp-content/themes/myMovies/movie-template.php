@@ -17,30 +17,30 @@ else
 ?>
 <div class="row movie padding-top-15">
     <div class="col-md-3 col-sm-4 col-xs-5">
-<?php
-if (isset($movieimagepath))
-    echo "<img src='$movieimagepath' class='img-responsive'>";
-?>
+        <?php
+        if (isset($movieimagepath))
+            echo "<img src='$movieimagepath' class='img-responsive'>";
+        ?>
     </div>
     <div class="col-md-9 col-sm-8 col-xs-7">
         <div class="row border-bottom-white padding-bottom-15">
             <div class="col-sm-7">
-<?php
-if (isset($movietitle))
-    echo "<h2 class='color-primary'>$movietitle</h2>";
+                <?php
+                if (isset($movietitle))
+                    echo "<h2 class='color-primary'>$movietitle</h2>";
 
-if (isset($moviesubtitle))
-    echo "<h3>$moviesubtitle</h3>";
+                if (isset($moviesubtitle))
+                    echo "<h3>$moviesubtitle</h3>";
 
-echo '<span class="small">';
-if (isset($moviestudio))
-    echo $moviestudio;
+                echo '<span class="small">';
+                if (isset($moviestudio))
+                    echo $moviestudio;
 
-if (isset($movieyear))
-    echo ', ' . $movieyear;
+                if (isset($movieyear))
+                    echo ', ' . $movieyear;
 
-echo '</span>';
-?>
+                echo '</span>';
+                ?>
             </div>
             <div class="col-md-5 col-sm-12 movie-addon-block">
                 <div class="row">
@@ -48,48 +48,43 @@ echo '</span>';
                         Rating
                         <span class="hidden ratingvalue"><? echo $rating ?></span>
                         <ul class="color-primary">
-<?php
-for ($i = 1; $i < 6; $i++) {
-    // Setzen der Ratingklassen
-    $starvalue;
-    if ($rating >= $i)
-        $starvalue = "filled";
+                            <?php
+                            for ($i = 1; $i < 6; $i++) {
+                                // Setzen der Ratingklassen
+                                $starvalue;
+                                if ($rating >= $i)
+                                    $starvalue = "filled";
 
-    else if ($rating > ($i - 0.7))
-        $starvalue = "half";
-    else
-        $starvalue = "empty";
+                                else if ($rating > ($i - 0.7))
+                                    $starvalue = "half";
+                                else
+                                    $starvalue = "empty";
 
-    echo('<li class="star star1 stars-' . $starvalue . '"></li>');
-}
-?>
+                                echo('<li class="star star1 stars-' . $starvalue . '"></li>');
+                            }
+                            ?>
                         </ul>
                     </div>
                     <div class="buttons col-md-12 col-sm-6">
-                        
+
                         <?php
-                        
-                            //generate code for bookmark button
-                            if(is_user_logged_in())
-                            {
-                                echo '<button '
-                                    . 'class="mm_user_bookmark btn btn-primary"'
-                                    . 'data-post_id="'. $post->ID .'">'
-                                    . '+ Merkliste'
-                                    . '</button>';
-                            }
-                            else
-                            {
-                                echo '<button '
-                                    . 'class="btn btn-disabled">'
-                                    . '+ Merkliste'
-                                    . '</button>';
-                            }
-                        
+                        //generate code for bookmark button
+                        if (is_user_logged_in()) {
+                            echo '<button '
+                            . 'class="mm_user_bookmark btn btn-primary"'
+                            . 'data-post_id="' . $post->ID . '">'
+                            . '+ Merkliste'
+                            . '</button>';
+                        } else {
+                            echo '<button '
+                            . 'class="btn btn-disabled">'
+                            . '+ Merkliste'
+                            . '</button>';
+                        }
                         ?>
-                                                
+
                         <button class="btn <? if(is_user_logged_in()) echo 'btn-info'; else echo 'btn-disabled';?>">+ Leihen</button>
-                                 
+
                     </div>
                 </div>
             </div>
