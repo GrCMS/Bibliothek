@@ -3,6 +3,7 @@ jQuery(document).ready( function() {
    jQuery(".mm_user_bookmark").click( function() {
       
       var post_id = jQuery(this).attr("data-post_id");
+      var trigger = jQuery(this);
             
       jQuery.ajax({
          type : "post",
@@ -16,7 +17,18 @@ jQuery(document).ready( function() {
          },
          success: function(response) {
             
-            console.log(response);
+            if(response.action == 'created' || response.action == 'added')
+            {
+                
+            }
+                        
+            if(response.action == 'removed')
+            {
+                if(jQuery(trigger).hasClass('removeable'))
+                {
+                    jQuery(trigger).hide(200);
+                }
+            }
          }
       });   
 
