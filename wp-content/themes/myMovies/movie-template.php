@@ -45,25 +45,27 @@ else
             <div class="col-md-5 col-sm-12 movie-addon-block">
                 <div class="row">
                     <div class="rating col-md-12 col-sm-6 padding-bottom-15">
-                        Rating
-                        <span class="hidden ratingvalue"><? echo $rating ?></span>
-                        <ul class="color-primary">
+                        Rating<br>
+                        <span class="hidden ratingvalue"><?php echo $rating ?></span>
+                        <!--<ul class="color-primary">-->
                             <?php
-                            for ($i = 1; $i < 6; $i++) {
-                                // Setzen der Ratingklassen
-                                $starvalue;
-                                if ($rating >= $i)
-                                    $starvalue = "filled";
-
-                                else if ($rating > ($i - 0.7))
-                                    $starvalue = "half";
-                                else
-                                    $starvalue = "empty";
-
-                                echo('<li class="star star1 stars-' . $starvalue . '"></li>');
-                            }
-                            ?>
-                        </ul>
+//                            for ($i = 1; $i < 6; $i++) {
+//                                // Setzen der Ratingklassen
+//                                $starvalue;
+//                                if ($rating >= $i)
+//                                    $starvalue = "filled";
+//
+//                                else if ($rating > ($i - 0.7))
+//                                    $starvalue = "half";
+//                                else
+//                                    $starvalue = "empty";
+//
+//                                //echo('<li class="star star'.$i.' stars-' . $starvalue . '"></li>');
+//                                
+//                            }?>
+                            <span class="rating-stars" movie-id="<?php echo $post->ID ?>" data-score="<?php echo $rating ?>"></span>
+                            
+                        <!--</ul>-->
                     </div>
                     <div class="buttons col-md-12 col-sm-6">
 
@@ -83,7 +85,7 @@ else
                         }
                         ?>
 
-                        <button class="btn <? if(is_user_logged_in()) echo 'btn-info'; else echo 'btn-disabled';?>">+ Leihen</button>
+                        <button class="btn <?php if(is_user_logged_in()) echo 'btn-info'; else echo 'btn-disabled'; ?>">+ Leihen</button>
 
                     </div>
                 </div>
@@ -91,10 +93,10 @@ else
         </div>
         <div class="row padding-top-15">
             <div class="col-xs-12">
-<?php
-if (isset($moviedescription))
-    echo $moviedescription;
-?>
+                <?php
+                if (isset($moviedescription))
+                    echo $moviedescription;
+                ?>
             </div>
         </div>
     </div>

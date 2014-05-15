@@ -4,12 +4,6 @@
  */
 get_header();
 
-$args = array(
-    'redirect' => get_permalink(get_page(163)),
-    'id_username' => 'id_username',
-    'id_password' => 'id_password',
-    'form_id' => 'form_id'
-);
 if (isset($_GET['login']) && $_GET['login'] == 'failed') {
     ?>
     <div id="login-failed">
@@ -20,40 +14,39 @@ if (isset($_GET['login']) && $_GET['login'] == 'failed') {
 <?php
 if (!is_user_logged_in()) {
 
-    if (isset($_GET['action']) && $_GET['action'] == 'register') {
- 
-        if (isset($GLOBALS['REGISTRATION_ERROR'])) {
-            foreach (unserialize($GLOBALS['REGISTRATION_ERROR']) as $error) {
-                echo "<div class=\"error\">{$error}</div>";
-            }
-            unset($GLOBALS['REGISTRATION_ERROR']);
-        }
-        // errors here, if any
+    if (isset($_GET['do']) && $_GET['do'] == 'register' || isset($_GET['action']) && $_GET['action'] == 'register') {
+        $register = true;
 
-        elseif (isset($GLOBALS['REGISTERED_A_USER'])) {
-            echo 'a email has been sent to ' . $GLOBALS['REGISTERED_A_USER'];
-            unset($GLOBALS['REGISTERED_A_USER']);
+        if (defined('REGISTRATION_ERROR'))
+            foreach (unserialize(REGISTRATION_ERROR) as $error)
+                echo "<div class=\"register-error\">{$error}</div>";
+
+        elseif (defined('REGISTERED_A_USER')) {
+            echo "<div class=\"register-success\">a email has been sent to '" . REGISTERED_A_USER . "</div>";
+            $register = false;
         }
-        ?>
-        <div id="login-form">
-            <form role="form" action="<?php echo add_query_arg('action', 'register', home_url('/login')); ?>" method="post">
-                <h1>Register</h1>
-                <span>Sign Up with us and Enjoy!</span>
-                <div class="form-group">
-                    <label class="sr-only" for="user_login">Username</label>
-                    <input autocomplete="off" placeholder="Username" class="form-control" type="text" name="user_login" id="user_login" value="<?php echo wp_specialchars(stripslashes($user_login), 1) ?>" />
-                </div>
-                <div class="form-group">
-                    <label class="sr-only" for="pwd">E-Mail</label>
-                    <input placeholder="E-Mail" class="form-control" type="text" name="user_email" id="user_email" />
-                </div>
-        <?php do_action('register_form'); ?>
-                <hr />
-                <p>A password will be e-mailed to you.</p>
-                <input class="btn btn-default" id="register" type="submit" name="submit" value="Register" class="button" />
-            </form>
-        </div>
-    <?php } else { ?>
+
+        if ($register) {
+            ?>
+            <div id="login-form">
+                <form role="form" action="<?php echo add_query_arg('do', 'register', home_url('/login')); ?>" method="post">
+                    <h1>Register</h1>
+                    <div class="form-group">
+                        <label class="sr-only" for="user">Username</label>
+                        <input autocomplete="off" placeholder="Username" class="form-control" type="text" name="user" id="user" value="<?php echo wp_specialchars(stripslashes($user_login), 1) ?>" />
+                    </div>
+                    <div class="form-group">
+                        <label class="sr-only" for="email">E-Mail</label>
+                        <input placeholder="E-Mail" class="form-control" type="text" name="email" id="user_email" />
+                    </div>
+            <?php do_action('register_form'); ?>
+                    <hr />
+                    <p>A password will be e-mailed to you.</p>
+                    <input class="btn btn-default" id="register" type="submit" name="submit" value="Register" class="button" />
+                </form>
+            </div>
+        <?php }
+    } else { ?>
 
         <div id="login-form">
             <form role="form" action="<?php echo wp_login_url(get_permalink(get_page(163))); ?>" method="post">

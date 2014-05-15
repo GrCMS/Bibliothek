@@ -1,284 +1,284 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    
-    <!-- PAGE META -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <meta name="description" content="<?php bloginfo('description'); ?>">
-    <title><?php bloginfo('name'); ?></title>
-        
-    <!-- WORDPRESS STYLES (CSS) -->
-    <?php wp_head() ?>
-    
-  </head>
-  <body>
+    <head>
 
-  <!-- Get current user -->
-  <?php 
+        <!-- PAGE META -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="description" content="<?php bloginfo('description'); ?>">
+        <title><?php bloginfo('name'); ?></title>
 
-    $is_registered = false;
+        <!-- WORDPRESS STYLES (CSS) -->
+        <?php wp_head() ?>
+        <script type="text/javascript">
+            jQuery(document).ready(function($) {
+                $('.rating-stars').raty({
+                    halfShow: true,
+                    score: function() {
+                        return $(this).attr('data-score');
+                    },
+                    click: function(score, evt) {
+                        console.log($(this).attr('movie-id'));
+                        alert('Not implemented yet');
+                    }
+                });
+            });
+        </script>
 
-    //WP_USER (object) => https://codex.wordpress.org/Function_Reference/wp_get_current_user
-    $current_user = null;
+    </head>
+    <body>
 
-    //Find out if user has an Account and is logged in
-    if ( is_user_logged_in() ) 
-    {
-        $is_registered = true;
-        $current_user = wp_get_current_user();
-    }
+        <!-- Get current user -->
+        <?php
+        $is_registered = false;
 
-  ?>
+        //WP_USER (object) => https://codex.wordpress.org/Function_Reference/wp_get_current_user
+        $current_user = null;
 
-  <div id="mm-page-wrapper" class="container-fluid">
+        //Find out if user has an Account and is logged in
+        if (is_user_logged_in()) {
+            $is_registered = true;
+            $current_user = wp_get_current_user();
+        }
+        ?>
 
-    <header id="mm-header-wrapper" class="container-fluid">
+        <div id="mm-page-wrapper" class="container-fluid">
 
-      <div id="mm-header-container" class="container">
+            <header id="mm-header-wrapper" class="container-fluid">
 
-        <div id="mm-header-row" class="row">
-            
-          <div id="mm-header-brand-col" class="col-xs-12 col-sm-5">
-              
-              <a href="<?php echo bloginfo('url'); ?>"><img class="logo" src="<?php bloginfo('template_url'); ?>/images/layout/myMovies-logo.svg" /></a>
+                <div id="mm-header-container" class="container">
 
-          </div><!-- end of mm-header-brand-col -->
+                    <div id="mm-header-row" class="row">
 
-          <div id="mm-header-genre-slider-col" class="col-xs-4 col-sm-1 col-sm-push-3 text-center">
-              
-            <!-- needed in order to center the 'mm-header-genre-slider-wrapper' div -->
-            <div id="mm-header-genre-slider-anchor">
+                        <div id="mm-header-brand-col" class="col-xs-12 col-sm-5">
 
-              <!-- triggers (show/hide) genre slider -->
-              <span id="mm-header-genre-slider-trigger" class="icon-menu2"></span>
+                            <a href="<?php echo bloginfo('url'); ?>"><img class="logo" src="<?php bloginfo('template_url'); ?>/images/layout/myMovies-logo.svg" /></a>
 
-              <!-- wrapper for genre slider on sm, md and lg -->
-              <div id="mm-header-genre-slider-wrapper">
-                
-                <?php
-                
-                    if ( has_nav_menu( 'slider' ) ) {
-                    
-                        wp_nav_menu(array(
-				
-                            'theme_location'  	=> 'slider',
-                            'container' 	=> 'div',
-                            'container_id'	=> 'mm-slider-container',
-                            'menu_id'           => 'mm-menu-genre-slider-1',
-                            'echo' 		=> true,
-                            'depth'           	=> 0,
-                            'walker'          	=> new genre_slider_walker()
-			)); 	
-                    } 
-                
-                ?> 
+                        </div><!-- end of mm-header-brand-col -->
 
-              </div>
-                
-            </div><!-- end of mm-header-genre-slider-anchor -->
+                        <div id="mm-header-genre-slider-col" class="col-xs-4 col-sm-1 col-sm-push-3 text-center">
 
-          </div><!-- end of mm-header-genre-slider-col -->
+                            <!-- needed in order to center the 'mm-header-genre-slider-wrapper' div -->
+                            <div id="mm-header-genre-slider-anchor">
 
-          <div id="mm-header-search-col" class="col-xs-4 col-sm-3 col-sm-pull-2 text-center">
-              
-            <div class="visible-sm visible-md visible-lg">
+                                <!-- triggers (show/hide) genre slider -->
+                                <span id="mm-header-genre-slider-trigger" class="icon-menu2"></span>
 
-              <!-- Include wp-search (desktop) -->
-              <?php get_search_form(); ?>
-                
-            </div>
+                                <!-- wrapper for genre slider on sm, md and lg -->
+                                <div id="mm-header-genre-slider-wrapper">
 
-            <div class="visible-xs">
-          
-              <span id="mm-header-search-trigger" class="icon-search"></span>
-                    
-            </div>
+<?php
+if (has_nav_menu('slider')) {
 
-          </div><!-- end of mm-header-search-col -->
+    wp_nav_menu(array(
+        'theme_location' => 'slider',
+        'container' => 'div',
+        'container_id' => 'mm-slider-container',
+        'menu_id' => 'mm-menu-genre-slider-1',
+        'echo' => true,
+        'depth' => 0,
+        'walker' => new genre_slider_walker()
+    ));
+}
+?> 
 
-          <div id="mm-header-account-navigation-col" class="col-xs-4 col-sm-3 text-center">
-            
-            <?php if(is_user_logged_in()): ?>
-            
-              <!-- if user is logged in => show account navigation trigger -->
-              <!-- account navigation trigger (desktop/mobile) -->
-              <div id="mm-header-account-wrapper">
-                
-                <!-- sm, md, lg: account navigation trigger -->
-                <div id="mm-header-account-navigation-trigger">
-
-                  <div class="visible-sm visible-md visible-lg">    
-
-                    <span id="mm-header-account-image">
-                    
-                      <img src="<?php bloginfo('template_url'); ?>/images/layout/user_blank.png" />
-
-                    </span>
-                    
-                    <span id="mm-header-account-name"><?php echo $current_user->display_name; ?></span>
-                    <span id="mm-header-account-dropdown-icon"></span>
-
-                  </div>
-                  
-                </div>
-
-                <!-- xs: mobile account navigation trigger-->
-                <div class="visible-xs">
-              
-                  <span id="mm-header-account-navigation-mobile-trigger" class="icon-user3"></span>
-
-                </div>
-
-              </div><!-- end of mm-header-account-wrapper -->
-
-            <?php else: ?>
-
-              <!-- login form, if user is not logged in -->
-              <div id="mm-header-account-login">
-                
-                <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#mm-login-modal">
-                  Login
-                </button>
-                <!-- open in modal/overlay -->
-                <!-- Login button => triggers modal dialog -->
-                <div class="modal fade" id="mm-login-modal" tabindex="-1" role="dialog">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <form role="form" autocomplete="off" action="<?php echo wp_login_url( get_permalink(get_page(163)) ); ?>" method="post">
-                                <div class="modal-header text-left">
-                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                    <h4 class="modal-title" id="myModalLabel">Login</h4>
                                 </div>
-                                <div class="modal-body">
-                                    <div class="form-group">
-                                        <label class="sr-only" for="log">User</label>
-                                        <input placeholder="User" class="form-control" type="text" name="log" id="log" value="<?php echo wp_specialchars( stripslashes($user_login), 1 ) ?>"/> 
+
+                            </div><!-- end of mm-header-genre-slider-anchor -->
+
+                        </div><!-- end of mm-header-genre-slider-col -->
+
+                        <div id="mm-header-search-col" class="col-xs-4 col-sm-3 col-sm-pull-2 text-center">
+
+                            <div class="visible-sm visible-md visible-lg">
+
+                                <!-- Include wp-search (desktop) -->
+<?php get_search_form(); ?>
+
+                            </div>
+
+                            <div class="visible-xs">
+
+                                <span id="mm-header-search-trigger" class="icon-search"></span>
+
+                            </div>
+
+                        </div><!-- end of mm-header-search-col -->
+
+                        <div id="mm-header-account-navigation-col" class="col-xs-4 col-sm-3 text-center">
+
+<?php if (is_user_logged_in()): ?>
+
+                                <!-- if user is logged in => show account navigation trigger -->
+                                <!-- account navigation trigger (desktop/mobile) -->
+                                <div id="mm-header-account-wrapper">
+
+                                    <!-- sm, md, lg: account navigation trigger -->
+                                    <div id="mm-header-account-navigation-trigger">
+
+                                        <div class="visible-sm visible-md visible-lg">    
+
+                                            <span id="mm-header-account-image">
+
+                                                <img src="<?php bloginfo('template_url'); ?>/images/layout/user_blank.png" />
+
+                                            </span>
+
+                                            <span id="mm-header-account-name"><?php echo $current_user->display_name; ?></span>
+                                            <span id="mm-header-account-dropdown-icon"></span>
+
+                                        </div>
+
                                     </div>
-                                    <div class="form-group">
-                                        <label class="sr-only" for="pwd">Password</label>
-                                        <input placeholder="Password" class="form-control" type="password" name="pwd" id="pwd" size="22" /> 
+
+                                    <!-- xs: mobile account navigation trigger-->
+                                    <div class="visible-xs">
+
+                                        <span id="mm-header-account-navigation-mobile-trigger" class="icon-user3"></span>
+
                                     </div>
-                                    <div class="form-group">
-                                        <div class="checkbox text-left">
-                                            <label>
-                                                <input name="rememberme" type="checkbox" checked="checked" value="forever" /> Remember me
-                                            </label>
+
+                                </div><!-- end of mm-header-account-wrapper -->
+
+<?php else: ?>
+
+                                <!-- login form, if user is not logged in -->
+                                <div id="mm-header-account-login">
+
+                                    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#mm-login-modal">
+                                        Login
+                                    </button>
+                                    <!-- open in modal/overlay -->
+                                    <!-- Login button => triggers modal dialog -->
+                                    <div class="modal fade" id="mm-login-modal" tabindex="-1" role="dialog">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <form role="form" autocomplete="off" action="<?php echo wp_login_url(get_permalink(get_page(163))); ?>" method="post">
+                                                    <div class="modal-header text-left">
+                                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                                        <h4 class="modal-title" id="myModalLabel">Login</h4>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <div class="form-group">
+                                                            <label class="sr-only" for="log">User</label>
+                                                            <input placeholder="User" class="form-control" type="text" name="log" id="log" value="<?php echo wp_specialchars(stripslashes($user_login), 1) ?>"/> 
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label class="sr-only" for="pwd">Password</label>
+                                                            <input placeholder="Password" class="form-control" type="password" name="pwd" id="pwd" size="22" /> 
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <div class="checkbox text-left">
+                                                                <label>
+                                                                    <input name="rememberme" type="checkbox" checked="checked" value="forever" /> Remember me
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <a class="btn btn-default" href="<?php echo site_url() . '/login?action=register'; ?>">Register</a>
+                                                        <input class="btn btn-primary" type="submit" name="submit" value="Send" class="button" />
+                                                    </div>
+                                                </form>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <input class="btn btn-default" type="submit" name="submit" value="Send" class="button" />
-                                </div>
-                            </form>
+                                </div><!-- end of mm-header-account-login -->
+
+<?php endif; ?>
+
+                        </div><!-- end of mm-header-account-navigation-col -->
+
+                    </div><!-- end of mm-header-row -->
+
+                </div><!-- end of mm-header-container -->
+
+            </header><!-- end of mm-header-wrapper -->
+
+            <!-- (show/hide) account navigation (sm, md, lg) below header -->
+            <div id="mm-account-navigation-wrapper" class="container-fluid">
+
+                <div class="container">
+
+                    <div class="row">
+
+                        <div id="mm-account-navigation-col" class="col-xs-12">
+
+<?php
+if (has_nav_menu('account')) {
+
+    wp_nav_menu(array(
+        'theme_location' => 'account',
+        'container' => false,
+        'menu_id' => 'mm-menu-account',
+        'echo' => true,
+        'depth' => 0
+    ));
+}
+?> 
+
                         </div>
+
                     </div>
+
                 </div>
-            </div><!-- end of mm-header-account-login -->
 
-            <?php endif; ?>
+            </div><!-- end of mm-account-navigation-wrapper -->
 
-          </div><!-- end of mm-header-account-navigation-col -->
+            <div id="mm-mobile-navigation-wrapper" class="container-fluid">
 
-        </div><!-- end of mm-header-row -->
-            
-      </div><!-- end of mm-header-container -->
-        
-    </header><!-- end of mm-header-wrapper -->
+                <div id="mm-mobile-navigation-container" class="container">
 
-    <!-- (show/hide) account navigation (sm, md, lg) below header -->
-    <div id="mm-account-navigation-wrapper" class="container-fluid">
+                    <div id="mm-mobile-search-col" class="col-xs-12">
 
-      <div class="container">
-        
-        <div class="row">
+<?php get_search_form(); ?>
 
-          <div id="mm-account-navigation-col" class="col-xs-12">
-            
-            <?php
-                
-                if ( has_nav_menu( 'account' ) ) {
-                    
-                    wp_nav_menu(array(
-				
-                        'theme_location'    => 'account',
-                        'container'         => false,
-                        'menu_id'           => 'mm-menu-account',
-                        'echo'              => true,
-                        'depth'             => 0
-                    ));
-                } 
-                
-            ?> 
+                    </div>
 
-          </div>
-        
-        </div>
+                    <div id="mm-mobile-account-navigation-col" class="col-xs-12">
 
-      </div>
-      
-    </div><!-- end of mm-account-navigation-wrapper -->
+<?php
+if (has_nav_menu('account')) {
 
-    <div id="mm-mobile-navigation-wrapper" class="container-fluid">
+    wp_nav_menu(array(
+        'theme_location' => 'account',
+        'container' => false,
+        'menu_id' => 'mm-menu-account-mobile',
+        'echo' => true,
+        'depth' => 0
+    ));
+}
+?> 
 
-      <div id="mm-mobile-navigation-container" class="container">
+                    </div>
 
-        <div id="mm-mobile-search-col" class="col-xs-12">
-          
-          <?php get_search_form(); ?>
+                    <div id="mm-mobile-genre-slider-col" class="col-xs-12">
 
-        </div>
+                        <?php
+                        if (has_nav_menu('slider')) {
 
-        <div id="mm-mobile-account-navigation-col" class="col-xs-12">
-          
-            <?php
-                
-                if ( has_nav_menu( 'account' ) ) {
-                    
-                    wp_nav_menu(array(
-				
-                        'theme_location'    => 'account',
-                        'container'         => false,
-                        'menu_id'           => 'mm-menu-account-mobile',
-                        'echo'              => true,
-                        'depth'             => 0
-                    ));
-                } 
-                
-            ?> 
-            
-        </div>
+                            wp_nav_menu(array(
+                                'theme_location' => 'slider',
+                                'container' => 'div',
+                                'container_id' => 'mm-slider-container-mobile',
+                                'menu_id' => 'mm-menu-genre-slider-2',
+                                'echo' => true,
+                                'depth' => 0,
+                                'walker' => new genre_slider_walker()
+                            ));
+                        }
+                        ?> 
 
-        <div id="mm-mobile-genre-slider-col" class="col-xs-12">
-            
-            <?php
-                
-                if ( has_nav_menu( 'slider' ) ) {
-                    
-                    wp_nav_menu(array(
-				
-                        'theme_location'    => 'slider',
-                        'container'         => 'div',
-                        'container_id'      => 'mm-slider-container-mobile',
-                        'menu_id'           => 'mm-menu-genre-slider-2',
-                        'echo'              => true,
-                        'depth'             => 0,
-                        'walker'            => new genre_slider_walker()
-                    )); 
-                } 
-                
-            ?> 
-            
-        </div>
-        
-      </div>
+                    </div>
 
-    </div><!-- end of mm-mobile-navigation-wrapper -->
+                </div>
 
-    <div id="mm-content-container" class="container">
+            </div><!-- end of mm-mobile-navigation-wrapper -->
 
-    <!-- end of header.php -->
+            <div id="mm-content-container" class="container">
+
+                <!-- end of header.php -->
 
 
 
-  
+

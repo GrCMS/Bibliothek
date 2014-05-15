@@ -188,21 +188,24 @@ add_filter('login_redirect', 'redirect_user');
 
 function redirect_user() {
     $referrer = $_SERVER['HTTP_REFERER'];
-    
-    if(!strstr($referrer, 'wp-login')) {
+
+    if (!strstr($referrer, 'wp-login')) {
         return site_url();
     } else {
-        return site_url().'/wp-admin';
+        return site_url() . '/wp-admin';
     }
 }
 
 add_filter('wp_nav_menu_items', 'add_logout_link', 10, 2);
 
 function add_logout_link($items, $args) {
-    if( $args->theme_location == 'account' ){
+    if ($args->theme_location == 'account') {
         $loginoutlink = wp_loginout('index.php', false);
-        $items .= '<li>'. $loginoutlink .'</li>';
-        
+        if(current_user_can('administrator')) {
+            $backendlink = '<a href="'.site_url().'/wp-admin">Backend</a>';
+            $items .= '<li>' . $backendlink . '</li>';
+        }
+        $items .= '<li>' . $loginoutlink . '</li>';
     }
     return $items;
 }
@@ -211,51 +214,49 @@ function add_logout_link($items, $args) {
  * Function to enqueue scripts and styles
  * Also needen for ajax script and service localization 
  */
-
 add_action("wp_enqueue_scripts", "mm_enqueue_scripts");
 
-function mm_enqueue_scripts()
-{
+function mm_enqueue_scripts() {
     //Style registration
     wp_register_style('icomoon', get_template_directory_uri() . '/fonts/icomoon/style.css', array(), '1.0', false);
     wp_register_style('style', get_stylesheet_uri());
     wp_register_style('stars', get_template_directory_uri() . '/css/stars.css', array(), '1.0', false);
     wp_register_style('bootstrap-style', get_template_directory_uri() . '/bootstrap/css/bootstrap.min.css', array(), '3.1.1', false);
     wp_register_style('genre-slider-style', get_template_directory_uri() . '/css/genre-slider.css', array(), '1.0', false);
-    
+
     //Script registration
     wp_register_script('bootstrap-js', get_template_directory_uri() . '/bootstrap/js/bootstrap.min.js', array('jquery'), '3.1.1', true);
     wp_register_script('enquire-js', get_template_directory_uri() . '/js/enquire.min.js', array('jquery'), '2.1.0', true);
     wp_register_script('toggle-navigation-js', get_template_directory_uri() . '/js/mm-toggle-navigation.js', array('jquery'), '1.0', true);
     wp_register_script('genre-slider-js', get_template_directory_uri() . '/js/mm-genre-slider.js', array('jquery'), '1.0', true);
     wp_register_script('bookmarks-js', get_template_directory_uri() . '/js/ajax/bookmarks.js', array(), '1.0', true);
-            
+    wp_register_script('raty-js', get_template_directory_uri() . '/js/raty/jquery.raty.min.js', array(), '2.5.2', true);
+
     //localization for ajax scripts
-    wp_localize_script( 'bookmarks-js', 'myAjax', array( 'ajaxurl' => admin_url( 'admin-ajax.php' )));
-    
+    wp_localize_script('bookmarks-js', 'myAjax', array('ajaxurl' => admin_url('admin-ajax.php')));
+
     //Always enqueue jQuery
     wp_enqueue_script('jquery');
-       
-    if(!is_admin())
-    {   
+
+    if (!is_admin()) {
         //Only enqueued on frontend (JS)
         wp_enqueue_script('bootstrap-js');
         wp_enqueue_script('enquire-js');
         wp_enqueue_script('toggle-navigation-js');
         wp_enqueue_script('genre-slider-js');
-        
+        wp_enqueue_script('raty-js');
+
         //Only enqueued on frontend (AJAX)
-        wp_enqueue_script('bookmarks-js'); 
-        
+        wp_enqueue_script('bookmarks-js');
+
         //Only enqueued on frontend (CSS)
         wp_enqueue_style('icomoon');
         wp_enqueue_style('style');
         wp_enqueue_style('stars');
         wp_enqueue_style('bootstrap-style');
         wp_enqueue_style('genre-slider-style');
-                                        
-        if(is_front_page())
-        {
+
+        if (is_front_page()) {
             //Only enqueued on front page (home.php)
         }
     }
@@ -264,46 +265,52 @@ function mm_enqueue_scripts()
 /**
  * Add hook to always remove the admin bar
  */
-
 add_filter('show_admin_bar', '__return_false');
 
 add_action('template_redirect', 'register_a_user');
 
-function register_a_user(){
-  if(isset($_GET['action']) && $_GET['action'] == 'register'):
-    $errors = array();
-    if(empty($_POST['user']) || empty($_POST['email'])) $errors[] = 'provide a user and email';
-    if(!empty($_POST['spam'])) $errors[] = 'gtfo spammer';
+function register_a_user() {
+    if (isset($_GET['do']) && $_GET['do'] == 'register'):
+        $errors = array();
+        if (empty($_POST['user']) || empty($_POST['email']))
+            $errors[] = 'provide a user and email';
+        if (!empty($_POST['spam']))
+            $errors[] = 'gtfo spammer';
 
-    $user_login = esc_attr($_POST['user']);
-    $user_email = esc_attr($_POST['email']);
-    require_once(ABSPATH.WPINC.'/registration.php');
+        $user_login = esc_attr($_POST['user']);
+        $user_email = esc_attr($_POST['email']);
+        require_once(ABSPATH . WPINC . '/registration.php');
 
-    $sanitized_user_login = sanitize_user($user_login);
-    $user_email = apply_filters('user_registration_email', $user_email);
+        $sanitized_user_login = sanitize_user($user_login);
+        $user_email = apply_filters('user_registration_email', $user_email);
 
-    if(!is_email($user_email)) $errors[] = 'invalid e-mail';
-    elseif(email_exists($user_email)) $errors[] = 'this email is already registered, bla bla...';
+        if (!is_email($user_email))
+            $errors[] = 'invalid e-mail';
+        elseif (email_exists($user_email))
+            $errors[] = 'this email is already registered, bla bla...';
 
-    if(empty($sanitized_user_login) || !validate_username($user_login)) $errors[] = 'invalid user name';
-    elseif(username_exists($sanitized_user_login)) $errors[] = 'user name already exists';
+        if (empty($sanitized_user_login) || !validate_username($user_login))
+            $errors[] = 'invalid user name';
+        elseif (username_exists($sanitized_user_login))
+            $errors[] = 'user name already exists';
 
-    if(empty($errors)):
-      $user_pass = wp_generate_password();
-      $user_id = wp_create_user($sanitized_user_login, $user_pass, $user_email);
+        if (empty($errors)):
+            $user_pass = wp_generate_password();
+            $user_id = wp_create_user($sanitized_user_login, $user_pass, $user_email);
 
-      if(!$user_id): 
-        $errors[] = 'registration failed...';
-      else:
-        update_user_option($user_id, 'default_password_nag', true, true);
-        wp_new_user_notification($user_id, $user_pass);
-      endif;
+            if (!$user_id):
+                $errors[] = 'registration failed...';
+            else:
+                update_user_option($user_id, 'default_password_nag', true, true);
+                wp_new_user_notification($user_id, $user_pass);
+            endif;
+        endif;
+
+        if (!empty($errors))
+            define('REGISTRATION_ERROR', serialize($errors));
+        else
+            define('REGISTERED_A_USER', $user_email);
     endif;
-
-    if(!empty($errors)) $GLOBALS['REGISTRATION_ERROR'] = serialize($errors);
-    else $GLOABLS['REGISTERED_A_USER'] = $user_email; 
-  endif;
 }
-
 
 ?>
