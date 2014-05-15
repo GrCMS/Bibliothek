@@ -32,6 +32,3 @@ function mm_bookmark()
 	
     die();
 }
-
-?>
-

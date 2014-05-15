@@ -245,7 +245,7 @@ function mm_enqueue_scripts()
         wp_enqueue_script('genre-slider-js');
         
         //Only enqueued on frontend (AJAX)
-        wp_enqueue_script('bookmarks-js');
+        wp_enqueue_script('bookmarks-js'); 
         
         //Only enqueued on frontend (CSS)
         wp_enqueue_style('icomoon');
