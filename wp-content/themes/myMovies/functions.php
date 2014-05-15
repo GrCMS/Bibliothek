@@ -18,7 +18,6 @@ function myMovies_init() {
     create_post_type_movies();
     create_taxonomy_genres();
     register_menus();
-    hide_editor();
 }
 
 /**
@@ -129,44 +128,6 @@ function drop_rentals_table() {
     echo '<script type="text/javascript">alert("Des war deine falsche Entscheidung mein kleiner Sportsfreund!")</script>';
 }
 
-/**
- * Hides the content editor if an account page template is chosen
- * (WORK IN PROGRESS)
- */
-function hide_editor() {
-
-    $post_id = $_GET['post'] ? $_GET['post'] : $_POST['post_ID'];
-    if (!isset($post_id))
-        return;
-    $template_file = get_post_meta($post_id, '_wp_page_template', true);
-
-    switch ($template_file) {
-        case 'template-bookmarks-page.php': {
-
-                remove_post_type_support('page', 'editor');
-                break;
-            }
-
-        case 'template-movies-on-loan-page.php': {
-
-                remove_post_type_support('page', 'editor');
-                break;
-            }
-
-        case 'template-my-profile-page.php': {
-
-                remove_post_type_support('page', 'editor');
-                break;
-            }
-
-        case 'template-notifications-page.php': {
-
-                remove_post_type_support('page', 'editor');
-                break;
-            }
-    }
-}
-
 add_action('admin_init', 'restrict_admin', 1);
 
 function restrict_admin() {
@@ -244,5 +205,37 @@ function add_logout_link($items, $args) {
     }
     return $items;
 }
+
+add_action("wp_enqueue_scripts", "enqueue_scripts");
+
+function enqueue_scripts()
+{
+    wp_register_script('bootstrap', get_template_directory_uri() . '/bootstrap/js/bootstrap.min.js', array('jquery'), '3.1.1', true);
+    wp_register_script('enquire', get_template_directory_uri() . '/js/enquire.min.js', array('jquery'), '2.1.0', true);
+    wp_register_script('toggle-navigation', get_template_directory_uri() . '/js/mm-toggle-navigation.js', array('jquery'), '1.0', true);
+    wp_register_script('genre-slider', get_template_directory_uri() . '/js/mm-genre-slider.js', array('jquery'), '1.0', true);
+    
+    //localization for ajax scripts
+    
+    //Always enqueue jQuery
+    wp_enqueue_script('jquery');
+    
+    if(!is_admin())
+    {   
+        //Only enqueued on frontend
+        wp_enqueue_script('bootstrap');
+        wp_enqueue_script('enquire');
+        wp_enqueue_script('toggle-navigation');
+        wp_enqueue_script('genre-slider');
+                
+        if(is_front_page())
+        {
+            //Only enqueued on front page (home.php)
+        }
+    }
+    
+    
+}
+
 
 ?>

@@ -38,7 +38,7 @@ var menu = {
                 complete:function() {}
             };
 
-            menu.settings.callback = $.extend( {}, _defaultArgs, f);
+            menu.settings.callback = jQuery.extend( {}, _defaultArgs, f);
             
             if(typeof isAccount !== 'undefined')
             {
@@ -52,9 +52,9 @@ var menu = {
                 }
             }
 
-            $.each(menu.triggers, function(i, item) {
+            jQuery.each(menu.triggers, function(i, item) {
 
-                $(item).click(function(e){
+                jQuery(item).click(function(e){
 
                     menu.functions.trigger_clicked(item);
                 });
@@ -68,30 +68,30 @@ var menu = {
 
             slideDown : function(m) {
 
-                var h = $(m).height();
+                var h = jQuery(m).height();
 
-                $(m).css('height', '0px');
-                $(m).css('display', 'block');
+                jQuery(m).css('height', '0px');
+                jQuery(m).css('display', 'block');
 
-                $(m).animate({
+                jQuery(m).animate({
 
                     height : h
 
                 }, 150, function(){
 
-                    $(m).css('height', 'auto');   
+                    jQuery(m).css('height', 'auto');   
                 });
             },
 
             fadeSlideUp : function(m) {
 
-                var t = $(m).css('top');
+                var t = jQuery(m).css('top');
 
-                $(m).css('top', '35px');
-                $(m).css('opacity', '0');
-                $(m).css('display', 'block');
+                jQuery(m).css('top', '35px');
+                jQuery(m).css('opacity', '0');
+                jQuery(m).css('display', 'block');
 
-                $(m).animate({
+                jQuery(m).animate({
 
                     top: t,
                     opacity: 1
@@ -106,29 +106,29 @@ var menu = {
 
             slideUp : function(m) {
 
-                $(m).animate({
+                jQuery(m).animate({
 
                     height: 0
 
                 }, 150, function() {
 
-                    $(m).css('display', 'none');
-                    $(m).css('height', 'auto');
+                    jQuery(m).css('display', 'none');
+                    jQuery(m).css('height', 'auto');
                     menu.settings.callback.complete();
                 });
             },
 
             fadeSlideDown : function(m) {
 
-                $(m).animate({
+                jQuery(m).animate({
 
                     top: '35px',
                     opacity: 0
 
                 }, 150, function() {
 
-                    $(m).css('display', 'none');
-                    $(m).css('top', '10px');
+                    jQuery(m).css('display', 'none');
+                    jQuery(m).css('top', '10px');
                     menu.settings.callback.complete();
                 });
             }
@@ -179,7 +179,7 @@ var menu = {
             }
             else
             {
-                $(m).show();		
+                jQuery(m).show();		
             }
         },
 
@@ -197,7 +197,7 @@ var menu = {
             }
             else
             {
-                $(m).hide();
+                jQuery(m).hide();
                 menu.settings.callback.complete();
             }
         },
@@ -318,14 +318,14 @@ var menu = {
     }
 };
 
-$(document).mouseup(function (e)
+jQuery(document).mouseup(function (e)
 {
     if(menu.settings.isMenuOpen && !menu.settings.isMobile)
     {
         if(menu.settings.currentMenu == menu.containers._all.genreSlider)
         {
-            var container = $(menu.containers._all.genreSlider);
-            var trigger = $(menu.triggers.genreSlider)
+            var container = jQuery(menu.containers._all.genreSlider);
+            var trigger = jQuery(menu.triggers.genreSlider)
 
             if (!container.is(e.target) // if the target of the click isn't the container...
                 && container.has(e.target).length === 0 && !trigger.is(e.target)) // ... nor a descendant of the container

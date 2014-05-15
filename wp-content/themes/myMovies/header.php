@@ -15,6 +15,9 @@
     <link href="<?php bloginfo('template_url'); ?>/css/genre-slider.css" rel="stylesheet">
     <link href="<?php bloginfo('stylesheet_url'); ?>" rel="stylesheet">
     
+    <!-- Wordpress scripts -->
+    <?php wp_head() ?>
+    
   </head>
   <body>
 
