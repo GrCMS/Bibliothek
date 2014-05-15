@@ -17,12 +17,26 @@ if (isset($_GET['login']) && $_GET['login'] == 'failed') {
     </div>
 <?php } ?>
 
-<?php if (!is_user_logged_in()) {
+<?php
+if (!is_user_logged_in()) {
 
     if (isset($_GET['action']) && $_GET['action'] == 'register') {
+ 
+        if (isset($GLOBALS['REGISTRATION_ERROR'])) {
+            foreach (unserialize($GLOBALS['REGISTRATION_ERROR']) as $error) {
+                echo "<div class=\"error\">{$error}</div>";
+            }
+            unset($GLOBALS['REGISTRATION_ERROR']);
+        }
+        // errors here, if any
+
+        elseif (isset($GLOBALS['REGISTERED_A_USER'])) {
+            echo 'a email has been sent to ' . $GLOBALS['REGISTERED_A_USER'];
+            unset($GLOBALS['REGISTERED_A_USER']);
+        }
         ?>
         <div id="login-form">
-            <form role="form" action="<?php echo site_url('wp-login.php?action=register', 'login_post') ?>" method="post">
+            <form role="form" action="<?php echo add_query_arg('action', 'register', home_url('/login')); ?>" method="post">
                 <h1>Register</h1>
                 <span>Sign Up with us and Enjoy!</span>
                 <div class="form-group">
@@ -33,7 +47,7 @@ if (isset($_GET['login']) && $_GET['login'] == 'failed') {
                     <label class="sr-only" for="pwd">E-Mail</label>
                     <input placeholder="E-Mail" class="form-control" type="text" name="user_email" id="user_email" />
                 </div>
-                <?php do_action('register_form'); ?>
+        <?php do_action('register_form'); ?>
                 <hr />
                 <p>A password will be e-mailed to you.</p>
                 <input class="btn btn-default" id="register" type="submit" name="submit" value="Register" class="button" />
