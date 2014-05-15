@@ -206,9 +206,14 @@ function add_logout_link($items, $args) {
     return $items;
 }
 
-add_action("wp_enqueue_scripts", "enqueue_scripts");
+/**
+ * Function to enqueue scripts and styles
+ * Also needen for ajax script and service localization 
+ */
 
-function enqueue_scripts()
+add_action("wp_enqueue_scripts", "mm_enqueue_scripts");
+
+function mm_enqueue_scripts()
 {
     //Style registration
     wp_register_style('icomoon', get_template_directory_uri() . '/fonts/icomoon/style.css', array(), '1.0', false);
@@ -222,8 +227,10 @@ function enqueue_scripts()
     wp_register_script('enquire-js', get_template_directory_uri() . '/js/enquire.min.js', array('jquery'), '2.1.0', true);
     wp_register_script('toggle-navigation-js', get_template_directory_uri() . '/js/mm-toggle-navigation.js', array('jquery'), '1.0', true);
     wp_register_script('genre-slider-js', get_template_directory_uri() . '/js/mm-genre-slider.js', array('jquery'), '1.0', true);
+    wp_register_script( 'bookmarks-js', get_template_directory_uri() . '/js/bookmarks.js', array(), '1.0', true);
             
     //localization for ajax scripts
+    wp_localize_script( 'bookmarks-js', 'myAjax', array( 'ajaxurl' => admin_url( 'admin-ajax.php' )));
     
     //Always enqueue jQuery
     wp_enqueue_script('jquery');
@@ -235,6 +242,9 @@ function enqueue_scripts()
         wp_enqueue_script('enquire-js');
         wp_enqueue_script('toggle-navigation-js');
         wp_enqueue_script('genre-slider-js');
+        
+        //Only enqueued on frontend (AJAX)
+        wp_enqueue_script('bookmarks-js');
         
         //Only enqueued on frontend (CSS)
         wp_enqueue_style('icomoon');
@@ -249,5 +259,43 @@ function enqueue_scripts()
         }
     }
 }
+
+/**
+ * Add hook to always remove the admin bar
+ */
+
+add_filter('show_admin_bar', '__return_false');
+
+/**
+ * Add ajax bookmark hook and handle requests
+ */
+
+add_filter('wp_ajax_bookmark', 'mm_bookmark');
+        
+function mm_bookmark()
+{
+    $current_user = wp_get_current_user();
+    $option = get_user_option('bookmarks', $current_user->ID);
+    $post_id = $_REQUEST["post_id"];
+
+    if($option == false)
+    {
+        $result['type'] = "bool";
+        $result['option'] = $option;
+        $result['post_id'] = $post_id;		
+    }
+    else
+    {
+        $result['type'] = "value";
+        $result['option'] = $option;
+        $result['post_id'] = $post_id;
+    }
+
+    $result = json_encode($result);
+    echo $result;
+	
+    die();
+}
+
 
 ?>
