@@ -54,11 +54,13 @@ get_header(); //gets header.php
         
         echo '<ul id="mm-bookmark-list">';
         
-        foreach($bookmarks_arr as $movie_id)
-        {
-            $movieimagepath = wp_get_attachment_image_src(get_post_thumbnail_id($movie_id), 'movie_poster', false);
-            $movieimagepath = $movieimagepath[0];
-            echo "<li class='mm_user_bookmark removeable' data-post_id='$movie_id' ><img src='$movieimagepath' /></li>";
+        if(is_array($bookmarks_arr)) {
+            foreach($bookmarks_arr as $movie_id)
+            {
+                $movieimagepath = wp_get_attachment_image_src(get_post_thumbnail_id($movie_id), 'movie_poster', false);
+                $movieimagepath = $movieimagepath[0];
+                echo "<li class='mm_user_bookmark removeable' data-post_id='$movie_id' ><img src='$movieimagepath' /></li>";
+            }
         }
         echo '</ul>';
     }
