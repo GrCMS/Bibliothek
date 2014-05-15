@@ -210,32 +210,44 @@ add_action("wp_enqueue_scripts", "enqueue_scripts");
 
 function enqueue_scripts()
 {
-    wp_register_script('bootstrap', get_template_directory_uri() . '/bootstrap/js/bootstrap.min.js', array('jquery'), '3.1.1', true);
-    wp_register_script('enquire', get_template_directory_uri() . '/js/enquire.min.js', array('jquery'), '2.1.0', true);
-    wp_register_script('toggle-navigation', get_template_directory_uri() . '/js/mm-toggle-navigation.js', array('jquery'), '1.0', true);
-    wp_register_script('genre-slider', get_template_directory_uri() . '/js/mm-genre-slider.js', array('jquery'), '1.0', true);
+    //Style registration
+    wp_register_style('icomoon', get_template_directory_uri() . '/fonts/icomoon/style.css', array(), '1.0', false);
+    wp_register_style('style', get_stylesheet_uri());
+    wp_register_style('stars', get_template_directory_uri() . '/css/stars.css', array(), '1.0', false);
+    wp_register_style('bootstrap-style', get_template_directory_uri() . '/bootstrap/css/bootstrap.min.css', array(), '3.1.1', false);
+    wp_register_style('genre-slider-style', get_template_directory_uri() . '/css/genre-slider.css', array(), '1.0', false);
     
+    //Script registration
+    wp_register_script('bootstrap-js', get_template_directory_uri() . '/bootstrap/js/bootstrap.min.js', array('jquery'), '3.1.1', true);
+    wp_register_script('enquire-js', get_template_directory_uri() . '/js/enquire.min.js', array('jquery'), '2.1.0', true);
+    wp_register_script('toggle-navigation-js', get_template_directory_uri() . '/js/mm-toggle-navigation.js', array('jquery'), '1.0', true);
+    wp_register_script('genre-slider-js', get_template_directory_uri() . '/js/mm-genre-slider.js', array('jquery'), '1.0', true);
+            
     //localization for ajax scripts
     
     //Always enqueue jQuery
     wp_enqueue_script('jquery');
-    
+       
     if(!is_admin())
     {   
-        //Only enqueued on frontend
-        wp_enqueue_script('bootstrap');
-        wp_enqueue_script('enquire');
-        wp_enqueue_script('toggle-navigation');
-        wp_enqueue_script('genre-slider');
-                
+        //Only enqueued on frontend (JS)
+        wp_enqueue_script('bootstrap-js');
+        wp_enqueue_script('enquire-js');
+        wp_enqueue_script('toggle-navigation-js');
+        wp_enqueue_script('genre-slider-js');
+        
+        //Only enqueued on frontend (CSS)
+        wp_enqueue_style('icomoon');
+        wp_enqueue_style('style');
+        wp_enqueue_style('stars');
+        wp_enqueue_style('bootstrap-style');
+        wp_enqueue_style('genre-slider-style');
+                                        
         if(is_front_page())
         {
             //Only enqueued on front page (home.php)
         }
     }
-    
-    
 }
-
 
 ?>
