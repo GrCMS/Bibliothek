@@ -270,7 +270,7 @@ add_filter('show_admin_bar', '__return_false');
  * Add ajax bookmark hook and handle requests
  */
 
-add_filter('wp_ajax_bookmark', 'mm_bookmark');
+add_filter('wp_ajax_mm_bookmark', 'mm_bookmark');
         
 function mm_bookmark()
 {
@@ -282,13 +282,15 @@ function mm_bookmark()
     {
         $result['type'] = "bool";
         $result['option'] = $option;
-        $result['post_id'] = $post_id;		
+        $result['post_id'] = $post_id;
+        $result['current_user'] = $current_user->display_name;
     }
     else
     {
         $result['type'] = "value";
         $result['option'] = $option;
         $result['post_id'] = $post_id;
+        $result['current_user'] = $current_user->display_name;
     }
 
     $result = json_encode($result);

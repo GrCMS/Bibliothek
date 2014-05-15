@@ -70,16 +70,24 @@ for ($i = 1; $i < 6; $i++) {
                         <?php
                         
                             //generate code for bookmark button
-                            echo '<button '
-                                . 'class="mm_user_bookmark btn '
-                                . 'if(is_user_logged_in())btn-primary; else btn-disabled "'
-                                . 'data-post_id="'. $post->ID .'">'
-                                . '+ Merkliste'
-                                . '</button>';
+                            if(is_user_logged_in())
+                            {
+                                echo '<button '
+                                    . 'class="mm_user_bookmark btn btn-primary"'
+                                    . 'data-post_id="'. $post->ID .'">'
+                                    . '+ Merkliste'
+                                    . '</button>';
+                            }
+                            else
+                            {
+                                echo '<button '
+                                    . 'class="btn btn-disabled">'
+                                    . '+ Merkliste'
+                                    . '</button>';
+                            }
                         
                         ?>
-                        
-                        <button class="btn <? if(is_user_logged_in()) echo 'btn-primary'; else echo 'btn-disabled';?>">+ Merkliste</button>
+                                                
                         <button class="btn <? if(is_user_logged_in()) echo 'btn-info'; else echo 'btn-disabled';?>">+ Leihen</button>
                                  
                     </div>
