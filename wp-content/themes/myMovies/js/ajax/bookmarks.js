@@ -2,7 +2,7 @@ jQuery(document).ready( function() {
 
    jQuery(".mm_user_bookmark").click( function() {
       
-      var post_id = jQuery(this).attr("data-post_id")
+      var post_id = jQuery(this).attr("data-post_id");
             
       jQuery.ajax({
          type : "post",

@@ -2,7 +2,7 @@
 
 //Include custom nav walker for genre slider
 require_once('genre-slider-walker.php');
-require_once('extensions/bookmarks-service.php');
+require_once('includes/bookmarks-service.php');
 
 function myMovies_theme_setup() {
 
