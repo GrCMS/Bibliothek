@@ -186,7 +186,7 @@ function movies_login_failed($user) {
         // make sure we don't already have a failed login attempt
         if (!strstr($referrer, '?login=failed')) {
             // Redirect to the login page and append a querystring of login failed
-            wp_redirect($referrer . '?login=failed');
+            wp_redirect(site_url() . '/login?login=failed');
         } else {
             wp_redirect($referrer);
         }
@@ -213,7 +213,7 @@ function movies_blank_login($user) {
         // make sure we don't already have a failed login attempt
         if (!strstr($referrer, '?login=failed')) {
             // Redirect to the login page and append a querystring of login failed
-            wp_redirect($referrer . '?login=failed');
+            wp_redirect(site_url() . '/login?login=failed');
         } else {
             wp_redirect($referrer);
         }

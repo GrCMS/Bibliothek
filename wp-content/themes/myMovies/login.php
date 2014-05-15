@@ -2,7 +2,7 @@
 get_header();
 
 $args = array(
-    'redirect' => get_permalink(get_page($page_id_of_member_area)),
+    'redirect' => get_permalink(get_page(163)),
     'id_username' => 'id_username',
     'id_password' => 'id_password',
     'form_id' => 'form_id'
