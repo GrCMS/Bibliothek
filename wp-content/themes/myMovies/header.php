@@ -52,20 +52,20 @@
                                 <!-- wrapper for genre slider on sm, md and lg -->
                                 <div id="mm-header-genre-slider-wrapper">
 
-<?php
-if (has_nav_menu('slider')) {
+                                    <?php
+                                    if (has_nav_menu('slider')) {
 
-    wp_nav_menu(array(
-        'theme_location' => 'slider',
-        'container' => 'div',
-        'container_id' => 'mm-slider-container',
-        'menu_id' => 'mm-menu-genre-slider-1',
-        'echo' => true,
-        'depth' => 0,
-        'walker' => new genre_slider_walker()
-    ));
-}
-?> 
+                                        wp_nav_menu(array(
+                                            'theme_location' => 'slider',
+                                            'container' => 'div',
+                                            'container_id' => 'mm-slider-container',
+                                            'menu_id' => 'mm-menu-genre-slider-1',
+                                            'echo' => true,
+                                            'depth' => 0,
+                                            'walker' => new genre_slider_walker()
+                                        ));
+                                    }
+                                    ?> 
 
                                 </div>
 
@@ -78,7 +78,7 @@ if (has_nav_menu('slider')) {
                             <div class="visible-sm visible-md visible-lg">
 
                                 <!-- Include wp-search (desktop) -->
-<?php get_search_form(); ?>
+                                <?php get_search_form(); ?>
 
                             </div>
 
@@ -92,7 +92,7 @@ if (has_nav_menu('slider')) {
 
                         <div id="mm-header-account-navigation-col" class="col-xs-4 col-sm-3 text-center">
 
-<?php if (is_user_logged_in()): ?>
+                            <?php if (is_user_logged_in()): ?>
 
                                 <!-- if user is logged in => show account navigation trigger -->
                                 <!-- account navigation trigger (desktop/mobile) -->
@@ -125,7 +125,7 @@ if (has_nav_menu('slider')) {
 
                                 </div><!-- end of mm-header-account-wrapper -->
 
-<?php else: ?>
+                            <?php else: ?>
 
                                 <!-- login form, if user is not logged in -->
                                 <div id="mm-header-account-login">
@@ -161,7 +161,7 @@ if (has_nav_menu('slider')) {
                                                         </div>
                                                     </div>
                                                     <div class="modal-footer">
-                                                        <a class="btn btn-default" href="<?php echo site_url() . '/login?action=register'; ?>">Register</a>
+                                                        <a class="btn btn-default" href="<?php echo site_url() . '/login?action=register&source=modal'; ?>">Register</a>
                                                         <input class="btn btn-primary" type="submit" name="submit" value="Send" class="button" />
                                                     </div>
                                                 </form>
@@ -170,7 +170,7 @@ if (has_nav_menu('slider')) {
                                     </div>
                                 </div><!-- end of mm-header-account-login -->
 
-<?php endif; ?>
+                            <?php endif; ?>
 
                         </div><!-- end of mm-header-account-navigation-col -->
 
@@ -189,18 +189,18 @@ if (has_nav_menu('slider')) {
 
                         <div id="mm-account-navigation-col" class="col-xs-12">
 
-<?php
-if (has_nav_menu('account')) {
+                            <?php
+                            if (has_nav_menu('account')) {
 
-    wp_nav_menu(array(
-        'theme_location' => 'account',
-        'container' => false,
-        'menu_id' => 'mm-menu-account',
-        'echo' => true,
-        'depth' => 0
-    ));
-}
-?> 
+                                wp_nav_menu(array(
+                                    'theme_location' => 'account',
+                                    'container' => false,
+                                    'menu_id' => 'mm-menu-account',
+                                    'echo' => true,
+                                    'depth' => 0
+                                ));
+                            }
+                            ?> 
 
                         </div>
 
@@ -216,24 +216,24 @@ if (has_nav_menu('account')) {
 
                     <div id="mm-mobile-search-col" class="col-xs-12">
 
-<?php get_search_form(); ?>
+                        <?php get_search_form(); ?>
 
                     </div>
 
                     <div id="mm-mobile-account-navigation-col" class="col-xs-12">
 
-<?php
-if (has_nav_menu('account')) {
+                        <?php
+                        if (has_nav_menu('account')) {
 
-    wp_nav_menu(array(
-        'theme_location' => 'account',
-        'container' => false,
-        'menu_id' => 'mm-menu-account-mobile',
-        'echo' => true,
-        'depth' => 0
-    ));
-}
-?> 
+                            wp_nav_menu(array(
+                                'theme_location' => 'account',
+                                'container' => false,
+                                'menu_id' => 'mm-menu-account-mobile',
+                                'echo' => true,
+                                'depth' => 0
+                            ));
+                        }
+                        ?> 
 
                     </div>
 

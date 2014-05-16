@@ -191,7 +191,10 @@ function redirect_user() {
     $referrer = $_SERVER['HTTP_REFERER'];
 
     if (!strstr($referrer, 'wp-login')) {
-        return site_url();
+        if(!strstr($referrer, 'login')) 
+            return $referrer;
+        else 
+            return site_url();
     } else {
         return site_url() . '/wp-admin';
     }
