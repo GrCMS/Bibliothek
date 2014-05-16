@@ -3,6 +3,7 @@
 //Include custom nav walker for genre slider
 require_once('genre-slider-walker.php');
 require_once('includes/bookmarks-service.php');
+require_once('includes/ratings-service.php');
 
 function myMovies_theme_setup() {
 
@@ -230,10 +231,12 @@ function mm_enqueue_scripts() {
     wp_register_script('toggle-navigation-js', get_template_directory_uri() . '/js/mm-toggle-navigation.js', array('jquery'), '1.0', true);
     wp_register_script('genre-slider-js', get_template_directory_uri() . '/js/mm-genre-slider.js', array('jquery'), '1.0', true);
     wp_register_script('bookmarks-js', get_template_directory_uri() . '/js/ajax/bookmarks.js', array(), '1.0', true);
+    wp_register_script('ratings-js', get_template_directory_uri() . '/js/ajax/ratings.js', array(), '1.0', true);
     wp_register_script('raty-js', get_template_directory_uri() . '/js/raty/jquery.raty.min.js', array(), '2.5.2', true);
 
     //localization for ajax scripts
     wp_localize_script('bookmarks-js', 'myAjax', array('ajaxurl' => admin_url('admin-ajax.php')));
+    wp_localize_script('ratings-js', 'myAjax', array('ajaxurl' => admin_url('admin-ajax.php')));
 
     //Always enqueue jQuery
     wp_enqueue_script('jquery');
@@ -248,6 +251,7 @@ function mm_enqueue_scripts() {
 
         //Only enqueued on frontend (AJAX)
         wp_enqueue_script('bookmarks-js');
+        wp_enqueue_script('ratings-js');
 
         //Only enqueued on frontend (CSS)
         wp_enqueue_style('icomoon');
@@ -257,7 +261,7 @@ function mm_enqueue_scripts() {
         wp_enqueue_style('genre-slider-style');
 
         if (is_front_page()) {
-            //Only enqueued on front page (home.php)
+            //Only enqueued on front page (front-page.php)
         }
     }
 }
@@ -268,6 +272,10 @@ function mm_enqueue_scripts() {
 add_filter('show_admin_bar', '__return_false');
 
 add_action('template_redirect', 'register_a_user');
+
+/**
+ * Own custom user registration
+ */
 
 function register_a_user() {
     if (isset($_GET['do']) && $_GET['do'] == 'register'):

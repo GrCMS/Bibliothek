@@ -50,7 +50,7 @@ else
                         <!--<ul class="color-primary">-->
                             <?php
 //                            for ($i = 1; $i < 6; $i++) {
-//                                // Setzen der Ratingklassen
+//                                 //Setzen der Ratingklassen
 //                                $starvalue;
 //                                if ($rating >= $i)
 //                                    $starvalue = "filled";
@@ -60,7 +60,7 @@ else
 //                                else
 //                                    $starvalue = "empty";
 //
-//                                //echo('<li class="star star'.$i.' stars-' . $starvalue . '"></li>');
+//                                echo('<li class="star star'.$i.' stars-' . $starvalue . '"></li>');
 //                                
 //                            }?>
                             <span class="rating-stars" movie-id="<?php echo $post->ID ?>" data-score="<?php echo $rating ?>"></span>

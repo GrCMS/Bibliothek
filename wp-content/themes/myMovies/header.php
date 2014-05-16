@@ -10,21 +10,6 @@
 
         <!-- WORDPRESS STYLES (CSS) -->
         <?php wp_head() ?>
-        <script type="text/javascript">
-            jQuery(document).ready(function($) {
-                $('.rating-stars').raty({
-                    halfShow: true,
-                    score: function() {
-                        return $(this).attr('data-score');
-                    },
-                    click: function(score, evt) {
-                        console.log($(this).attr('movie-id'));
-                        alert('Not implemented yet');
-                    }
-                });
-            });
-        </script>
-
     </head>
     <body>
 
