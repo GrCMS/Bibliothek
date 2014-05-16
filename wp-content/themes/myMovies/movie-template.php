@@ -7,23 +7,10 @@ $moviestudio = get_post_meta($post->ID, 'studio', TRUE);
 $movieyear = get_post_meta($post->ID, 'year', TRUE);
 $moviedescription = get_the_content();
 $userloggedin = is_user_logged_in() ? true : false;
-$ratingvotes = get_post_meta($post->ID, 'votes', TRUE);
-$ratingsum = get_post_meta($post->ID, 'rating', TRUE);
 
-$all_ratings = $GLOBALS['wpdb']->get_results(''
-            . 'SELECT * '
-            . 'FROM wp_ratings '
-            . 'WHERE movie = '.$post->ID, OBJECT);
-
-$votes = 0;
-$sum_ratings = 0;
-$user_rating = 0;
-foreach($all_ratings as $rate) {
-    ++$votes;
-    $sum_ratings += $rate->rating;
-    if($rate->user == $current_user->ID) $user_rating = $rate->rating;
-}
-$global_rating = $votes > 0 ? round($sum_ratings/$votes, 1) : '';
+$Rate = new Rating();
+$global_rating = $Rate->get_public_movie_rating($post->ID);
+$user_rating = $Rate->get_user_movie_rating($post->ID);
 
 ?>
 <div class="row movie padding-top-15">
