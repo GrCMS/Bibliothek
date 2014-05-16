@@ -1,5 +1,7 @@
 jQuery(document).ready(function($) {
+    var is_user = $('.rating-stars').attr("is-user");
     $('.rating-stars').raty({
+        readOnly: is_user,
         halfShow: true,
         starOff: 'movie-off.png',
         starOn: 'movie-full.png',
@@ -19,7 +21,7 @@ jQuery(document).ready(function($) {
                     rating: score
                 },
                 success: function(response) {
-                    alert('Result: '+response.result+'\nUser-ID: '+response.user_id+'\nMovie-ID: '+response.movie_id+'\nRating: '+response.rating);
+                    $('.movie-'+response.movie_id).text(response.global_rating);
                 }
             });
         }

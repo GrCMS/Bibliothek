@@ -6,14 +6,25 @@ $moviesubtitle = get_post_meta($post->ID, 'subtitle', TRUE);
 $moviestudio = get_post_meta($post->ID, 'studio', TRUE);
 $movieyear = get_post_meta($post->ID, 'year', TRUE);
 $moviedescription = get_the_content();
-$userloggedin = true;
+$userloggedin = is_user_logged_in() ? true : false;
 $ratingvotes = get_post_meta($post->ID, 'votes', TRUE);
 $ratingsum = get_post_meta($post->ID, 'rating', TRUE);
 
-if ($ratingvotes > 0)
-    $rating = round($ratingsum / $ratingvotes, 1);
-else
-    $rating = 0;
+$all_ratings = $GLOBALS['wpdb']->get_results(''
+            . 'SELECT * '
+            . 'FROM wp_ratings '
+            . 'WHERE movie = '.$post->ID, OBJECT);
+
+$votes = 0;
+$sum_ratings = 0;
+$user_rating = 0;
+foreach($all_ratings as $rate) {
+    ++$votes;
+    $sum_ratings += $rate->rating;
+    if($rate->user == $current_user->ID) $user_rating = $rate->rating;
+}
+$global_rating = $votes > 0 ? round($sum_ratings/$votes, 1) : '';
+
 ?>
 <div class="row movie padding-top-15">
     <div class="col-md-3 col-sm-4 col-xs-5">
@@ -46,32 +57,15 @@ else
                 <div class="row">
                     <div class="rating col-md-12 col-sm-6 padding-bottom-15">
                         Rating<br>
-                        <span class="hidden ratingvalue"><?php echo $rating ?></span>
-                        <!--<ul class="color-primary">-->
-                            <?php
-//                            for ($i = 1; $i < 6; $i++) {
-//                                 //Setzen der Ratingklassen
-//                                $starvalue;
-//                                if ($rating >= $i)
-//                                    $starvalue = "filled";
-//
-//                                else if ($rating > ($i - 0.7))
-//                                    $starvalue = "half";
-//                                else
-//                                    $starvalue = "empty";
-//
-//                                echo('<li class="star star'.$i.' stars-' . $starvalue . '"></li>');
-//                                
-//                            }?>
-                            <span class="rating-stars" movie-id="<?php echo $post->ID ?>" data-score="<?php echo $rating ?>"></span>
+                        <span class="star stars-empty movie-<?php echo $post->ID ?>"><?php echo $global_rating ?></span>
+                        <span class="rating-stars" is-user="<?php if($userloggedin) echo false; else echo true; ?>" movie-id="<?php echo $post->ID; ?>" data-score="<?php echo $user_rating; ?>"></span>
                             
-                        <!--</ul>-->
                     </div>
                     <div class="buttons col-md-12 col-sm-6">
 
                         <?php
                         //generate code for bookmark button
-                        if (is_user_logged_in()) {
+                        if ($userloggedin) {
                             echo '<button '
                             . 'class="mm_user_bookmark btn btn-primary"'
                             . 'data-post_id="' . $post->ID . '">'
@@ -85,7 +79,7 @@ else
                         }
                         ?>
 
-                        <button class="btn <?php if(is_user_logged_in()) echo 'btn-info'; else echo 'btn-disabled'; ?>">+ Leihen</button>
+                        <button class="btn <?php if($userloggedin) echo 'btn-info'; else echo 'btn-disabled'; ?>">+ Leihen</button>
 
                     </div>
                 </div>

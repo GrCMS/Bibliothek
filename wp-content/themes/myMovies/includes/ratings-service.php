@@ -29,7 +29,6 @@ function mm_rating()
             . 'WHERE user = '.$current_user->ID
             . ' AND movie = '.$data['movie']);
 
-    
     unset($data['action']);
 
     if(empty($alreadyVoted)) {
@@ -38,10 +37,24 @@ function mm_rating()
         $GLOBALS['wpdb']->update('wp_ratings', $data, array('user' => $current_user->ID, 'movie' => $data['movie']));
     }
     
+    $all_ratings = $GLOBALS['wpdb']->get_results(''
+            . 'SELECT * '
+            . 'FROM wp_ratings '
+            . 'WHERE movie = '.$data['movie'], OBJECT);
+    
+    $votes = 0;
+    $sum_ratings = 0;
+    foreach($all_ratings as $rate) {
+        ++$votes;
+        $sum_ratings += $rate->rating;
+    }
+    $global_rating = $votes > 0 ? round($sum_ratings/$votes, 1) : '';
+    
     $returnArray = array(
         'result' => true,
         'user_id' => $current_user->ID,
         'movie_id' => $data['movie'],
+        'global_rating' => $global_rating,
         'rating' => $data['rating']
     );
     
