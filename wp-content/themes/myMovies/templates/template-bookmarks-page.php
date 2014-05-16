@@ -26,12 +26,15 @@ get_header(); //gets header.php
     $current_bookmarks = new bookmarks();
     $count = $current_bookmarks->count();
         
-    echo "Bookmarks: ($count) <br/>";
+    echo "<div id='bookmark_counter'> Bookmarks: (<span>$count</span>) </div><br/>";
     echo "<ul id='mm-bookmark-list'>";
     
     foreach($current_bookmarks->get_bookmarks() as $bookmark_id)
     {
-        echo '<li class="mm_user_bookmark" data-post_id="' . $bookmark_id . '">' . $bookmark_id . '</li>';
+        $movieimagepath = wp_get_attachment_image_src(get_post_thumbnail_id($bookmark_id), 'movie_poster', false);
+        $movieimagepath = $movieimagepath[0];
+        $img = '<img src="' . $movieimagepath . '" />';
+        echo '<li class="mm_user_bookmark removeable" data-post_id="' . $bookmark_id . '">' . $img . '</li>';
     }
     
     echo "</ul>";

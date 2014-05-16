@@ -18,7 +18,14 @@ jQuery(document).ready( function() {
          success: function(response) {
             
             jQuery(trigger).toggleClass('bookmarked');
-            console.log(response);
+            jQuery('#bookmark_counter span').text(response.bookmarks_count);
+            
+            if(jQuery(trigger).hasClass('removeable'))
+            {
+                jQuery(trigger).hide();
+            }
+            
+             console.log(response);
          }
       });   
 

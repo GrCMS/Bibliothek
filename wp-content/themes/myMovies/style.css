@@ -706,3 +706,15 @@ REGISTER FORM
     border:1px solid #58AD53;
     padding:5px;
 }
+
+/*
+
+BOOKMARKS
+=========
+
+*/
+
+.bookmarked {
+    
+    text-decoration: underline !important;
+}
