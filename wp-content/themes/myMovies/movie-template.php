@@ -53,15 +53,30 @@ echo '</span>';
                         <?php
                         //generate code for bookmark button
                         if ($userloggedin) {
-                            echo '<button '
-                            . 'class="mm_user_bookmark btn btn-primary"'
-                            . 'data-post_id="' . $post->ID . '">'
-                            . '+ Merkliste'
-                            . '</button>';
+                            
+                            $current_bookmarks = new bookmarks();
+                                                        
+                            if($current_bookmarks->is_bookmarked($post->ID)) {
+                                
+                                echo '<button '
+                                . 'class="mm_user_bookmark btn btn-primary bookmarked"'
+                                . 'data-post_id="' . $post->ID . '">'
+                                . 'Merkliste'
+                                . '</button>';
+                            }
+                            else
+                            {
+                                echo '<button '
+                                . 'class="mm_user_bookmark btn btn-primary"'
+                                . 'data-post_id="' . $post->ID . '">'
+                                . 'Merkliste'
+                                . '</button>';
+                            }
+                            
                         } else {
                             echo '<button '
                             . 'class="btn btn-disabled">'
-                            . '+ Merkliste'
+                            . 'Merkliste'
                             . '</button>';
                         }
                         ?>

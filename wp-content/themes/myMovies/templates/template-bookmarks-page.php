@@ -20,58 +20,21 @@ get_header(); //gets header.php
 <!-- BODY START -->
 
 <h1>Bookmarks</h1>
-<style>
-    
-    #mm-bookmark-list {
-        
-        list-style-type: none;
-        width:100%;
-    }
-    
-    #mm-bookmark-list li {
-        
-        position: relative;
-        display: inline-block;
-        
-    }
-    
-    #mm-bookmark-list li img {
-        
-        padding: 10px;
-    }
-    
-</style>
 
 <?php
 
-    $bookmarks_arr = get_user_option('bookmarks', $current_user->ID);
+    $current_bookmarks = new bookmarks();
+    $count = $current_bookmarks->count();
+        
+    echo "Bookmarks: ($count) <br/>";
+    echo "<ul id='mm-bookmark-list'>";
     
-    if($bookmarks_arr != false)
+    foreach($current_bookmarks->get_bookmarks() as $bookmark_id)
     {
-        $n = count($bookmarks_arr);
-        echo "Bookmarks ($n)";
-        
-        echo '<ul id="mm-bookmark-list">';
-        
-        if(is_array($bookmarks_arr)) {
-            foreach($bookmarks_arr as $movie_id)
-            {
-                $movieimagepath = wp_get_attachment_image_src(get_post_thumbnail_id($movie_id), 'movie_poster', false);
-                $movieimagepath = $movieimagepath[0];
-                echo "<li class='mm_user_bookmark removeable' data-post_id='$movie_id' ><img src='$movieimagepath' /></li>";
-            }
-        } else {
-            $movieimagepath = wp_get_attachment_image_src(get_post_thumbnail_id($bookmarks_arr), 'movie_poster', false);
-            $movieimagepath = $movieimagepath[0];
-            echo "<li class='mm_user_bookmark removeable' data-post_id='$bookmarks_arr' ><img src='$movieimagepath' /></li>";
-        }
-        echo '</ul>';
+        echo '<li class="mm_user_bookmark" data-post_id="' . $bookmark_id . '">' . $bookmark_id . '</li>';
     }
-    else
-    {
-        echo "no bookmarks...";
-    }
-
+    
+    echo "</ul>";
 ?>
 
 <!-- BODY END -->

@@ -17,28 +17,8 @@ jQuery(document).ready( function() {
          },
          success: function(response) {
             
-            if(response.action == 'created' || response.action == 'added')
-            {
-                
-            }
-                        
-            if(response.action == 'removed')
-            {
-                if(jQuery(trigger).hasClass('removeable'))
-                {
-                    jQuery(trigger).animate({
-                        
-                        left: -200,
-                        opacity: 0
-                        
-                    }, 250, 
-                    
-                     function(){
-                         
-                         jQuery(trigger).hide();
-                     });
-                }
-            }
+            jQuery(trigger).toggleClass('bookmarked');
+            console.log(response);
          }
       });   
 
