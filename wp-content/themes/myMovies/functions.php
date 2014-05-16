@@ -191,9 +191,9 @@ function redirect_user() {
     $referrer = $_SERVER['HTTP_REFERER'];
 
     if (!strstr($referrer, 'wp-login')) {
-        if(!strstr($referrer, 'login')) 
+        if (!strstr($referrer, 'login'))
             return $referrer;
-        else 
+        else
             return site_url();
     } else {
         return site_url() . '/wp-admin';
@@ -205,8 +205,8 @@ add_filter('wp_nav_menu_items', 'add_logout_link', 10, 2);
 function add_logout_link($items, $args) {
     if ($args->theme_location == 'account') {
         $loginoutlink = wp_loginout('index.php', false);
-        if(current_user_can('administrator')) {
-            $backendlink = '<a href="'.site_url().'/wp-admin">Backend</a>';
+        if (current_user_can('administrator')) {
+            $backendlink = '<a href="' . site_url() . '/wp-admin">Backend</a>';
             $items .= '<li>' . $backendlink . '</li>';
         }
         $items .= '<li>' . $loginoutlink . '</li>';
@@ -279,7 +279,6 @@ add_action('template_redirect', 'register_a_user');
 /**
  * Own custom user registration
  */
-
 function register_a_user() {
     if (isset($_GET['do']) && $_GET['do'] == 'register'):
         $errors = array();
@@ -324,4 +323,20 @@ function register_a_user() {
     endif;
 }
 
+if (!function_exists('my_pagination')) :
+
+    function my_pagination() {
+        global $wp_query;
+
+        $big = 999999999; // need an unlikely integer
+
+        echo paginate_links(array(
+            'base' => str_replace($big, '%#%', esc_url(get_pagenum_link($big))),
+            'format' => '?paged=%#%',
+            'current' => max(1, get_query_var('paged')),
+            'total' => $wp_query->max_num_pages
+        ));
+    }
+
+endif;
 ?>
