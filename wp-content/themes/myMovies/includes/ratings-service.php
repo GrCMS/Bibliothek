@@ -26,7 +26,41 @@ class Rating {
 
         return $global_rating;
     }
-
+    
+    function get_movies_with_rating()
+    {
+        $all_movies_with_rating;
+        $all_movies = $GLOBALS['wpdb']->get_results(''
+                . 'SELECT ID '
+                . 'FROM wp_posts '
+                . 'WHERE post_type = "movies" '
+                . 'AND post_status = "publish" ');
+        
+        $counter = 0;
+        foreach($all_movies as $movie)
+        {
+            $rating = self::get_public_movie_rating($movie->ID);
+            $all_movies_with_rating[$counter] = array($movie->ID, $rating);
+            $counter ++;
+        }
+        
+        // First Value: Movie ID, Second Value: Movie Rating
+        return $all_movies_with_rating;
+        
+    }
+    
+    function get_top_rated_movies($movie_count){
+        $top_rated = $GLOBALS['wpdb']->get_results(''
+                . 'SELECT movie, round(avg(rating),1) as rating '
+                . 'FROM wp_ratings '
+                . 'WHERE 1 '
+                . 'GROUP BY movie '
+                . 'ORDER BY rating DESC '
+                . 'LIMIT ' . $movie_count, ARRAY_A);
+        
+        return $top_rated;
+    }
+    
     function get_user_movie_rating($movie_id) {
         $user_ratings = $GLOBALS['wpdb']->get_results(''
                 . 'SELECT * '
