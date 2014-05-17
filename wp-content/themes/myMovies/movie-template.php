@@ -12,6 +12,7 @@ $Rate = new Rating();
 $global_rating = $Rate->get_public_movie_rating($post->ID);
 $user_rating = $Rate->get_user_movie_rating($post->ID);
 ?>
+<div class="container">
 <div class="row movie padding-top-15">
     <div class="col-md-3 col-sm-4 col-xs-5">
 <?php
@@ -61,7 +62,7 @@ echo '</span>';
                                 echo '<button '
                                 . 'class="mm_user_bookmark btn btn-primary bookmarked"'
                                 . 'data-post_id="' . $post->ID . '">'
-                                . 'Merkliste'
+                                . '- Watchlist'
                                 . '</button>';
                             }
                             else
@@ -69,20 +70,20 @@ echo '</span>';
                                 echo '<button '
                                 . 'class="mm_user_bookmark btn btn-primary"'
                                 . 'data-post_id="' . $post->ID . '">'
-                                . 'Merkliste'
+                                . '+ Watchlist'
                                 . '</button>';
                             }
                             
                         } else {
                             echo '<button '
                             . 'class="btn btn-disabled">'
-                            . 'Merkliste'
+                            . '+ Watchlist'
                             . '</button>';
                         }
                         ?>
 
                         <button class="btn <?php if ($userloggedin) echo 'btn-info';
-                        else echo 'btn-disabled'; ?>">+ Leihen</button>
+                        else echo 'btn-disabled'; ?>">+ Rent</button>
 
                     </div>
                 </div>
@@ -97,4 +98,5 @@ echo '</span>';
             </div>
         </div>
     </div>
-</div>	
+</div>
+</div>
