@@ -117,6 +117,9 @@ h1, h2, h3, h4, h5 {
 
 	background-color: #252427;
 	border-bottom: 1px dashed #444444;
+        position: fixed;
+        width: 100%;
+        z-index: 10;
 }
 
 .bg-primary {
@@ -355,9 +358,12 @@ h1, h2, h3, h4, h5 {
 
 	display: none;
   	line-height: 50px;
-	position: relative;
+	position: fixed;
+        top: 50px;
 	background-color: #252427;
 	background-position: 0px -50px;
+        width: 100%;
+        z-index: 10;
 }
 
 #mm-account-navigation-col {
@@ -424,7 +430,7 @@ h1, h2, h3, h4, h5 {
 
 /* CONTAINER FOR CONTENT */
 #mm-content-container {
-
+    margin-top: 50px;
 }
 
 /* CONTAINER FOR FOOTER CONTENT */

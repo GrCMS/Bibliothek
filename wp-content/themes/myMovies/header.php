@@ -41,13 +41,13 @@
 
                         </div><!-- end of mm-header-brand-col -->
 
-                        <div id="mm-header-genre-slider-col" class="col-xs-4 col-sm-1 col-sm-push-3 text-center">
+                        <div id="mm-header-genre-slider-col" class="col-xs-4 col-sm-1 col-sm-push-3 text-center divider-vertical">
 
                             <!-- needed in order to center the 'mm-header-genre-slider-wrapper' div -->
                             <div id="mm-header-genre-slider-anchor">
 
                                 <!-- triggers (show/hide) genre slider -->
-                                <span id="mm-header-genre-slider-trigger" class="icon-menu2"></span>
+                                <span id="mm-header-genre-slider-trigger" class="ion-navicon-round"></span>
 
                                 <!-- wrapper for genre slider on sm, md and lg -->
                                 <div id="mm-header-genre-slider-wrapper">
@@ -73,7 +73,7 @@
 
                         </div><!-- end of mm-header-genre-slider-col -->
 
-                        <div id="mm-header-search-col" class="col-xs-4 col-sm-3 col-sm-pull-2 text-center">
+                        <div id="mm-header-search-col" class="col-xs-4 col-sm-pull-1 col-sm-3 text-center-xs">
 
                             <div class="visible-sm visible-md visible-lg">
 
@@ -90,7 +90,7 @@
 
                         </div><!-- end of mm-header-search-col -->
 
-                        <div id="mm-header-account-navigation-col" class="col-xs-4 col-sm-3 text-center">
+                        <div id="mm-header-account-navigation-col" class="col-xs-4 col-sm-3 text-center-x divider-vertical">
 
                             <?php if (is_user_logged_in()): ?>
 
@@ -260,7 +260,7 @@
 
             </div><!-- end of mm-mobile-navigation-wrapper -->
 
-            <div id="mm-content-container" class="container">
+            <div id="mm-content-container">
 
                 <!-- end of header.php -->
 

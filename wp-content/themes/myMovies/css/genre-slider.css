@@ -73,7 +73,7 @@ GENRE SLIDER STYLE FOR: SM, MD, LG
   margin: 0px 0px 0px 0px;
   position: relative;
   background: #252427;
-  background: url('../images/bg-movie-slider.jpg');
+  background: url('../images/layout/bg-movie-slider.jpg');
   -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.5); /* WebKit */
   -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.5); /* Firefox */
   box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.5); /* Standard */
