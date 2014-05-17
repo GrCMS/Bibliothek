@@ -30,7 +30,6 @@
     enquire.register("screen and (max-width:767px)", {
 
         match : function() {
-             var hallo;
             menu.settings.isMobile = true;
             menu.functions.reset_menu();
         }

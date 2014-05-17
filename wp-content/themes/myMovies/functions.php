@@ -222,11 +222,13 @@ add_action("wp_enqueue_scripts", "mm_enqueue_scripts");
 
 function mm_enqueue_scripts() {
     //Style registration
-    wp_register_style('icomoon', get_template_directory_uri() . '/fonts/icomoon/style.css', array(), '1.0', false);
+    wp_register_style('icomoon', get_template_directory_uri() . '/ionicons.min.css', array(), '1.0', false);
+    wp_register_style('ionicon', get_template_directory_uri() . '/fonts/icomoon/style.css', array(), '1.0', false);
     wp_register_style('style', get_stylesheet_uri());
     wp_register_style('stars', get_template_directory_uri() . '/css/stars.css', array(), '1.0', false);
     wp_register_style('bootstrap-style', get_template_directory_uri() . '/bootstrap/css/bootstrap.min.css', array(), '3.1.1', false);
     wp_register_style('genre-slider-style', get_template_directory_uri() . '/css/genre-slider.css', array(), '1.0', false);
+    wp_register_style('flexslider-style', get_template_directory_uri() . '/css/flexslider.css', array(), '1.0', false);
 
     //Script registration
     wp_register_script('bootstrap-js', get_template_directory_uri() . '/bootstrap/js/bootstrap.min.js', array('jquery'), '3.1.1', true);
@@ -236,9 +238,12 @@ function mm_enqueue_scripts() {
     wp_register_script('bookmarks-js', get_template_directory_uri() . '/js/ajax/bookmarks.js', array(), '1.0', true);
     wp_register_script('ratings-js', get_template_directory_uri() . '/js/ajax/ratings.js', array(), '1.0', true);
     wp_register_script('raty-js', get_template_directory_uri() . '/js/raty/jquery.raty.min.js', array(), '2.5.2', true);
+    wp_register_script('fleyslider-js', get_template_directory_uri() . '/js/jquery.fleyslider-min.js', array(), '2.2.0', true);
+    wp_register_script('mymovies-js', get_template_directory_uri() . '/js/mymovies.js', array(), '1.0', true);
 
     //localization for ajax scripts
     wp_localize_script('bookmarks-js', 'myAjax', array('ajaxurl' => admin_url('admin-ajax.php')));
+    wp_localize_script('ratings-js', 'myAjax', array('ajaxurl' => admin_url('admin-ajax.php')));
     wp_localize_script('ratings-js', 'myAjax', array('ajaxurl' => admin_url('admin-ajax.php')));
 
     //Always enqueue jQuery
@@ -251,6 +256,7 @@ function mm_enqueue_scripts() {
         wp_enqueue_script('toggle-navigation-js');
         wp_enqueue_script('genre-slider-js');
         wp_enqueue_script('raty-js');
+        wp_enqueue_script('mymovies-js');
 
         //Only enqueued on frontend (AJAX)
         wp_enqueue_script('bookmarks-js');
@@ -258,6 +264,7 @@ function mm_enqueue_scripts() {
 
         //Only enqueued on frontend (CSS)
         wp_enqueue_style('icomoon');
+        wp_enqueue_style('ionicons');
         wp_enqueue_style('style');
         wp_enqueue_style('stars');
         wp_enqueue_style('bootstrap-style');
@@ -265,6 +272,8 @@ function mm_enqueue_scripts() {
 
         if (is_front_page()) {
             //Only enqueued on front page (front-page.php)
+            wp_enqueue_script('flexslider-js');
+            wp_enqueue_style('flexslider-style');
         }
     }
 }
