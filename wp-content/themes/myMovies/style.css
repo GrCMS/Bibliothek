@@ -431,6 +431,7 @@ h1, h2, h3, h4, h5 {
 /* CONTAINER FOR CONTENT */
 #mm-content-container {
     margin-top: 50px;
+    padding-bottom: 50px;
 }
 
 /* CONTAINER FOR FOOTER CONTENT */
@@ -722,5 +723,5 @@ BOOKMARKS
 
 .bookmarked {
     
-    text-decoration: underline !important;
+    text-decoration: none !important;
 }
