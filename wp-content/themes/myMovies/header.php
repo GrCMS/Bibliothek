@@ -130,44 +130,11 @@
                                 <!-- login form, if user is not logged in -->
                                 <div id="mm-header-account-login">
 
+                                    <!-- Login button => triggers modal dialog: mm-login-modal (in footer.php) -->
                                     <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#mm-login-modal">
                                         Login
                                     </button>
-                                    <!-- open in modal/overlay -->
-                                    <!-- Login button => triggers modal dialog -->
-                                    <div class="modal fade" id="mm-login-modal" tabindex="-1" role="dialog">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <form role="form" autocomplete="off" action="<?php echo wp_login_url(get_permalink(get_page(163))); ?>" method="post">
-                                                    <div class="modal-header text-left">
-                                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                                        <h4 class="modal-title" id="myModalLabel">Login</h4>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        <div class="form-group">
-                                                            <label class="sr-only" for="log">User</label>
-                                                            <input placeholder="User" class="form-control" type="text" name="log" id="log" value="<?php echo wp_specialchars(stripslashes($user_login), 1) ?>"/> 
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label class="sr-only" for="pwd">Password</label>
-                                                            <input placeholder="Password" class="form-control" type="password" name="pwd" id="pwd" size="22" /> 
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <div class="checkbox text-left">
-                                                                <label>
-                                                                    <input name="rememberme" type="checkbox" checked="checked" value="forever" /> Remember me
-                                                                </label>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <a class="btn btn-default" href="<?php echo site_url() . '/login?action=register&source=modal'; ?>">Register</a>
-                                                        <input class="btn btn-primary" type="submit" name="submit" value="Send" class="button" />
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
+                                                                                                            
                                 </div><!-- end of mm-header-account-login -->
 
                             <?php endif; ?>
