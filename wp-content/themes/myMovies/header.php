@@ -17,7 +17,6 @@
         <?php
         $is_registered = false;
 
-        //WP_USER (object) => https://codex.wordpress.org/Function_Reference/wp_get_current_user
         $current_user = null;
 
         //Find out if user has an Account and is logged in
@@ -90,7 +89,7 @@
 
                         </div><!-- end of mm-header-search-col -->
 
-                        <div id="mm-header-account-navigation-col" class="col-xs-4 col-sm-3 text-center-x divider-vertical">
+                        <div id="mm-header-account-navigation-col" class="col-xs-4 col-sm-3 text-center divider-vertical">
 
                             <?php if (is_user_logged_in()): ?>
 
