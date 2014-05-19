@@ -117,9 +117,9 @@
                                     </div>
 
                                     <!-- xs: mobile account navigation trigger-->
-                                    <div class="visible-xs">
+                                    <div class="visible-xs text-center-xs">
 
-                                        <span id="mm-header-account-navigation-mobile-trigger" class="icon-user3"></span>
+                                        <span id="mm-header-account-navigation-mobile-trigger" class="ion ion-person"></span>
 
                                     </div>
 
@@ -220,7 +220,7 @@
 
                     </div>
 
-                    <div id="mm-mobile-account-navigation-col" class="col-xs-12">
+                    <div id="mm-mobile-account-navigation-col" class="col-xs-12 mobile-menu">
 
                         <?php
                         if (has_nav_menu('account')) {
@@ -237,7 +237,7 @@
 
                     </div>
 
-                    <div id="mm-mobile-genre-slider-col" class="col-xs-12">
+                    <div id="mm-mobile-genre-slider-col" class="col-xs-12 mobile-menu">
 
                         <?php
                         if (has_nav_menu('slider')) {
