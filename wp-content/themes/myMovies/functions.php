@@ -1,7 +1,7 @@
 <?php
 
 //Include custom nav walker for genre slider
-require_once('genre-slider-walker.php');
+require_once('includes/genre-slider-walker.php');
 include_once('includes/bookmarks-service.php');
 include_once('includes/ratings-service.php');
 
@@ -12,7 +12,7 @@ function myMovies_theme_setup() {
 }
 
 add_action('after_setup_theme', 'myMovies_theme_setup');
-
+ 
 /**
  * Init function
  */
@@ -57,7 +57,8 @@ function create_post_type_movies() {
             'title',
             'editor',
             'thumbnail',
-            'revisions')
+            'revisions',
+            'comments')
         )
     );
 }
@@ -347,5 +348,12 @@ if (!function_exists('my_pagination')) :
         ));
     }
 
+endif;
+
+if (!function_exists('get_comment_popup')) :
+    
+    function get_comment_popup() {
+        include('comments-popup.php');
+    }
 endif;
 ?>
