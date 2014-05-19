@@ -62,7 +62,7 @@ echo '</span>';
                                 echo '<button '
                                 . 'class="mm_user_bookmark btn btn-primary bookmarked"'
                                 . 'data-post_id="' . $post->ID . '">'
-                                . '- Watchlist'
+                                . '<i class="icon ion-checkmark"></i> Watchlist'
                                 . '</button>';
                             }
                             else
@@ -70,20 +70,20 @@ echo '</span>';
                                 echo '<button '
                                 . 'class="mm_user_bookmark btn btn-primary"'
                                 . 'data-post_id="' . $post->ID . '">'
-                                . '+ Watchlist'
+                                . '<i class="icon ion-plus"></i> Watchlist'
                                 . '</button>';
                             }
                             
                         } else {
                             echo '<button '
                             . 'class="btn btn-disabled">'
-                            . '+ Watchlist'
+                            . '<i class="icon ion-plus"></i> Watchlist'
                             . '</button>';
                         }
                         ?>
 
                         <button class="btn <?php if ($userloggedin) echo 'btn-info';
-                        else echo 'btn-disabled'; ?>">+ Rent</button>
+                        else echo 'btn-disabled'; ?>">Rent</button>
 
                     </div>
                 </div>

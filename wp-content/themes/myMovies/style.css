@@ -75,8 +75,8 @@ FONTS
 }
 
 
-.ion {
-	font-size: 500px;
+.ion:before {
+	font-size: 120%;
 }
 
 /*
@@ -343,6 +343,9 @@ h1, h2, h3, h4, h5 {
 	font-size: 80%;
 	font-family: 'ionicons';
 	content: "\f123";
+        width: 30px;
+        text-align: right;
+        margin-left: -30px;
 }
 
 #mm-header-account-navigation-mobile-trigger {
@@ -363,7 +366,7 @@ h1, h2, h3, h4, h5 {
 	background-color: #252427;
 	background-position: 0px -50px;
         width: 100%;
-        z-index: 10;
+        z-index: 98;
 }
 
 #mm-account-navigation-col {
@@ -411,13 +414,9 @@ h1, h2, h3, h4, h5 {
 	position: relative;
 }
 
-#mm-menu-account-mobile {
-    
-}
-
 #mm-menu-account-mobile li {
         
-        line-height: 50px;
+       
 }
 
 #mm-mobile-genre-slider-col {
@@ -427,6 +426,38 @@ h1, h2, h3, h4, h5 {
         padding: 0px;
 }
 
+.mobile-menu {
+    background: url('images/layout/bg-movie-slider.jpg');
+    background-size: cover;
+    color: #ffffff;
+    padding: 0px !important;
+    top: 100px;
+    font-size: 14px;
+}
+
+.mobile-menu ul {
+    padding: 0px;
+    margin: 0px;
+}
+
+.mobile-menu li {
+    list-style: none;
+    padding: 0px;
+    margin: 0px;
+    color: #ffffff;
+}
+
+.mobile-menu li:hover {
+    background: rgba(0,0,0,0.5);
+}
+
+.mobile-menu li a {
+    padding: 15px 20px;
+    color: #ffffff;
+    text-decoration: none;
+    display: block;
+    border-bottom: 1px solid #ffffff;
+}
 
 /* CONTAINER FOR CONTENT */
 #mm-content-container {
