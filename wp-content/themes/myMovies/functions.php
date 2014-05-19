@@ -240,6 +240,7 @@ function mm_enqueue_scripts() {
     wp_register_script('raty-js', get_template_directory_uri() . '/js/raty/jquery.raty.min.js', array('jquery'), '2.5.2', true);
     wp_register_script('mymovies-js', get_template_directory_uri() . '/js/mymovies.js', array('jquery'), '1.0', true);
     wp_register_script('flexslider-js', get_template_directory_uri() . '/js/jquery.flexslider.js', array('jquery'), '1.0', true);
+    wp_register_script('mm-bookmark-list-js', get_template_directory_uri() . '/js/mm-bookmark-list.js', array('jquery'), '1.0', true);
 
     //localization for ajax scripts
     wp_localize_script('bookmarks-js', 'myAjax', array('ajaxurl' => admin_url('admin-ajax.php')));
@@ -255,6 +256,7 @@ function mm_enqueue_scripts() {
         wp_enqueue_script('toggle-navigation-js');
         wp_enqueue_script('genre-slider-js');
         wp_enqueue_script('raty-js');
+        wp_enqueue_script('mm-bookmark-list-js');
         
         //Only enqueued on frontend (AJAX)
         wp_enqueue_script('bookmarks-js');
