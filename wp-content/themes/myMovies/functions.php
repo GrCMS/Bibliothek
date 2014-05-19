@@ -1,7 +1,7 @@
 <?php
 
 //Include custom nav walker for genre slider
-require_once('genre-slider-walker.php');
+include_once('includes/genre-slider-walker.php');
 include_once('includes/bookmarks-service.php');
 include_once('includes/ratings-service.php');
 
