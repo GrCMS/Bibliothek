@@ -108,7 +108,7 @@ get_header(); //gets header.php
             echo "<img class='mm-watchlist-image' src='" . $movieimagepath . "' />";
             echo "</a>";
             
-            echo "<span class='mm-watchlist-icon-close ion-ios7-close-outline'></span>";//AJAX CALL BOOKMARK TOGGLE
+            echo "<span class='mm-watchlist-icon-close ion-ios7-close-outline mm_user_bookmark' data-post_id='" . $bookmark_id . "' ></span>";
             echo "<div class='mm-watchlist-overlay text-center'>";
             echo "<span><a href=''>Rating</a></span>"; //GET RATING
             echo "<span><a href=''>Rent</a></span>";//AJAX CALL RENT MOVIE
