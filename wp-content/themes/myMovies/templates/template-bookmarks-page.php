@@ -22,7 +22,7 @@ get_header(); //gets header.php
     #mm-watchlist {
 
       list-style-type: none;
-      margin: 0px;
+      margin: 0px auto;
       padding: 0px;
     }
 
@@ -43,7 +43,6 @@ get_header(); //gets header.php
 
       position: relative;
       z-index: 9;
-
     }
 
     .mm-watchlist-icon-close {
