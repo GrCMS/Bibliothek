@@ -119,7 +119,7 @@ h1, h2, h3, h4, h5 {
 	border-bottom: 1px dashed #444444;
         position: fixed;
         width: 100%;
-        z-index: 99;
+        z-index: 1050;
 }
 
 .bg-primary {
@@ -755,4 +755,19 @@ BOOKMARKS
 .bookmarked {
     
     text-decoration: none !important;
+}
+
+/*
+
+USER PROFILE
+=========
+
+*/
+.user-profile {
+    width: auto;
+    max-width: 500px;
+    margin: 20px auto;
+    border: 1px solid black;
+    padding: 10px 50px 40px;
+    background: rgba(255,255,255,.4);
 }
