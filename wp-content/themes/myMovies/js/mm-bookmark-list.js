@@ -14,7 +14,32 @@
         return true;  
       }
     }
+    
+    function setSize()
+    {
+        var width = $('#mm-watchlist').width();
+        var padding = 10;
+        
+        if(width > 768)
+        {
+          var width_single = (width - (padding * 5 * 2)) / 5;          
+        }
+        else if(width > 500)
+        {
+          var width_single = (width - (padding * 3 * 2)) / 3;
+        }
+        else if(width > 300)
+        {
+          var width_single = (width - (padding * 2 * 2)) / 2; 
+        }
+        else
+        {
+          var width_single = (width - (padding * 2));
+        }
 
+        $('.mm-watchlist-image').css('width', width_single);
+    }
+        
     $('.mm-watchlist-icon-close').click(function() {
 
         var toRemove = $(this).closest('li');
@@ -52,7 +77,14 @@
         });
     });
     
+    $(window).resize(function(){
+
+        setSize();
+    });
+    
     $(document).ready(function() {
+        
+        setSize();
         
         $('.mm-watchlist-item-wrapper').mouseenter(function(){
             
