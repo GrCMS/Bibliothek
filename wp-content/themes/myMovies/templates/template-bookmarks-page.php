@@ -54,6 +54,7 @@ get_header(); //gets header.php
       top: 10px;
       right: 10px;
       cursor: pointer;
+      font-size: 18px;
     }
 
     .mm-watchlist-overlay {
@@ -66,7 +67,7 @@ get_header(); //gets header.php
       bottom: 0px;
       left: 0px;
       opacity: 0;
-      background-color: #77b5b4;
+      background-color: #000;
     }
 
     .mm-watchlist-overlay span {
@@ -77,7 +78,7 @@ get_header(); //gets header.php
 
     .mm-watchlist-overlay span a {
 
-      color:#000;
+      color:#77b5b4;
       font-size: 16px;
     }
     
@@ -100,16 +101,17 @@ get_header(); //gets header.php
         {
             $movieimagepath = wp_get_attachment_image_src(get_post_thumbnail_id($bookmark_id), 'movie_poster', false);
             $movieimagepath = $movieimagepath[0];
+            $permalink = get_permalink( $bookmark_id );
             
             echo "<li><div class='mm-watchlist-item-wrapper'>";
-            echo "<a href='#'>";
+            echo "<a href='" . $permalink . "'>";
             echo "<img class='mm-watchlist-image' src='" . $movieimagepath . "' />";
             echo "</a>";
             
-            echo "<span class='mm-watchlist-icon-close'>X</span>";
+            echo "<span class='mm-watchlist-icon-close ion-ios7-close-outline'></span>";//AJAX CALL BOOKMARK TOGGLE
             echo "<div class='mm-watchlist-overlay text-center'>";
-            echo "<span><a href=''>Rating</a></span>";
-            echo "<span><a href=''>Rent</a></span>";
+            echo "<span><a href=''>Rating</a></span>"; //GET RATING
+            echo "<span><a href=''>Rent</a></span>";//AJAX CALL RENT MOVIE
             echo "</div>";
             
             echo "</div></li>";

@@ -55,14 +55,15 @@
     $(document).ready(function() {
 
         $('.mm-watchlist-item-wrapper').mouseenter(function(){
-
+            
+            console.log("HALLO!!!!");
             var overlay = $(this).children('.mm-watchlist-overlay');
           
             $(overlay).show();
             $(overlay).animate({
 
                 height: 120,
-                opacity: 0.6
+                opacity: 0.75
                 
             }, 250);
 
