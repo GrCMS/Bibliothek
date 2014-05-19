@@ -725,3 +725,18 @@ BOOKMARKS
     
     text-decoration: none !important;
 }
+
+/*
+
+USER PROFILE
+=========
+
+*/
+.user-profile {
+    width: auto;
+    max-width: 500px;
+    margin: 20px auto;
+    border: 1px solid black;
+    padding: 10px 50px 40px;
+    background: rgba(255,255,255,.4);
+}

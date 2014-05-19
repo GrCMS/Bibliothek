@@ -9,7 +9,7 @@
         <title><?php bloginfo('name'); ?></title>
 
         <!-- WORDPRESS STYLES (CSS) -->
-        <?php wp_head() ?>
+        <?php wp_head(); ?>
     </head>
     <body>
 
@@ -226,10 +226,6 @@
 
             </div><!-- end of mm-mobile-navigation-wrapper -->
 
-            <div id="mm-content-container">
+            <div id="mm-content-container" class="container-fluid">
 
                 <!-- end of header.php -->
-
-
-
-
