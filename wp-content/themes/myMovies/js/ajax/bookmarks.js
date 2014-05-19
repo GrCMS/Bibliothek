@@ -22,13 +22,7 @@ jQuery(document).ready( function() {
             
             jQuery(trigger).toggleClass('bookmarked');
             jQuery('#bookmark_counter span').text(response.bookmarks_count);
-            
-            if(jQuery(trigger).hasClass('removeable'))
-            {
-                jQuery(trigger).hide();
-            }
-            
-             console.log(response);
+                                   
          }
       });   
 
