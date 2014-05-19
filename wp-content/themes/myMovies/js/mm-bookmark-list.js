@@ -53,10 +53,9 @@
     });
     
     $(document).ready(function() {
-
+        
         $('.mm-watchlist-item-wrapper').mouseenter(function(){
             
-            console.log("HALLO!!!!");
             var overlay = $(this).children('.mm-watchlist-overlay');
           
             $(overlay).show();
