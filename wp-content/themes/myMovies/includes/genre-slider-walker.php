@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * Custom nav walker for genre slider, used to add css classes needed by genre slider script
+ */
 class genre_slider_walker extends Walker_Nav_Menu {
 
     function display_element($element, &$children_elements, $max_depth, $depth = 0, $args, &$output) {
