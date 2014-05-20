@@ -14,9 +14,10 @@ add_filter('wp_ajax_mm_movie_post_loader', 'mm_movie_post_loader');
         
 function mm_movie_post_loader()
 {
-    //$post_id = $_REQUEST["post_id"];            
+    $post_id = $_REQUEST["post_id"];            
         
-    $result['POSTS'] = "This is a simple response";
+    $result['p'] = "This is a simple response";
+    $result['i'] = $post_id;
     
     $result = json_encode($result);
     echo $result;
