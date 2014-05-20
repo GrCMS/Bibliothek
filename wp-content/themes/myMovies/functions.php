@@ -2,11 +2,26 @@
 
 //Include custom nav walker for genre slider
 include_once('includes/genre-slider-walker.php');
+
+//Include bookmarks ajax service
 include_once('includes/bookmarks-service.php');
+
+//Include ratings ajax service
 include_once('includes/ratings-service.php');
+
+//Include custom menu registration in order to user custom menus
 include_once('includes/custom-menu-registration.php');
+
+//Include custom menu items (logout, custom-post-tpye 'movies')
+include_once('includes/custom-menu-items.php');
+
+//Include custom post type 'movies'
 include_once('includes/custom-post-type-movies.php');
+
+//Include custom taxonomy 'genres' for custom post type 'movies'
 include_once('includes/custom-taxonomy-genres.php');
+
+//Include script registration in order to add styles and scripts to the theme
 include_once('includes/script-registration.php');
 
 add_action('after_setup_theme', 'myMovies_theme_setup');
