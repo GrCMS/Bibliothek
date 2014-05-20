@@ -49,7 +49,7 @@
                 </div>
                 
                 <div class="modal-footer">
-                    <a class="btn btn-default" href="<?php echo site_url() . '/login?action=register&source=modal'; ?>">Register</a>
+                    <a href="<?php echo site_url() . '/login?action=register&source=modal'; ?>">Register</a>
                     <input class="btn btn-primary" type="submit" name="submit" value="Send" class="button" />
                 </div>
         
