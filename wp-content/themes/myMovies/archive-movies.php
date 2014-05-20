@@ -25,6 +25,7 @@ get_header();
     <h1>ALL MOVIES TEMPLATE</h1>
             
     <!-- Will only load the latest 6 posts, all other posts will be loaded using ajax -->
+    <?php echo $paged = (get_query_var('paged')) ? get_query_var('paged') : 1; ?>
     
     <div id="mm-all-movies-posts">
         

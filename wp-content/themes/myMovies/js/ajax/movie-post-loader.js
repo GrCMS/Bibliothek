@@ -17,7 +17,7 @@
                 },
                 success: function(response) {
             
-                    console.log(response.i);
+                    console.log(response.p);
                 }
             }); 
         }
