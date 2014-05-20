@@ -17,10 +17,8 @@ jQuery(document).ready( function() {
             post_id : post_id
          },
          success: function(response) {
-            if(jQuery(".mm_user_bookmark i").length !=0)
-                jQuery(".mm_user_bookmark i").toggleClass('ion-checkmark').toggleClass('ion-plus');
-            
-            jQuery(trigger).toggleClass('bookmarked');
+                            
+            jQuery(trigger).toggleClass('ion-checkmark').toggleClass('ion-plus');
             jQuery('#bookmark_counter span').text(response.bookmarks_count);
                                    
          }
