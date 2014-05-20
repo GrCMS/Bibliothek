@@ -30,10 +30,12 @@ function mm_enqueue_scripts() {
     wp_register_script('mymovies-js', get_template_directory_uri() . '/js/mymovies.js', array('jquery'), '1.0', true);
     wp_register_script('flexslider-js', get_template_directory_uri() . '/js/jquery.flexslider.js', array('jquery'), '1.0', true);
     wp_register_script('mm-bookmark-list-js', get_template_directory_uri() . '/js/mm-bookmark-list.js', array('jquery'), '1.0', true);
+    wp_register_script('movie-post-loader-js', get_template_directory_uri() . '/js/ajax/movie-post-loader.js', array('jquery'), '1.0', true);
 
     //localization for ajax scripts
     wp_localize_script('bookmarks-js', 'myAjax', array('ajaxurl' => admin_url('admin-ajax.php')));
     wp_localize_script('ratings-js', 'myAjax', array('ajaxurl' => admin_url('admin-ajax.php')));
+    wp_localize_script('movie-post-loader-js', 'myAjax', array('ajaxurl' => admin_url('admin-ajax.php')));
     
     //Always enqueue jQuery
     wp_enqueue_script('jquery');
@@ -50,6 +52,12 @@ function mm_enqueue_scripts() {
         //Only enqueued on frontend (AJAX)
         wp_enqueue_script('bookmarks-js');
         wp_enqueue_script('ratings-js');
+        
+        if(is_post_type_archive('movies'))
+        {   
+            //Only enqueued on archive-movies.php 
+            wp_enqueue_script('movie-post-loader-js');
+        }
 
         //Only enqueued on frontend (CSS)
         wp_enqueue_style('icomoon');
