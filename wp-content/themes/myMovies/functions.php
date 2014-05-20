@@ -24,6 +24,9 @@ include_once('includes/custom-taxonomy-genres.php');
 //Include script registration in order to add styles and scripts to the theme
 include_once('includes/script-registration.php');
 
+/**
+ * Hook called on 'after_setup_theme' to add settings after the theme has been activated
+ */
 add_action('after_setup_theme', 'myMovies_theme_setup');
 
 function myMovies_theme_setup() {
@@ -34,6 +37,12 @@ function myMovies_theme_setup() {
 
 // Add custom image sizes
 add_image_size('movie_poster', 263, 383, true);
+
+/**
+ * Add filter to always remove the admin bar
+ */
+
+add_filter('show_admin_bar', '__return_false');
 
 add_action('after_switch_theme', 'create_tables');
 
@@ -158,12 +167,6 @@ function redirect_user() {
         return site_url() . '/wp-admin';
     }
 }
-
-/**
- * Add hook to always remove the admin bar
- */
-
-add_filter('show_admin_bar', '__return_false');
 
 add_action('template_redirect', 'register_a_user');
 
