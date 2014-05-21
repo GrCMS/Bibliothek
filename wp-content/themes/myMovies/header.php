@@ -7,7 +7,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
         <meta name="description" content="<?php bloginfo('description'); ?>">
         <title><?php bloginfo('name'); ?></title>
-        <?php comments_popup_script() ?>
+        <?php //comments_popup_script() ?>
         <!-- WORDPRESS STYLES (CSS) -->
         <?php wp_head(); ?>
     </head>
