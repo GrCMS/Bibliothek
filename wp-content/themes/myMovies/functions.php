@@ -55,6 +55,7 @@ add_action('after_switch_theme', 'create_tables');
 function create_tables() {
     create_rentals_table();
     create_ratings_table();
+    create_mymovies_admin_table();
 }
 
 /**

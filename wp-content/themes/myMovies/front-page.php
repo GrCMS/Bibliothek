@@ -1,5 +1,8 @@
 <?php
 get_header(); //gets header.php
+
+$customvalues = new customValue();
+
 ?>
 
 <!-- BODY START -->
@@ -37,13 +40,13 @@ wp_reset_query();  // Restore global post data stomped by the_post().
 <?php if(!is_user_logged_in()): ?>
 <div class="movie-divider"></div>
 <div class="container">
-    <h2 class="color-primary">myMovies</h2>	
-    <h3>Some random subheadline</h3>
+    <h2 class="color-primary"> <?php echo $customvalues->getValue('Frontpage Headline'); ?></h2>	
+    <h3> <?php echo $customvalues->getValue('Frontpage Subheadline'); ?></h3>
     <? the_post(); ?>
     <div class="multicol-2">
-        <? the_content(); ?>
+        <?php echo $customvalues->getValue('Frontpage Text'); ?>
     </div>
-    <a class="btn btn-primary">Sign up now!</a>
+    <a class="btn btn-primary"><?php echo $customvalues->getValue('SignUp Button Text'); ?></a>
 </div>
 <? endif; ?>
 
