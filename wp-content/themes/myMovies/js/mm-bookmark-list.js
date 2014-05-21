@@ -5,16 +5,19 @@
       var current_offset = $(current).offset();
       var next_offset = $(current).next().offset();
       
-      //if next() not null;
-
-      if(current_offset.top === next_offset.top)
-      {
+        if(next_offset)
+        {
+            if(current_offset.top === next_offset.top)
+            {
+                return false;
+            }
+            else
+            {
+                return true;  
+            }
+        }
+        
         return false;
-      }
-      else
-      {
-        return true;  
-      }
     }
     
     function setSize()
