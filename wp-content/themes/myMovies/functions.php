@@ -47,7 +47,6 @@ add_image_size('movie_poster', 263, 383, true);
 /**
  * Add filter to always remove the admin bar
  */
-
 add_filter('show_admin_bar', '__return_false');
 
 add_action('after_switch_theme', 'create_tables');
@@ -224,27 +223,15 @@ function register_a_user() {
     endif;
 }
 
-if (!function_exists('my_pagination')) :
+/**
+ * Function for the comment-popup
+ */
+if (!function_exists('get_comment_popup')) {
 
-    function my_pagination() {
-        global $wp_query;
-
-        $big = 999999999; // need an unlikely integer
-
-        echo paginate_links(array(
-            'base' => str_replace($big, '%#%', esc_url(get_pagenum_link($big))),
-            'format' => '?paged=%#%',
-            'current' => max(1, get_query_var('paged')),
-            'total' => $wp_query->max_num_pages
-        ));
-    }
-
-endif;
-
-if (!function_exists('get_comment_popup')) :
-    
     function get_comment_popup() {
         include('comments-popup.php');
     }
-endif;
+
+}
+
 ?>

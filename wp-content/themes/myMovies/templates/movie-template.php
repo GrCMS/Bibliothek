@@ -8,9 +8,26 @@ $movieyear = get_post_meta($post->ID, 'year', TRUE);
 $moviedescription = get_the_content();
 $userloggedin = is_user_logged_in() ? true : false;
 
-$Rate = new Rating();
-$global_rating = $Rate->get_public_movie_rating($post->ID);
-$user_rating = $Rate->get_user_movie_rating($post->ID);
+//$Rate = new Rating();
+//$global_rating = $Rate->get_public_movie_rating($post->ID);
+//$user_rating = $Rate->get_user_movie_rating($post->ID);
+
+$comments = get_approved_comments($post->ID);
+
+$rates = array();
+$val = 0;
+foreach($comments as $comment) {
+    $meta = get_comment_meta($comment->comment_ID, 'rating');
+    foreach($meta as $met => $rating) {
+        array_push($rates, $rating);
+        $val += (int)$rating;
+    }
+    
+}
+
+if(count($rates) > 0) $global_rating = round($val/count($rates), 1);
+else $global_rating = 0;
+
 ?>
 <div class="container">
     <div class="row movie padding-top-15">
@@ -26,7 +43,7 @@ $user_rating = $Rate->get_user_movie_rating($post->ID);
                     <?php
                     if ($movietitle)
                         echo "<h2 class='color-primary'>$movietitle</h2>";
-                    
+
                     if ($moviesubtitle)
                         echo "<h3>$moviesubtitle</h3>";
 
@@ -38,36 +55,30 @@ $user_rating = $Rate->get_user_movie_rating($post->ID);
                         echo ', ' . $movieyear;
 
                     echo '</p>';
-                    
+
                     // Show Genres
-                    $terms = get_the_terms( $post->ID , 'genres' );
+                    $terms = get_the_terms($post->ID, 'genres');
                     // Loop over each item since it's an array
-                    if ( $terms != null ){
+                    if ($terms != null) {
                         echo '<p class="small">';
-                        foreach( $terms as $term ) {
+                        foreach ($terms as $term) {
                             // Print the name method from $term which is an OBJECT
-                            echo '<a href="'.get_term_link($term, 'genres').'">';
+                            echo '<a href="' . get_term_link($term, 'genres') . '">';
                             print $term->name . "</a> ";
-                            
+
                             // Get rid of the other data stored in the object, since it's not needed
                             unset($term);
                         }
                         echo '</p>';
                     }
-                    
                     ?>
                 </div>
                 <div class="col-md-4 col-sm-12 movie-addon-block">
                     <div class="row">
                         <div class="rating col-md-12 col-sm-6 padding-bottom-15">
                             Rating<br>
-                            <span class="star stars-empty movie-<?php echo $post->ID ?>"><?php echo $global_rating ?></span>
-                            <span class="rating-stars" is-user="<?php
-                            if ($userloggedin)
-                                echo false;
-                            else
-                                echo true;
-                            ?>" movie-id="<?php echo $post->ID; ?>" data-score="<?php echo $user_rating; ?>"></span>
+                            <!--<span class="star stars-empty movie-<?php echo $post->ID ?>"><?php echo $global_rating; ?></span>-->
+                            <span class="rating-show" data-score="<?php echo $global_rating; ?>"></span>
 
                         </div>
                         <div class="buttons col-md-12 col-sm-6">
@@ -123,16 +134,18 @@ $user_rating = $Rate->get_user_movie_rating($post->ID);
     </div>
     <div class="row">
         <div class="col-md-12">
-            <?php comments_popup_link('No comments', 'One comment', '% comments', 'open-modal-' . $post->ID); ?>
+            <div class="open-modal-<?php echo $post->ID; ?>" data-toggle="modal" data-target="mm-comment-<?php echo $post->ID; ?>-modal">
+                <a>Comment</a>
+            </div>
         </div>
     </div>
 </div>
 
+<div class="modal fade mm-comment-<?php echo $post->ID; ?>-modal">
+    <?php comments_template('/comments-popup.php'); ?>
+</div>
 
 <script type="text/javascript">
-    jQuery('.open-modal-<?php echo $post->ID ?>').attr('data-toggle', 'modal');
-    jQuery('.open-modal-<?php echo $post->ID ?>').attr('data-target', '.mm-comment-<?php echo $post->ID ?>-modal');
+    jQuery('.open-modal-<?php echo $post->ID; ?>').attr('data-toggle', 'modal');
+    jQuery('.open-modal-<?php echo $post->ID; ?>').attr('data-target', '.mm-comment-<?php echo $post->ID; ?>-modal');
 </script>
-            <div class="modal fade mm-comment-<?php echo $post->ID ?>-modal">
-                <?php get_comment_popup(); ?>
-            </div>

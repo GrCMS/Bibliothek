@@ -48,7 +48,7 @@ wp_reset_query();  // Restore global post data stomped by the_post().
     </div>
     <a class="btn btn-primary"><?php echo $customvalues->getValue('SignUp Button Text'); ?></a>
 </div>
-<? endif; ?>
+<?php endif; ?>
 
 <!-- BODY END -->
 
