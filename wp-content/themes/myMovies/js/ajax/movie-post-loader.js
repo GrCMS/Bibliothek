@@ -29,6 +29,13 @@
                     $content.append($data);
                     $data.fadeIn(500, function() {
                         loading = false;
+                        
+                        //append bookmark ajax function
+                        $('.mm_user_bookmark').each(function(){
+                            
+                            $(this).toggleBookmark();
+                            
+                        });
                     });
                 },
                 
@@ -48,7 +55,7 @@
                 load_posts();
         }
     });
-    
+            
     load_posts();
 
 })(jQuery);
