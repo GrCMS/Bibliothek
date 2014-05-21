@@ -7,11 +7,13 @@
 get_header();
 
 ?>
-<div class="container">
-    <h1>All movies</h1>
+
+<div id="mm-all-movies-posts">
+    
+    <h2 class="container">All movies</h2>
+    
 </div>
 
-<div id="mm-all-movies-posts"></div>
     
 <?php 
 

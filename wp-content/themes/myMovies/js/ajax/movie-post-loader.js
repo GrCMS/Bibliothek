@@ -5,6 +5,7 @@
     var $window = $(window);
     var $content = $('#mm-all-movies-posts');
     var $loading_container = $('#mm-all-movies-posts-loading');
+    
     var load_posts = function(){
             $.ajax({
                 type       : "GET",

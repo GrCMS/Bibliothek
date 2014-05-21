@@ -5,6 +5,7 @@
  */
 
 add_filter('wp_ajax_mm_movie_post_loader', 'mm_movie_post_loader');
+add_filter('wp_ajax_nopriv_mm_movie_post_loader', 'mm_movie_post_loader');
         
 function mm_movie_post_loader()
 {
