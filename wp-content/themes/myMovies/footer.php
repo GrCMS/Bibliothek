@@ -49,8 +49,9 @@
                 </div>
                 
                 <div class="modal-footer">
-                    <a href="<?php echo site_url() . '/login?action=register&source=modal'; ?>">Register</a>
-                    <input class="btn btn-primary" type="submit" name="submit" value="Send" class="button" />
+                    
+                    <input class="btn btn-primary" type="submit" name="submit" value="Send" class="button" /><br>
+                    <p class="padding-top-15">Not a member yet? <a href="<?php echo site_url() . '/login?action=register&source=modal'; ?>">Sign up now!</a></p>
                 </div>
         
             </form>

@@ -27,6 +27,9 @@ include_once('includes/custom-taxonomy-genres.php');
 //Include script registration in order to add styles and scripts to the theme
 include_once('includes/script-registration.php');
 
+//Include script backend custom menu
+include_once('includes/custom-backend-menu.php');
+
 /**
  * Hook called on 'after_setup_theme' to add settings after the theme has been activated
  */

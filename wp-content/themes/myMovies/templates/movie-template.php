@@ -22,25 +22,42 @@ $user_rating = $Rate->get_user_movie_rating($post->ID);
         </div>
         <div class="col-md-9 col-sm-8 col-xs-7">
             <div class="row border-bottom-white padding-bottom-15">
-                <div class="col-sm-7">
+                <div class="col-md-8">
                     <?php
-                    if (isset($movietitle))
+                    if ($movietitle)
                         echo "<h2 class='color-primary'>$movietitle</h2>";
-
-                    if (isset($moviesubtitle))
+                    
+                    if ($moviesubtitle)
                         echo "<h3>$moviesubtitle</h3>";
 
-                    echo '<span class="small">';
-                    if (isset($moviestudio))
+                    echo '<p class="small">';
+                    if ($moviestudio)
                         echo $moviestudio;
 
-                    if (isset($movieyear))
+                    if ($movieyear)
                         echo ', ' . $movieyear;
 
-                    echo '</span>';
+                    echo '</p>';
+                    
+                    // Show Genres
+                    $terms = get_the_terms( $post->ID , 'genres' );
+                    // Loop over each item since it's an array
+                    if ( $terms != null ){
+                        echo '<p class="small">';
+                        foreach( $terms as $term ) {
+                            // Print the name method from $term which is an OBJECT
+                            echo '<a href="'.get_term_link($term, 'genres').'">';
+                            print $term->name . "</a> ";
+                            
+                            // Get rid of the other data stored in the object, since it's not needed
+                            unset($term);
+                        }
+                        echo '</p>';
+                    }
+                    
                     ?>
                 </div>
-                <div class="col-md-5 col-sm-12 movie-addon-block">
+                <div class="col-md-4 col-sm-12 movie-addon-block">
                     <div class="row">
                         <div class="rating col-md-12 col-sm-6 padding-bottom-15">
                             Rating<br>
@@ -104,13 +121,18 @@ $user_rating = $Rate->get_user_movie_rating($post->ID);
             </div>
         </div>
     </div>
+    <div class="row">
+        <div class="col-md-12">
+            <?php comments_popup_link('No comments', 'One comment', '% comments', 'open-modal-' . $post->ID); ?>
+        </div>
+    </div>
 </div>
 
-<?php comments_popup_link('No comments', 'One comment', '% comments', 'open-modal-' . $post->ID); ?>
+
 <script type="text/javascript">
     jQuery('.open-modal-<?php echo $post->ID ?>').attr('data-toggle', 'modal');
     jQuery('.open-modal-<?php echo $post->ID ?>').attr('data-target', '.mm-comment-<?php echo $post->ID ?>-modal');
 </script>
-<div class="modal fade mm-comment-<?php echo $post->ID ?>-modal">
-    <?php get_comment_popup(); ?>
-</div>
+            <div class="modal fade mm-comment-<?php echo $post->ID ?>-modal">
+                <?php get_comment_popup(); ?>
+            </div>

@@ -90,6 +90,7 @@ body {
 
 	/* fallback if background image not working */
 	font-family: 'HelveticaNeueTH', sans-serif;
+        baseline-shift: -100px !important;
 	background-color:#eee;
 	background: url('images/layout/body-background-pattern.jpg');
 	background-repeat: repeat;
@@ -296,6 +297,7 @@ h1, h2, h3, h4, h5 {
 
 #mm-login-modal .modal-header {
 	background-image: url('images/layout/bg-movie-slider.jpg');
+        color: #ffffff;
 }
 
 #mm-login-modal h3 {
@@ -422,7 +424,6 @@ h1, h2, h3, h4, h5 {
 #mm-mobile-genre-slider-col {
 	
         display: none;
-        position: relative;
         padding: 0px;
 }
 
@@ -433,6 +434,8 @@ h1, h2, h3, h4, h5 {
     padding: 0px !important;
     top: 100px;
     font-size: 14px;
+    position: fixed !important;
+    z-index: 99;
 }
 
 .mobile-menu ul {
@@ -461,8 +464,10 @@ h1, h2, h3, h4, h5 {
 
 /* CONTAINER FOR CONTENT */
 #mm-content-container {
-    margin-top: 50px;
+    margin-top: 100px;
     padding-bottom: 50px;
+    padding-left: 0px;
+    padding-right: 0px;
 }
 
 /* CONTAINER FOR FOOTER CONTENT */
@@ -640,6 +645,8 @@ h3 {
 .btn {
 	border: none;
 	font-weight: 200;
+        padding-top: 10px;
+        padding-bottom: 5px;
 }
 
 .border-bottom-white {

@@ -123,7 +123,7 @@ GENRE SLIDER STYLE FOR: XS (mobile)
 }
    
 #mm-slider-container-mobile ul {
-
+  background-color: transparent;
   width:100%;
   list-style-type: none;
   padding: 0px 0px 0px 0px;

@@ -3,7 +3,7 @@ get_header(); //gets header.php
 ?>
 
 <!-- BODY START -->
-<h2 class="container moviesection-header"> Neuerscheinungen</h2>
+<h2 class="container moviesection-header"> New movies</h2>
 <?php
 $type = 'movies';
 $args = array(
@@ -33,17 +33,19 @@ if ($my_query->have_posts()) {
 
 wp_reset_query();  // Restore global post data stomped by the_post().
 ?>
+
+<?php if(!is_user_logged_in()): ?>
 <div class="movie-divider"></div>
 <div class="container">
-    <h2 class="color-primary">MyMovies</h2>	
-    <h3>Some random Subheadline</h3>
+    <h2 class="color-primary">myMovies</h2>	
+    <h3>Some random subheadline</h3>
     <? the_post(); ?>
     <div class="multicol-2">
         <? the_content(); ?>
     </div>
-    <a class="btn btn-primary btn-lg">Jetzt anmelden!</a>
+    <a class="btn btn-primary">Sign up now!</a>
 </div>
-
+<? endif; ?>
 
 <!-- BODY END -->
 

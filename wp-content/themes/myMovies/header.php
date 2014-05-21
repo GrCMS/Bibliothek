@@ -89,7 +89,7 @@
 
                         </div><!-- end of mm-header-search-col -->
 
-                        <div id="mm-header-account-navigation-col" class="col-xs-4 col-sm-3 text-center divider-vertical">
+                        <div id="mm-header-account-navigation-col" class="col-xs-4 col-sm-3 text-center-xs divider-vertical">
 
                             <?php if (is_user_logged_in()): ?>
 
@@ -180,7 +180,7 @@
 
                 <div id="mm-mobile-navigation-container" class="container">
 
-                    <div id="mm-mobile-search-col" class="col-xs-12">
+                    <div id="mm-mobile-search-col" class="col-xs-12 mobile-menu">
 
                         <?php get_search_form(); ?>
 
