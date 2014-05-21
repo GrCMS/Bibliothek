@@ -1,3 +1,17 @@
+(function($){
+    
+    $.fn.toggleBookmark = function() {
+    
+        
+        
+    }; 
+    
+    
+    
+})(jQuery);
+
+
+
 jQuery(document).ready( function() {
 
    jQuery(".mm_user_bookmark").click( function() {

@@ -14,6 +14,11 @@ get_header();
     
 </div>
 
+<div id="mm-all-movie-ajax-loading">
+    
+    
+</div>
+
     
 <?php 
 

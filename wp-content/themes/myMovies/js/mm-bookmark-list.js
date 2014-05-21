@@ -4,6 +4,8 @@
 
       var current_offset = $(current).offset();
       var next_offset = $(current).next().offset();
+      
+      //if next() not null;
 
       if(current_offset.top === next_offset.top)
       {
