@@ -1,45 +1,40 @@
 (function($){
-    
+
     $.fn.toggleBookmark = function() {
-    
-        
-        
-    }; 
-    
-    
-    
-})(jQuery);
 
-
-
-jQuery(document).ready( function() {
-
-   jQuery(".mm_user_bookmark").click( function() {
-      
-      var post_id = jQuery(this).attr("data-post_id");
-      var trigger = jQuery(this);
-      //var buttonvalue = jQuery(this).text();
+        $(this).click(function(){
             
-      jQuery.ajax({
-         type : "post",
-         dataType : "json",
-         url : myAjax.ajaxurl,
+            var post_id = $(this).attr("data-post_id");
+            var trigger = $(this);
+
+            $.ajax({
+                type : "post",
+                dataType : "json",
+                url : myAjax.ajaxurl,
          
-         data : {
+                data : {
          
-            action: "mm_bookmark", 
-            post_id : post_id
-         },
-         success: function(response) {
+                    action: "mm_bookmark", 
+                    post_id : post_id
+                },
+         
+                success: function(response) {
                             
-            jQuery(trigger).toggleClass('ion-checkmark').toggleClass('ion-plus');
-            jQuery('#bookmark_counter span').text(response.bookmarks_count);
-                                   
-         }
-      });   
+                    $(trigger).children('i').toggleClass('ion-checkmark').toggleClass('ion-plus');
+                    $('#bookmark_counter span').text(response.bookmarks_count);                   
+                }
+            });
+        });   	
+    }
 
-   });
+    $(document).ready(function() {
 
-});
+        $(".mm_user_bookmark").each(function(){
+            
+            $(this).toggleBookmark();
+        });        
+    });
+
+})(jQuery);
 
 

@@ -81,7 +81,7 @@ $user_rating = $Rate->get_user_movie_rating($post->ID);
                                 if ($current_bookmarks->is_bookmarked($post->ID)) {
 
                                     echo '<button '
-                                    . 'class="mm_user_bookmark btn btn-primary bookmarked"'
+                                    . 'class="mm_user_bookmark btn btn-primary"'
                                     . 'data-post_id="' . $post->ID . '">'
                                     . '<i class="icon ion-checkmark"></i> Watchlist'
                                     . '</button>';

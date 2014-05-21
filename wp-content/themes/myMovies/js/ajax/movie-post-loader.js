@@ -4,7 +4,8 @@
     var loading = true;
     var $window = $(window);
     var $content = $('#mm-all-movies-posts');
-    var $loading_container = $('#mm-all-movies-posts-loading');
+    var $loading_container = $('#mm-all-movie-ajax-loading');
+    $loading_container.hide();
     
     var load_posts = function(){
             $.ajax({
@@ -20,20 +21,42 @@
                 
                 beforeSend : function(){
                     
+                    if(page != 1)
+                    {
+                        $loading_container.show();
+                    }
                 },
                 
                 success    : function(data){
-                    
+                                                                                
                     $data = $(data);
-                    $data.hide();
-                    $content.append($data);
-                    $data.fadeIn(500, function() {
-                        loading = false;
-                    });
+                    if($data.length) {
+                        
+                        $data.hide();
+                        $content.append($data);
+                        $data.fadeIn(500, function() {
+                            
+                            $loading_container.hide();
+                            loading = false;
+                            
+                            //very unsexy...
+                            $('.mm_user_bookmark').each(function(){
+                            
+                                $(this).unbind();
+                                $(this).toggleBookmark();
+                            });
+                                                    
+                        });
+                    }
+                    else {
+                    
+                        $loading_container.hide();
+                    }
                 },
                 
                 error     : function(jqXHR, textStatus, errorThrown) {
                     //console.log(jqXHR + " :: " + textStatus + " :: " + errorThrown);
+                    $loading_container.hide();
                 }
         });
     }
@@ -48,7 +71,7 @@
                 load_posts();
         }
     });
-    
+            
     load_posts();
 
 })(jQuery);
