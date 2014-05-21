@@ -23,7 +23,8 @@ function mm_movie_post_loader()
     foreach($posts as $movie)
     {
         setup_postdata($movie);
-        get_template_part( 'templates/movie', 'template' );
+        the_post();
+        //get_template_part( 'templates/movie', 'template' );
     }
     
     wp_reset_postdata();
