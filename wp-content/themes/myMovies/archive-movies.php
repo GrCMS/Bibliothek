@@ -7,8 +7,9 @@
 get_header();
 
 ?>
-
-<h1>ALL MOVIES TEMPLATE</h1>
+<div class="container">
+    <h1>All movies</h1>
+</div>
 
 <div id="mm-all-movies-posts"></div>
     

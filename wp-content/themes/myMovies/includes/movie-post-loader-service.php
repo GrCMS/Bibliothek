@@ -18,15 +18,15 @@ function mm_movie_post_loader()
         'post_type' => 'movies' 
     );
     
-    $posts = get_posts($args);
+    //$posts = get_posts($args);
     
-    foreach($posts as $movie)
-    {
-        setup_postdata($movie);
-        the_post();
-        //get_template_part( 'templates/movie', 'template' );
-    }
-    
-    wp_reset_postdata();
+    $movie_query = new WP_Query($args);
+    while($movie_query->have_posts()) : $movie_query->the_post();
+                       
+        echo '<div class="movie-divider"></div>';        
+        get_template_part( 'templates/template', 'movie' );
+            
+    endwhile;
+    wp_reset_query();
 }
 

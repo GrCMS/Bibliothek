@@ -4,6 +4,7 @@
     var loading = true;
     var $window = $(window);
     var $content = $('#mm-all-movies-posts');
+    var $loading_container = $('#mm-all-movies-posts-loading');
     var load_posts = function(){
             $.ajax({
                 type       : "GET",
@@ -17,14 +18,15 @@
                             },
                 
                 beforeSend : function(){
+                    
                 },
                 
                 success    : function(data){
+                    
                     $data = $(data);
                     $data.hide();
                     $content.append($data);
                     $data.fadeIn(500, function() {
-                        
                         loading = false;
                     });
                 },
