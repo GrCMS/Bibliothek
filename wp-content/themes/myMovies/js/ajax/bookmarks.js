@@ -3,7 +3,7 @@
     $.fn.toggleBookmark = function() {
 
         $(this).click(function(){
-
+            
             var post_id = $(this).attr("data-post_id");
             var trigger = $(this);
 
