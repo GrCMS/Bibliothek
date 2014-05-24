@@ -17,6 +17,7 @@ function mm_enqueue_scripts() {
     wp_register_style('stars', get_template_directory_uri() . '/css/stars.css', array(), '1.0', false);
     wp_register_style('genre-slider-style', get_template_directory_uri() . '/css/genre-slider.css', array(), '1.0', false);
     wp_register_style('flexslider-style', get_template_directory_uri() . '/css/flexslider.css', array(), '1.0', false);
+    wp_register_style('datepicker-style', get_template_directory_uri() . '/datepicker/css/datepicker3.css', array(), '1.0', false);
     wp_register_style('style', get_stylesheet_uri());
 
     //Script registration
@@ -31,11 +32,14 @@ function mm_enqueue_scripts() {
     wp_register_script('flexslider-js', get_template_directory_uri() . '/js/jquery.flexslider.js', array('jquery'), '1.0', true);
     wp_register_script('mm-bookmark-list-js', get_template_directory_uri() . '/js/mm-bookmark-list.js', array('jquery'), '1.0', true);
     wp_register_script('movie-post-loader-js', get_template_directory_uri() . '/js/ajax/movie-post-loader.js', array('jquery'), '1.0', true);
-
+    wp_register_script('bootstrap-datepicker-js', get_template_directory_uri() . '/datepicker/js/bootstrap-datepicker.js', array('jquery'), '1.0', true);
+    wp_register_script('movie-rental-js', get_template_directory_uri() . '/js/ajax/movie-rental.js', array('jquery'), '1.0', true);
+    
     //localization for ajax scripts
     wp_localize_script('bookmarks-js', 'myAjax', array('ajaxurl' => admin_url('admin-ajax.php')));
     wp_localize_script('ratings-js', 'myAjax', array('ajaxurl' => admin_url('admin-ajax.php')));
     wp_localize_script('movie-post-loader-js', 'myAjax', array('ajaxurl' => admin_url('admin-ajax.php')));
+    wp_localize_script('movie-rental-js', 'myAjax', array('ajaxurl' => admin_url('admin-ajax.php')));
     
     //Always enqueue jQuery
     wp_enqueue_script('jquery');
@@ -55,8 +59,12 @@ function mm_enqueue_scripts() {
         
         if(is_post_type_archive('movies'))
         {   
-            //Only enqueued on archive-movies.php 
+            wp_enqueue_style('datepicker-style');
+            
+            //Only enqueued on archive-movies.php
+            wp_enqueue_script('bootstrap-datepicker-js');
             wp_enqueue_script('movie-post-loader-js');
+            //wp_enqueue_script('movie-rental-js');
         }
 
         //Only enqueued on frontend (CSS)
