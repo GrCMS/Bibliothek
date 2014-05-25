@@ -9,6 +9,7 @@
             duration : "#mm-rent-duration-dropdown",
             rentSend : "#mm-rent-movie-ajax",
             rentOpen : ".mm-rent-movie",
+            returnMovie: ".mm-return-movie",
             modalTitle : "#mm-rental-modal-title",
             modalAlert : "#mm-rental-response-output",
             returnDateOutput : "#mm-rent-return-date",
@@ -40,7 +41,7 @@
         },
 
         init : function() {
-
+            
             var currDate = new Date();
             $(rentMovie.controls.datepicker).datepicker('setDate', currDate).datepicker('fill');
             $(rentMovie.controls.datepicker).datepicker('setStartDate', currDate);
@@ -95,11 +96,11 @@
             {
                 //if start date from datepicker is valid then add duration
                 var date = new Date();
-                date.setDate(start + duration);
-              
+                date.setDate(start.getDate() + duration);
+
                 //set valid return date
-                rentMovie.vars.returnDate = date;
-                rentMovie.vars.startDate = start;
+                rentMovie.vars.returnDate = date.getDate() + "." + (date.getMonth() +1) + "." + date.getFullYear();
+                rentMovie.vars.startDate = start.getDate() + "." + (start.getMonth() +1) + "." + start.getFullYear();
 
                 //output the valid return date                            
                 $(rentMovie.controls.returnDateOutput).text(date.getDate() + "." + (date.getMonth() +1) + "." + date.getFullYear() );
@@ -142,7 +143,7 @@
         {
                     
             $.ajax({
-                type : "post",
+                type : "POST",
                 dataType : "json",
                 url : myAjax.ajaxurl,
                 data: {
@@ -195,8 +196,8 @@
         });
 
         //append click function in order to open a modal dialog
-        $(rentMovie.controls.rentOpen).click(function(){
-
+        $(rentMovie.controls.rentOpen).live('click', function(){
+            
             //get the event trigger and store it
             rentMovie.controls.modalTrigger = $(this);
 
@@ -212,9 +213,36 @@
             //append click event (only if modal trigger was clicked) to send ajax call
             $(rentMovie.controls.rentSend).unbind().removeAttr('disabled').text("rent");
             $(rentMovie.controls.rentSend).click(function(){
-
+                
                 //append rent function with ajax call
                 $(this).rentMovieAjax(rentMovie.vars.post_id);
+            });
+        });
+        
+        //append click function to return movie
+        $(rentMovie.controls.returnMovie).live('click', function(){
+            
+            var trigger = $(this);
+            var post_id = $(this).attr('data-post_id');
+            
+            $.ajax({
+                type : "POST",
+                dataType : "json",
+                url : myAjax.ajaxurl,
+                data: {
+                    
+                    action: "mm_return_movie", 
+                    post_id : post_id
+                },
+
+                success: function(data) {
+                    
+                    //do something with trigger...
+                },
+
+                error: function(data) {
+                                        
+                }
             });
         });
 

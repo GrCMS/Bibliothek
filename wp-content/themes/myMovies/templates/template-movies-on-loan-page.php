@@ -24,7 +24,13 @@ get_header(); //gets header.php
 
 <?php
 
-echo "current user: " . $current_user->display_name;
+//list current rented movies
+
+?>
+
+<?php
+
+//show history
 
 ?>
 
