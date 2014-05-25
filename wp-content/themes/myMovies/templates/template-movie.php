@@ -104,12 +104,12 @@ $user_rating = $Rate->get_user_movie_rating($post->ID);
                             
                             if($userloggedin) {
                                 
-                                $isRented = false;
+                                $current_rentals = new movie_rentals();
                                 
-                                if($isRented)
+                                if($current_rentals->isRented($post->ID))
                                 {
                                     echo '<button '
-                                    . 'class="btn btn-info"'
+                                    . 'class="btn btn-disabled"'
                                     . 'data-post_id="' . $post->ID . '" '
                                     . 'data-post_title="' . $movietitle . '">'
                                     . 'Rented'

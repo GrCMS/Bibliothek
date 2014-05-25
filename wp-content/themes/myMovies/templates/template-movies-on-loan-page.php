@@ -19,21 +19,33 @@ get_header(); //gets header.php
 </script>
 
 <!-- BODY START -->
+<div class="container">
 
-<h1>Movies on loan</h1>
+    <h1>Movies on loan</h1>
 
-<?php
+    <?php
 
-//list current rented movies
+        $current_rentals = new movie_rentals();
+        $count = $current_rentals->getCount();
+        echo "Rentals: ($count)";
 
-?>
+        foreach($current_rentals->getRentedMovies() as $movie) {
 
-<?php
+            echo "<h4>$movie->post_title</h4>";
+        }
 
-//show history
+    ?>
+    
+    
+    <h3>History</h3>
+    
+    <?php
 
-?>
+    //show history
 
+    ?>
+
+</div>
 <!-- BODY END -->
 
 <?php 

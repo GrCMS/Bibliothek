@@ -98,11 +98,11 @@
                 var date = new Date();
                 date.setDate(start.getDate() + duration);
 
-                //set valid return date
-                rentMovie.vars.returnDate = date.getDate() + "." + (date.getMonth() +1) + "." + date.getFullYear();
-                rentMovie.vars.startDate = start.getDate() + "." + (start.getMonth() +1) + "." + start.getFullYear();
+                //set valid return date (format: YYYY-MM-DD)
+                rentMovie.vars.returnDate = date.getFullYear() + "-" + (date.getMonth() +1) + "-" + date.getDate();
+                rentMovie.vars.startDate = start.getFullYear() + "-" + (start.getMonth() +1) + "-" + start.getDate();
 
-                //output the valid return date                            
+                //output the valid return date (format: DD.MM.YYYY)                            
                 $(rentMovie.controls.returnDateOutput).text(date.getDate() + "." + (date.getMonth() +1) + "." + date.getFullYear() );
             }
             else
