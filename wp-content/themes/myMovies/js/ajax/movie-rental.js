@@ -95,7 +95,7 @@
             {
                 //if start date from datepicker is valid then add duration
                 var date = new Date();
-                date.setDate(start.getDate() + duration);
+                date.setDate(start + duration);
               
                 //set valid return date
                 rentMovie.vars.returnDate = date;
@@ -140,8 +140,7 @@
             rentMovie.vars.returnDate != null &&
             rentMovie.vars.startDate != null)
         {
-            //Ajax Success
-
+                    
             $.ajax({
                 type : "post",
                 dataType : "json",
@@ -155,7 +154,8 @@
                 },
 
                 success: function(data) {
-
+                    
+                    console.log(data);
                     $(rentMovie.controls.modalAlert).text("Thank you for renting: " + rentMovie.vars.post_title)
                     .removeClass().addClass('alert alert-success');
                     $(rentSendButton).text("rented").attr('disabled', 'disabled').unbind();

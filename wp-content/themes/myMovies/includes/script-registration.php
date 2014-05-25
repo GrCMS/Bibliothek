@@ -64,7 +64,7 @@ function mm_enqueue_scripts() {
             //Only enqueued on archive-movies.php
             wp_enqueue_script('bootstrap-datepicker-js');
             wp_enqueue_script('movie-post-loader-js');
-            //wp_enqueue_script('movie-rental-js');
+            wp_enqueue_script('movie-rental-js');
         }
 
         //Only enqueued on frontend (CSS)

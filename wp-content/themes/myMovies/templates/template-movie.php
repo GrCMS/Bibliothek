@@ -99,13 +99,43 @@ $user_rating = $Rate->get_user_movie_rating($post->ID);
                                 . '</button>';
                             }
                             ?>
-
-                            <button class="btn <?php
-                            if ($userloggedin)
-                                echo 'btn-info';
-                            else
-                                echo 'btn-disabled';
-                            ?>">Rent</button>
+                            
+                            <?php 
+                            
+                            if($userloggedin) {
+                                
+                                $isRented = false;
+                                
+                                if($isRented)
+                                {
+                                    echo '<button '
+                                    . 'class="btn btn-info"'
+                                    . 'data-post_id="' . $post->ID . '" '
+                                    . 'data-post_title="' . $movietitle . '">'
+                                    . 'Rented'
+                                    . '</button>';
+                                    
+                                } else {
+                                    
+                                    echo '<button '
+                                    . 'class="btn btn-info mm-rent-movie"'
+                                    . 'data-post_id="' . $post->ID . '" '
+                                    . 'data-toggle="modal" '
+                                    . 'data-target="#mm-rental-modal" '
+                                    . 'data-post_title="' . $movietitle . '">'
+                                    . 'Rent'
+                                    . '</button>';
+                                }
+                                    
+                            } else {
+                                
+                                echo '<button '
+                                . 'class="btn btn-disabled">'
+                                . 'Rent'
+                                . '</button>';
+                            }
+                               
+                            ?>
 
                         </div>
                     </div>

@@ -62,6 +62,85 @@
 
   </div><!-- end of mm-login-modal -->
   
+  <!-- MODAL: mm-rental-modal (triggerd from rent button) -->
+  <div class="modal fade" id="mm-rental-modal" tabindex="-1" role="dialog" aria-labelledby="mm-rental-modal-label" aria-hidden="true">
+  		
+    <div class="modal-dialog">
+    		
+        <div class="modal-content">
+      			
+            <div class="modal-header">
+        			
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="mm-rental-modal-label">Rent movie: <span id="mm-rental-modal-title"></span></h4>
+                
+            </div>
+      			
+            <div class="modal-body">
+
+                <div class="row">
+            
+                    <div class="col-xs-12">
+              
+                        <div id="mm-rental-response-output"></div>
+
+                    </div>
+
+                </div>
+
+                <div class="row">
+      					
+                    <div class="col-xs-6">
+							     
+                        <label>Rent start: </label>
+                        <div id="mm-dp-rent-start" class="input-group date">
+  								
+                            <input type="text" data-date-format="dd.mm.yyyy" class="form-control"><span class="input-group-addon"><i class="ion-calendar"></i></span>
+							
+                        </div>
+
+                    </div>
+
+                    <div class="col-xs-6">
+    							
+                        <label>Duration: </label>
+                        <select class="form-control" id="mm-rent-duration-dropdown">
+                            <option value="5">5 Days</option>
+                            <option value="7">7 Days</option>
+                            <option value="10">10 Days</option>
+                            <option value="14">14 Days</option>
+                        </select>
+
+                    </div>
+
+                </div>
+
+                <div class="row">
+						
+                    <div class="col-xs-12 col-lg-offset-6 col-md-offset-6 col-sm-offset-6" style="line-height: 50px">
+
+                            <label>Return date:</label>
+                            <span id="mm-rent-return-date">dd.mm.yyyy</span>
+
+                    </div>
+
+                </div>
+
+            </div>
+      			
+            <div class="modal-footer">
+        			
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="mm-rent-movie-ajax">Rent</button>
+      			
+            </div>
+            
+        </div>
+        
+    </div>
+
+  </div><!-- end of mm-rental-modal -->
+  
   <!-- end of modal dialogs -->
         
   <!-- WORDPRESS SCRIPTS (JS) -->
