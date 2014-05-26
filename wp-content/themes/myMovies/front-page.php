@@ -26,8 +26,9 @@ if ($my_query->have_posts()) {
 
         $movieimagepath = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), 'movie_poster', false);
         $movieimagepath = $movieimagepath[0];
+        $permalink = get_permalink( $id );
 
-        echo "<li><img src='$movieimagepath' /></li>";
+        echo "<li><a href='$permalink'><img src='$movieimagepath' /></li></a>";
 
     endwhile;
     echo '</ul>';

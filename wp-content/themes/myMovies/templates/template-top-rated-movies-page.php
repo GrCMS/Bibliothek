@@ -11,7 +11,7 @@ get_header();
 
 the_post();
 $pagetitle = get_the_title();
-echo "<h2 class='container'>$pagetitle</h2>";
+echo '<h3 class="color-primary large container">'.$pagetitle.'</h3>';
 
 $Rate = new Rating();
 $top_rated = $Rate->get_top_rated_movies(20);
@@ -40,9 +40,12 @@ usort( $my_query->posts, function ( $a, $b ) use ( $thePostIdArray )
     });
 
 if ($my_query->have_posts()) {
+    $first = true;
     while ($my_query->have_posts()) : $my_query->the_post();
-        echo '<div class="movie-divider"></div>';
-        require("movie-template.php");
+        if (!$first)
+            echo '<div class="movie-divider"></div>';
+        $first = false;
+        require("template-movie.php");
 
     endwhile;
 }

@@ -2,7 +2,7 @@
 	
 
 	the_post();
-	require("templates/movie-template.php"); 
+	require("templates/template-movie.php"); 
 
 
  get_footer(); 

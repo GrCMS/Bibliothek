@@ -78,7 +78,7 @@ else $global_rating = 0;
                         <div class="rating col-md-12 col-sm-6 padding-bottom-15">
                             Rating<br>
                             <!--<span class="star stars-empty movie-<?php echo $post->ID ?>"><?php echo $global_rating; ?></span>-->
-                            <span class="rating-show" data-score="<?php echo $global_rating; ?>"></span>
+                            <span class="rating-show" data-score="<?php echo $global_rating; ?>">lalala</span>
 
                         </div>
                         <div class="buttons col-md-12 col-sm-6">

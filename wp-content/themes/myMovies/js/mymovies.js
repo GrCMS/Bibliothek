@@ -11,7 +11,7 @@ $(window).load(function() {
 	    itemMargin: 10,
 	    minItems: 2,
 	    maxItems: 5,
-	    controlNav: false,
+	    controlNav: true,
             directionNav: false,
 	    animationLoop: false,
 	    prevText: "",
