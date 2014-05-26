@@ -68,13 +68,13 @@ function create_rentals_table() {
 
     $table_name = $wpdb->prefix . 'rentals';
 
-    $sql = "CREATE TABLE $table_name (
+    $sql = 'CREATE TABLE '.$table_name .' (
             id int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
             user int(11),
             movie int(11),
             rental_date date,
             return_date date,
-            returned int(1) DEFAULT 0);";
+            returned int(1) DEFAULT 0);';
 
     require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
     dbDelta($sql);
@@ -88,11 +88,11 @@ function create_ratings_table() {
 
     $table_name = $wpdb->prefix . 'ratings';
 
-    $sql = "CREATE TABLE $table_name (
+    $sql = 'CREATE TABLE '.$table_name.' (
             user int(11) NOT NULL,
             movie int(11) NOT NULL,
             rating int(11),
-            PRIMARY KEY(user,movie));";
+            PRIMARY KEY(user,movie));';
 
     require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
     dbDelta($sql);
