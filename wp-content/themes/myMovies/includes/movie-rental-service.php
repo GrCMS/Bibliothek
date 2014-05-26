@@ -54,7 +54,31 @@ class movie_rentals {
     
     public function getHistory() {
         
-        //get all flagged for current user
+        if($this->dbExists())
+        {
+            global $wpdb;
+            $table_rentals = $wpdb->prefix . $this->db_rentals_table;
+            $table_posts = $wpdb->prefix . $this->db_posts_table;
+            $user_id = $this->current_user->ID;
+            
+            /*
+             * SELECT * FROM wp_posts 
+             * JOIN wp_rentals 
+             * ON wp_rentals.movie = wp_posts.ID 
+             * WHERE wp_rentals.user = 'user_id' 
+             * AND wp_rentals.returned = 1;
+             */
+            
+            $result = $wpdb->get_results(
+                    
+                "SELECT * FROM $table_posts
+                JOIN $table_rentals ON $table_rentals.movie = $table_posts.ID
+                WHERE $table_rentals.user = $user_id
+                AND $table_rentals.returned =1;"
+            );
+                        
+            return $result;
+        }
     }
     
     public function rentMovie($m_id, $start_date, $return_date) {
@@ -108,6 +132,7 @@ class movie_rentals {
 
     public function returnMovie($m_id) {
         
+        //update
         //get movie by id
         //set flag
     }
@@ -138,7 +163,21 @@ class movie_rentals {
     
     public function getCountHistory() {
         
-        return 0;
+        if($this->dbExists())
+        {
+            global $wpdb;
+            $table_rentals = $wpdb->prefix . $this->db_rentals_table;
+            $user_id = $this->current_user->ID;
+                        
+            $result = $wpdb->get_var(
+                    
+                "SELECT COUNT(ID) as 'count' FROM $table_rentals
+                WHERE $table_rentals.user = $user_id
+                AND $table_rentals.returned =1;"
+            );
+                        
+            return $result;
+        }
     }
 }
 

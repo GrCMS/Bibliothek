@@ -37,7 +37,7 @@ get_header(); //gets header.php
     ?>
     
     
-    <h3>History</h3>
+    <h3>History (count)</h3>
     
     <?php
 
