@@ -6,18 +6,23 @@ Description: A plugin to add ratings to the standard comments
 Author: Team GrCMS
 */
 
+
+/**
+ * Remove comment notes and change the label for submit button
+ */
 add_filter('comment_form_defaults', 'custom_fields');
 
 function custom_fields($default) {
 
-    $commenter = wp_get_current_commenter();
-
-    $default['label_submit'] = 'Send';
+    $default['label_submit'] = 'Rate';
     $default['comment_notes_after'] = '';
 
     return $default;
 }
 
+/**
+ * Add rating stars to comment field, when user is logged in
+ */
 add_action('comment_form_logged_in_after', 'additional_fields');
 add_action('comment_form_after_fields', 'additional_fields');
 
@@ -29,6 +34,9 @@ function additional_fields() {
     echo '<input type="text" name="rating" hidden value="" />';
 }
 
+/**
+ * Save the rating to the meta-data on submit
+ */
 add_action('comment_post', 'save_comment_meta_data');
 
 function save_comment_meta_data($comment_id) {
@@ -37,6 +45,12 @@ function save_comment_meta_data($comment_id) {
     add_comment_meta($comment_id, 'rating', $rating);
 }
 
+
+/**
+ * Gets called after submit
+ * Checks existing comments from the user. The comment will be updated,
+ * if the user rated the post already.
+ */
 add_filter('preprocess_comment', 'verify_comment_meta_data');
 
 function verify_comment_meta_data($commentdata) {
@@ -71,11 +85,11 @@ function verify_comment_meta_data($commentdata) {
 //  return false;
 //}
 
-add_action('pre_comment_on_post', 'my_pre_comment_on_post');
-
-function my_pre_comment_on_post($post_id) {
-    if ($_POST['comment'] == '') {
-        $some_random_value = rand(0, 384534);
-        $_POST['comment'] = "Default comment. Some random value to avoid duplicate comment warning: {$some_random_value}";
-    }
-}
+//add_action('pre_comment_on_post', 'my_pre_comment_on_post');
+//
+//function my_pre_comment_on_post($post_id) {
+//    if ($_POST['comment'] == '') {
+//        $some_random_value = rand(0, 384534);
+//        $_POST['comment'] = "Default comment. Some random value to avoid duplicate comment warning: {$some_random_value}";
+//    }
+//}
