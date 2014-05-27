@@ -62,12 +62,14 @@ get_header(); //gets header.php
       color: #fff;
       line-height: 50px;
       display: block;
+      white-space: nowrap;
     }
 
     .mm-rentals-overlay span > span {
 
       color: #77b5b4;
       line-height: 50px;
+      white-space: nowrap;
       display: inline-block;
     }
 
@@ -110,7 +112,7 @@ get_header(); //gets header.php
             $return_date = new DateTime($movie->return_date);
                         
             echo "<div class='mm-rentals-overlay text-center'>";
-            echo "<span>Retrun on: <span>" . $return_date->format('d-m-Y') ."</span></span>";
+            echo "<span>Retrun: <span>" . $return_date->format('d-m-Y') ."</span></span>";
             echo "<button class='btn btn-primary mm-return-movie' data-post_id='" . $movie->ID . "'>Return</button>";
             echo "</div>";
         }
