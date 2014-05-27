@@ -132,9 +132,34 @@ class movie_rentals {
 
     public function returnMovie($m_id) {
         
-        //update
-        //get movie by id
-        //set flag
+        if($this->dbExists())
+        {
+            global $wpdb;
+            $table_rentals = $wpdb->prefix . $this->db_rentals_table;
+            $user_id = $this->current_user->ID;
+            $returned_date = date('Y-m-d');
+            
+            $result = $wpdb->update($table_rentals, 
+                
+                //UPDATE VALUE OF COLUMN
+                array(
+                    
+                    'returned' => 1,
+                    'returned_date' => $returned_date
+                ),
+                
+                //WHERE
+                array(
+                    
+                    'returned' => 0,
+                    'user' => $user_id,
+                    'movie' => $m_id
+                )
+            );
+            
+            //result is true or false (update successfull equals true)
+            return $result;
+        }
     }
     
     public function getMoviesToReturn() {
@@ -213,13 +238,18 @@ add_filter('wp_ajax_mm_return_movie', 'mm_return_movie');
 
 function mm_return_movie() {
     
-    $post_id = $_REQUEST["post_id"];    
-    $result['post_id'] = $post_id;
+    $post_id = (isset($_REQUEST['post_id'])) ? $_REQUEST['post_id'] : null;  
     
-    $current_rentals = new movie_rentals();
-    $result['rentals_count'] = $current_rentals->getCount();
-    $result = json_encode($result);
-    echo $result;
-	
+    if($post_id != null)
+    {
+        $current_rentals = new movie_rentals();
+    
+        $result['post_id'] = $post_id;
+        $result['updated'] = $current_rentals->returnMovie($post_id);
+        $result['rentals_count'] = $current_rentals->getCount();
+        $result = json_encode($result);
+        echo $result;
+    }
+    
     die();
 }

@@ -57,7 +57,7 @@ add_action('after_switch_theme', 'create_tables');
 function create_tables() {
     create_rentals_table();
     create_ratings_table();
-    create_mymovies_admin_table();
+    //create_mymovies_admin_table();
 }
 
 /**
@@ -74,6 +74,7 @@ function create_rentals_table() {
             movie int(11),
             rental_date date,
             return_date date,
+            returned_date date,
             returned int(1) DEFAULT 0);';
 
     require_once(ABSPATH . 'wp-admin/includes/upgrade.php');

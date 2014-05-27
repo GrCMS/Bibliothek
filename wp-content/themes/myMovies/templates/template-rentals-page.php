@@ -76,6 +76,11 @@ get_header(); //gets header.php
       width: 90%;
     }
     
+    #mm-rentals-history tbody {
+        
+        background: #eee;
+    }
+    
 </style>
 
 <!-- BODY START -->
@@ -88,7 +93,7 @@ get_header(); //gets header.php
         $current_rentals = new movie_rentals();
         $count = $current_rentals->getCount();
         
-        echo "<div id='rentals_counter'> Rentals: (<span>$count</span>) </div><br/>";
+        echo "<div id='rentals_counter'>Current rentals: (<span>$count</span>) </div><br/>";
         echo "<ul id='mm-rentals'>";
 
         foreach($current_rentals->getRentedMovies() as $movie) {
@@ -114,12 +119,35 @@ get_header(); //gets header.php
         echo "<br/>";
 
     ?>
-    
-    <h3>History (count)</h3>
-    
+        
     <?php
 
-    //show history
+        $history_count = $current_rentals->getCountHistory();
+        echo "<div id='rentals_history_counter'> History: (<span>$history_count</span>) </div><br/>";
+        
+        echo "<div class='table-responsive'>";
+        echo "<table id='mm-rentals-history' class='table table-striped'>";
+        echo "<thead><tr><th>Movie</th><th>Rented</th><th>Returned</th></tr></thead>";
+        echo "<tbody>";
+                        
+        foreach($current_rentals->getHistory() as $movie_rented)
+        {
+            $permalink = get_permalink( $movie_rented->ID );
+            
+            echo "<tr>";
+            echo "<td><a href='" .$permalink ."'>" . $movie_rented->post_title . "</a></td>";
+            
+            $rental_date = new DateTime($movie_rented->rental_date);
+            echo "<td>" . $rental_date->format('d-m-Y') . "</td>";
+            
+            $returned_date = new DateTime($movie_rented->returned_date);
+            echo "<td>" . $returned_date->format('d-m-Y') . "</td>";
+            echo "</tr>";
+        }
+        
+        echo "</tbody>";        
+        echo "</table>";
+        echo "</div>";
 
     ?>
 

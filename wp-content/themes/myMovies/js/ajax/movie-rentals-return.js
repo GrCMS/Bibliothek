@@ -19,40 +19,42 @@
             },
 
             success: function(data) {
-                    
-                $(toRemove).animate({
-
-                    opacity: 0
-
-                }, 250, function() {
-
-                    if($(toRemove).isOnlyItem()) {
-                        
-                    $(this).animate({
-
-                            height: 0
-
-                        }, 500, function() {
-
-                            $(this).remove();
-
-                        });
-                    } else {
-                        
-                        $(this).animate({
-               
-                            width: 0
-               
-                        }, 500, function() {
-
-                            $(this).remove();
-
-                        });
-                    }
-                });
                 
-                console.log(data);
-                $('#rentals_counter span').text(data.bookmarks_count);
+                if(data.updated === 1)
+                {
+                    $(toRemove).animate({
+
+                        opacity: 0
+
+                    }, 250, function() {
+
+                        if($(toRemove).isOnlyItem()) {
+
+                        $(this).animate({
+
+                                height: 0
+
+                            }, 500, function() {
+
+                                $(this).remove();
+
+                            });
+                        } else {
+
+                            $(this).animate({
+
+                                width: 0
+
+                            }, 500, function() {
+
+                                $(this).remove();
+
+                            });
+                        }
+                    });
+                }
+                                
+                $('#rentals_counter span').text(data.rentals_count);
             },
 
             error: function(data) {
