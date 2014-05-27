@@ -215,6 +215,9 @@ function mm_return_movie() {
     
     $post_id = $_REQUEST["post_id"];    
     $result['post_id'] = $post_id;
+    
+    $current_rentals = new movie_rentals();
+    $result['rentals_count'] = $current_rentals->getCount();
     $result = json_encode($result);
     echo $result;
 	

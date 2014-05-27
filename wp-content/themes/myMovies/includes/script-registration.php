@@ -34,12 +34,15 @@ function mm_enqueue_scripts() {
     wp_register_script('movie-post-loader-js', get_template_directory_uri() . '/js/ajax/movie-post-loader.js', array('jquery'), '1.0', true);
     wp_register_script('bootstrap-datepicker-js', get_template_directory_uri() . '/datepicker/js/bootstrap-datepicker.js', array('jquery'), '1.0', true);
     wp_register_script('movie-rental-js', get_template_directory_uri() . '/js/ajax/movie-rental.js', array('jquery'), '1.0', true);
+    wp_register_script('movie-rentals-list-js', get_template_directory_uri() . '/js/mm-rentals-list.js', array('jquery'), '1.0', true);
+    wp_register_script('movie-rentals-return-js', get_template_directory_uri() . '/js/ajax/movie-rentals-return.js', array('jquery'), '1.0', true);
     
     //localization for ajax scripts
     wp_localize_script('bookmarks-js', 'myAjax', array('ajaxurl' => admin_url('admin-ajax.php')));
     wp_localize_script('ratings-js', 'myAjax', array('ajaxurl' => admin_url('admin-ajax.php')));
     wp_localize_script('movie-post-loader-js', 'myAjax', array('ajaxurl' => admin_url('admin-ajax.php')));
     wp_localize_script('movie-rental-js', 'myAjax', array('ajaxurl' => admin_url('admin-ajax.php')));
+    wp_localize_script('movie-rentals-return-js', 'myAjax', array('ajaxurl' => admin_url('admin-ajax.php')));
     
     //Always enqueue jQuery
     wp_enqueue_script('jquery');
@@ -52,7 +55,7 @@ function mm_enqueue_scripts() {
         wp_enqueue_script('genre-slider-js');
         wp_enqueue_script('raty-js');
         wp_enqueue_script('mm-bookmark-list-js');
-        
+                
         //Only enqueued on frontend (AJAX)
         wp_enqueue_script('bookmarks-js');
         wp_enqueue_script('ratings-js');
@@ -65,6 +68,12 @@ function mm_enqueue_scripts() {
             wp_enqueue_script('bootstrap-datepicker-js');
             wp_enqueue_script('movie-post-loader-js');
             wp_enqueue_script('movie-rental-js');
+        }
+        
+        if(is_page('Rentals'))
+        {
+            wp_enqueue_script('movie-rentals-list-js');
+            wp_enqueue_script('movie-rentals-return-js');
         }
 
         //Only enqueued on frontend (CSS)

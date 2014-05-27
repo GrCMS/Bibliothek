@@ -9,7 +9,6 @@
             duration : "#mm-rent-duration-dropdown",
             rentSend : "#mm-rent-movie-ajax",
             rentOpen : ".mm-rent-movie",
-            returnMovie: ".mm-return-movie",
             modalTitle : "#mm-rental-modal-title",
             modalAlert : "#mm-rental-response-output",
             returnDateOutput : "#mm-rent-return-date",
@@ -156,7 +155,6 @@
 
                 success: function(data) {
                     
-                    console.log(data);
                     $(rentMovie.controls.modalAlert).text("Thank you for renting: " + rentMovie.vars.post_title)
                     .removeClass().addClass('alert alert-success');
                     $(rentSendButton).text("rented").attr('disabled', 'disabled').unbind();
@@ -218,34 +216,7 @@
                 $(this).rentMovieAjax(rentMovie.vars.post_id);
             });
         });
-        
-        //append click function to return movie
-        $(rentMovie.controls.returnMovie).live('click', function(){
-            
-            var trigger = $(this);
-            var post_id = $(this).attr('data-post_id');
-            
-            $.ajax({
-                type : "POST",
-                dataType : "json",
-                url : myAjax.ajaxurl,
-                data: {
-                    
-                    action: "mm_return_movie", 
-                    post_id : post_id
-                },
-
-                success: function(data) {
-                    
-                    //do something with trigger...
-                },
-
-                error: function(data) {
-                                        
-                }
-            });
-        });
-
+                
         //setup datepicker and add changeDate event
         $(rentMovie.controls.datepicker).datepicker({
 
