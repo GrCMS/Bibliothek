@@ -15,6 +15,7 @@ get_header();
         font-size: 30px;
         color: #1c2a2b;
         margin-top:10px;
+        margin-bottom: 30px;
     }
     
 </style>
