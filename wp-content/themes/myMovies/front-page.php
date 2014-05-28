@@ -11,10 +11,9 @@ $customvalues = new customValue();
 $type = 'movies';
 $args = array(
     'post_type' => $type,
-    'numberposts' => 10,
     'orderby' => 'post_date',
     'post_status' => 'publish',
-    'posts_per_page' => -1,
+    'posts_per_page' => 10,
     'caller_get_posts' => 1
 );
 $my_query = null;
