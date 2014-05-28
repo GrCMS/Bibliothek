@@ -1,38 +1,30 @@
 (function($) {
     
-    var $window = $(window),
-      flexslider;
-    
-    function getGridSize() {
-        
-        return (window.innerWidth < 600) ? 2 :
-           (window.innerWidth < 900) ? 3 : 4;
-    }
-    
-    $window.resize(function() {
-    
-        var gridSize = getGridSize();
-        console.log(gridSize);
-        flexslider.vars.minItems = gridSize;
-        flexslider.vars.maxItems = gridSize;
-    });
-    
-    
+    var flexslider;
+                               
     $(window).load(function() {
         
-        $('.flexslider').flexslider({
+         $('.flexslider').flexslider({
             animation: "slide",
-            animationLoop: false,
-            itemWidth: 210,
+            animationLoop: true,
+            itemWidth: 250,
             itemMargin: 10,
-            minItems: getGridSize(),
-            maxItems: getGridSize(),
             controlNav: true,
             directionNav: false,
-            animationLoop: false,
-            prevText: "",
-            nextText: ""
+            minItems: 1,
+            maxItems: 0,
+            move: 3,
+            slideshowSpeed: 4000,
+            start: function(slider) {
+                
+                flexslider = slider;
+            }
         });
     });
-
+    
+    $(window).resize(function() {
+        
+        $('.flexslider').flexslider(0);
+    });
+                    
 })(jQuery);

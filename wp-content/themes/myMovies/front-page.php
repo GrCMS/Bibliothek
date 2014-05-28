@@ -18,7 +18,7 @@ $args = array(
 $my_query = null;
 $my_query = new WP_Query($args);
 if ($my_query->have_posts()) {
-
+    
     echo '<div class="flexslider">';
     echo '<ul class="slides">';
 
