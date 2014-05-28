@@ -171,7 +171,7 @@
     
     jQuery( document ).ready(function() {
         
-        var gs = jQuery('#mm-menu-genre-slider-1').genreSlider("#mm-slider-container", true, 3500);
+        var gs = jQuery('#mm-menu-genre-slider-1').genreSlider("#mm-slider-container", true, 250);
         var gsm = jQuery('#mm-menu-genre-slider-2').genreSlider("#mm-slider-container-mobile", false, 250);
         
         menu.setup.init({complete:function(){
