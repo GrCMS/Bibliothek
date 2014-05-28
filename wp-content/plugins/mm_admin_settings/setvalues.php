@@ -1,54 +1,61 @@
 <?php
 
+//print_r($_POST);
+$customvaulue = new customValue();
+//echo $_POST['fp_headline'];
+
+if(count($_POST) > 0){
+    $customvaulue->setValue('Frontpage Headline', $_POST['fp_headline']);
+    $customvaulue->setValue('Frontpage Subheadline', $_POST['fp_subheadline']);
+    $customvaulue->setValue('Frontpage Text', $_POST['fp_welcometext']);
+}
+
 /* 
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 
-$customvaulue = new customValue();
-
 // Default values
-$customvaulue->createIdentifier('Frontpage Headline', 'myMovies');
-$customvaulue->createIdentifier('Frontpage Subheadline', 'Das ist die Subheadline');
-$customvaulue->createIdentifier('Frontpage Text', 'Das ist der Text der da mal hinsoll');
-$customvaulue->createIdentifier('Watchlist Button Text', 'Watchlist');
-$customvaulue->createIdentifier('Rent Button Text', 'Rent');
-$customvaulue->createIdentifier('SignUp Button Text', 'Sign Up');
-$customvaulue->createIdentifier('Login Button Text', 'Login');
+$customvaulue->createIdentifier('Frontpage Headline', 'myMovies Headline');
+$customvaulue->createIdentifier('Frontpage Subheadline', 'myMovies Subheadline');
+$customvaulue->createIdentifier('Frontpage Text', 'myMovies welcome text.');
 
 $allvalues = $customvaulue->getAllValues();
 
 ?>
 <div class="wrap">
-    <h2>Interface values</h2>
-    <form id="mm_values_form">
-
+    <h2><?php echo __('Frontapage text', 'myMovies'); ?></h2>
+    <form id="mm_values_form" action="<?php the_permalink(); ?>" method="POST">
+    <input name="action" type="hidden" value="update" />
+    <input name="page_options" type="hidden" value="fp_headline,fp_subheadline,fp_welcometext" />
 <table class="wp-list-table widefat fixed">
     <thead>
         <tr>
             <th class="column-identifier">
-                Identifier
+                <?php echo __('Item', 'myMovies'); ?>
             </th>
             <th>
-                Value
+                <?php echo __('Value', 'myMovies'); ?>
             </th>
         </tr>
     </thead>
-<?php
-    $alternate = 'alternate';
+    <tr>
+        <td><label for='fp_headline'><?php echo __('Frontpage Headline', 'myMovies'); ?></label></td>
+        <td><input type='text' name='fp_headline' id='fp_headline' value='<?php echo $customvaulue->getValue('Frontpage Headline')?>'></td>
+    </tr>
+    <tr>
+        <td><label for='fp_subheadline'><?php echo __('Frontpage Subheadline', 'myMovies'); ?></label></td>
+        <td><input type='text' name='fp_subheadline' id='fp_subheadline' value='<?php echo $customvaulue->getValue('Frontpage Subheadline')?>'></td>
+    </tr>
+    <tr>
+        <td><label for='fp_welcometext'><?php echo __('Frontpage welcome text', 'myMovies'); ?></label></td>
+        <td><textarea type='text' name='fp_welcometext' rows="7" id='fp_welcometext' style="width: 100%"><?php echo $customvaulue->getValue('Frontpage Text')?></textarea></td>
+    </tr>
     
-    foreach ($allvalues as $value){
-        if($alternate == 'alternate') $alternate = '';else $alternate = 'alternate';
-        echo "<tr class='$alternate'>";
-        echo "<td><label for='$value->identifier'>$value->identifier</label></td>";
-        echo "<td><input type='text' name='$value->identifier' id='$value->identifier' value='$value->value'></td>";
-        echo '</tr>';
-    }
-?>
     </table>
     <div class="tablenav bottom">
-        <input type="submit" class="button action" value="Apply">
+        <input type="submit" class="button action" value="<?php echo __('Apply', 'myMovies'); ?>">
     </div>
     </form>
 </div>

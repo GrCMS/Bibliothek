@@ -45,4 +45,17 @@ class customValue{
                 );
         return $values;
     }
+    
+    function setValue($identifier, $value) {
+        global $wpdb;
+        $table_name = $wpdb->prefix . 'mymovies_value_identifiers';
+        
+        $wpdb->update( 
+	$table_name, 
+	array( 
+		'value' => $value,
+	), 
+	array( 'identifier' => $identifier )
+);
+    }
 }

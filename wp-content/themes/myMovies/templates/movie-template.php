@@ -2,9 +2,9 @@
 $movieimagepath = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), 'movie_poster', false);
 $movieimagepath = $movieimagepath[0];
 $movietitle = get_the_title();
-$moviesubtitle = get_post_meta($post->ID, 'subtitle', TRUE);
-$moviestudio = get_post_meta($post->ID, 'studio', TRUE);
-$movieyear = get_post_meta($post->ID, 'year', TRUE);
+$moviesubtitle = get_field('subtitle');
+$moviestudio = get_field('studio');
+$movieyear = get_field('year');
 $moviedescription = get_the_content();
 $userloggedin = is_user_logged_in() ? true : false;
 

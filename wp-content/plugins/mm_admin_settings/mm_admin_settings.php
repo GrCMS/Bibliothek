@@ -2,7 +2,7 @@
 
 /*
 Plugin Name: myMovies Admin Settings
-Description: Adds a settings section to the Admin menu, which allows the admin to set the values of certain elements within the page
+Description: Adds a settings section to the Admin menu wich extends myMovies functionality
 */
 
 include_once(dirname(__FILE__) .'/customvalues.php');
