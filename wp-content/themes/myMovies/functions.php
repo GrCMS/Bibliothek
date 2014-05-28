@@ -187,9 +187,9 @@ function register_a_user() {
     if (isset($_GET['do']) && $_GET['do'] == 'register'):
         $errors = array();
         if (empty($_POST['user']) || empty($_POST['email']))
-            $errors[] = 'provide a user and email';
+            $errors[] = __('provide a user and email');
         if (!empty($_POST['spam']))
-            $errors[] = 'gtfo spammer';
+            $errors[] = __('gtfo spammer');
 
         $user_login = esc_attr($_POST['user']);
         $user_email = esc_attr($_POST['email']);
@@ -199,21 +199,21 @@ function register_a_user() {
         $user_email = apply_filters('user_registration_email', $user_email);
 
         if (!is_email($user_email))
-            $errors[] = 'invalid e-mail';
+            $errors[] = __('invalid e-mail');
         elseif (email_exists($user_email))
-            $errors[] = 'this email is already registered, bla bla...';
+            $errors[] = __('this email is already registered, bla bla...');
 
         if (empty($sanitized_user_login) || !validate_username($user_login))
-            $errors[] = 'invalid user name';
+            $errors[] = __('invalid user name');
         elseif (username_exists($sanitized_user_login))
-            $errors[] = 'user name already exists';
+            $errors[] = __('user name already exists');
 
         if (empty($errors)):
             $user_pass = wp_generate_password();
             $user_id = wp_create_user($sanitized_user_login, $user_pass, $user_email);
 
             if (!$user_id):
-                $errors[] = 'registration failed...';
+                $errors[] = __('registration failed...');
             else:
                 update_user_option($user_id, 'default_password_nag', true, true);
                 wp_new_user_notification($user_id, $user_pass);

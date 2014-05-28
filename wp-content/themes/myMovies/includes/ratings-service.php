@@ -51,8 +51,9 @@ class Rating {
     
     function get_top_rated_movies($movie_count){
         $top_rated = $GLOBALS['wpdb']->get_results(''
-                . 'SELECT movie, round(avg(rating),1) as rating '
-                . 'FROM wp_ratings '
+                . 'SELECT comment_post_ID as movie, round(avg(meta_value),1) as rating '
+                . 'FROM wp_commentmeta '
+                . 'JOIN wp_comments ON (wp_commentmeta.comment_id = wp_comments.comment_ID) '              
                 . 'WHERE 1 '
                 . 'GROUP BY movie '
                 . 'ORDER BY rating DESC '
