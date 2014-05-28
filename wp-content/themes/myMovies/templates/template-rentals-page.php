@@ -95,7 +95,7 @@ get_header(); //gets header.php
         $current_rentals = new movie_rentals();
         $count = $current_rentals->getCount();
         
-        echo "<div id='rentals_counter'>Current rentals: (<span>$count</span>) </div><br/>";
+        echo "<div id='rentals_counter'>".__("Current rentals:", "myMovies")."(<span>$count</span>) </div><br/>";
         echo "<ul id='mm-rentals'>";
 
         foreach($current_rentals->getRentedMovies() as $movie) {
@@ -112,8 +112,8 @@ get_header(); //gets header.php
             $return_date = new DateTime($movie->return_date);
                         
             echo "<div class='mm-rentals-overlay text-center'>";
-            echo "<span>Retrun: <span>" . $return_date->format('d-m-Y') ."</span></span>";
-            echo "<button class='btn btn-primary mm-return-movie' data-post_id='" . $movie->ID . "'>Return</button>";
+            echo "<span>". __("Return:", "myMovies") ."<span>" . $return_date->format('d-m-Y') ."</span></span>";
+            echo "<button class='btn btn-primary mm-return-movie' data-post_id='" . $movie->ID . "'>". __("Return", "myMovies") ."</button>";
             echo "</div>";
         }
         
@@ -129,7 +129,7 @@ get_header(); //gets header.php
         
         echo "<div class='table-responsive'>";
         echo "<table id='mm-rentals-history' class='table table-striped'>";
-        echo "<thead><tr><th>Movie</th><th>Rented</th><th>Returned</th></tr></thead>";
+        echo "<thead><tr><th>". __("Movie", "myMovies") ."</th><th>". __("Rented", "myMovies") ."</th><th>". __("Returned", "myMovies") ."</th></tr></thead>";
         echo "<tbody>";
                         
         foreach($current_rentals->getHistory() as $movie_rented)

@@ -1,0 +1,206 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: myMovies\n"
+"POT-Creation-Date: 2014-05-28 10:45+0100\n"
+"PO-Revision-Date: 2014-05-28 10:52+0100\n"
+"Last-Translator: \n"
+"Language-Team: Jörg Lautenschlager, Daniel Meier, Jerry Kies\n"
+"Language: English\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.7\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: archive-movies.php:24
+msgid "All movies"
+msgstr "Alle Filme"
+
+#: archive-movies.php:30
+msgid "Loading movies..."
+msgstr "Lade Filme..."
+
+#: comments-popup.php:9
+msgid "Rate it!"
+msgstr "Bewerte!"
+
+#: footer.php:26
+msgid "Login"
+msgstr "Login"
+
+#: footer.php:32
+msgid "User"
+msgstr "Benutzer"
+
+#: footer.php:37
+msgid "Password"
+msgstr "Passwort"
+
+#: footer.php:44
+msgid "Remember me"
+msgstr "Angemeldet bleiben"
+
+#: footer.php:54
+msgid "Not a member yet?"
+msgstr "Noch kein Mitglied?"
+
+#: footer.php:54
+msgid "Sign up now!"
+msgstr "Jetzt registrieren!"
+
+#: footer.php:75
+msgid "Rent movie:"
+msgstr "Leihe Film:"
+
+#: footer.php:95
+msgid "Rent start:"
+msgstr "Beginn Leihvorgang:"
+
+#: footer.php:106
+msgid "Duration"
+msgstr "Dauer"
+
+#: footer.php:108
+msgid "5 days"
+msgstr "5 Tage"
+
+#: footer.php:109
+msgid "7 days"
+msgstr "7 Tage"
+
+#: footer.php:110
+msgid "10 days"
+msgstr "10 Tage"
+
+#: footer.php:111
+msgid "14 days"
+msgstr "14 Tage"
+
+#: footer.php:122
+msgid "Return date:"
+msgstr "Rückgabedatum:"
+
+#: footer.php:133
+msgid "Close"
+msgstr "Schließen"
+
+#: footer.php:134 templates/movie-template.php:122
+#: templates/template-bookmarks-page.php:113 templates/template-movie.php:129
+#: templates/template-movie.php:137
+msgid "Rent"
+msgstr "Ausleihen"
+
+#: front-page.php:50
+msgid "Sign up"
+msgstr "Anmelden"
+
+#: search.php:14
+#, php-format
+msgid "Search Results for: %s"
+msgstr "Suchergebnisse für: %s"
+
+#: includes/custom-post-type-movies.php:14
+msgid "Movies"
+msgstr "Filme"
+
+#: includes/custom-post-type-movies.php:15
+#: templates/template-rentals-page.php:132
+msgid "Movie"
+msgstr "Film"
+
+#: includes/custom-taxonomy-genres.php:15
+msgid "Genres"
+msgstr "Genres"
+
+#: templates/movie-template.php:98 templates/movie-template.php:105
+#: templates/movie-template.php:112 templates/template-movie.php:87
+#: templates/template-movie.php:94 templates/template-movie.php:101
+msgid "Watchlist"
+msgstr "Merkliste"
+
+#: templates/movie-template.php:141
+msgid "Comment"
+msgstr "Kommentar"
+
+#: templates/template-bookmarks-page.php:112 templates/template-movie.php:63
+msgid "Rating"
+msgstr "Bewertung"
+
+#: templates/template-movie.php:118 templates/template-rentals-page.php:132
+msgid "Rented"
+msgstr "Geliehen"
+
+#: templates/template-my-profile-page.php:22
+msgid "The passwords you entered do not match.  Your password was not updated."
+msgstr ""
+"Die eingegebenen Passwörter stimmen nicht überein. Das Passwort wurde nicht "
+"aktualisiert."
+
+#: templates/template-my-profile-page.php:30
+msgid "The Email you entered is not valid.  please try again."
+msgstr ""
+"Dein eingegebene E-Mail Adresse ist nicht gültig. Bitte nochmals versuchen."
+
+#: templates/template-my-profile-page.php:32
+msgid "This email is already used by another user.  try a different one."
+msgstr ""
+"Die E-Mail Adresse wird bereits von einem anderen Nutzer verwendet. Bitte "
+"versuchen Sie eine andere."
+
+#: templates/template-my-profile-page.php:70
+msgid "You must be logged in to edit your profile."
+msgstr "Sie müssen eingeloggt sein, um Ihr Profil bearbeiten zu können."
+
+#: templates/template-my-profile-page.php:79
+msgid "First Name"
+msgstr "Vorname"
+
+#: templates/template-my-profile-page.php:83
+msgid "Last Name"
+msgstr "Nachname"
+
+#: templates/template-my-profile-page.php:87
+msgid "E-mail *"
+msgstr "E-Mail *"
+
+#: templates/template-my-profile-page.php:91
+msgid "Website"
+msgstr "Website"
+
+#: templates/template-my-profile-page.php:95
+msgid "Password *"
+msgstr "Passwort *"
+
+#: templates/template-my-profile-page.php:99
+msgid "Repeat Password *"
+msgstr "Wiederhole Passwort *"
+
+#: templates/template-my-profile-page.php:103
+msgid "Biographical Information"
+msgstr "Profil Info"
+
+#: templates/template-my-profile-page.php:113
+msgid "Update"
+msgstr "Aktualisieren"
+
+#: templates/template-my-profile-page.php:124
+msgid "Sorry, no page matched your criteria."
+msgstr "Tut uns leid, keine Seite entspricht Ihren Suchkriterien."
+
+#: templates/template-rentals-page.php:98
+msgid "Current rentals:"
+msgstr "Aktuelle Leihvorgänge:"
+
+#: templates/template-rentals-page.php:115
+msgid "Return:"
+msgstr "Rückgabe:"
+
+#: templates/template-rentals-page.php:116
+msgid "Return"
+msgstr "Rückgabe"
+
+#: templates/template-rentals-page.php:132
+msgid "Returned"
+msgstr "Zurückgegeben"

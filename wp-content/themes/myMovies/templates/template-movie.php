@@ -60,7 +60,7 @@ $user_rating = $Rate->get_user_movie_rating($post->ID);
                 <div class="col-md-4 col-sm-12 movie-addon-block">
                     <div class="row">
                         <div class="rating col-md-12 col-sm-6 padding-bottom-15">
-                            Rating<br>
+                            <?php echo __("Rating", "myMovies"); ?><br>
                             <span class="star stars-empty movie-<?php echo $post->ID ?>"><?php echo $global_rating ?></span>
                             <span class="rating-stars" is-user="<?php
                             if ($userloggedin)
@@ -83,19 +83,22 @@ $user_rating = $Rate->get_user_movie_rating($post->ID);
                                     echo '<button '
                                     . 'class="mm_user_bookmark btn btn-primary"'
                                     . 'data-post_id="' . $post->ID . '">'
-                                    . '<i class="icon ion-checkmark"></i> Watchlist'
+                                    . '<i class="icon ion-checkmark"></i> '
+                                    . __("Watchlist", "myMovies")
                                     . '</button>';
                                 } else {
                                     echo '<button '
                                     . 'class="mm_user_bookmark btn btn-primary"'
                                     . 'data-post_id="' . $post->ID . '">'
-                                    . '<i class="icon ion-plus"></i> Watchlist'
+                                    . '<i class="icon ion-plus"></i> '
+                                    . __("Watchlist", "myMovies")
                                     . '</button>';
                                 }
                             } else {
                                 echo '<button '
                                 . 'class="btn btn-disabled">'
-                                . '<i class="icon ion-plus"></i> Watchlist'
+                                . '<i class="icon ion-plus"></i> '
+                                . __("Watchlist", "myMovies")
                                 . '</button>';
                             }
                             ?>
@@ -112,7 +115,7 @@ $user_rating = $Rate->get_user_movie_rating($post->ID);
                                     . 'class="btn btn-disabled"'
                                     . 'data-post_id="' . $post->ID . '" '
                                     . 'data-post_title="' . $movietitle . '">'
-                                    . 'Rented'
+                                    . __("Rented", "myMovies")
                                     . '</button>';
                                     
                                 } else {
@@ -123,7 +126,7 @@ $user_rating = $Rate->get_user_movie_rating($post->ID);
                                     . 'data-toggle="modal" '
                                     . 'data-target="#mm-rental-modal" '
                                     . 'data-post_title="' . $movietitle . '">'
-                                    . 'Rent'
+                                    . __("Rent", "myMovies")
                                     . '</button>';
                                 }
                                     
@@ -131,7 +134,7 @@ $user_rating = $Rate->get_user_movie_rating($post->ID);
                                 
                                 echo '<button '
                                 . 'class="btn btn-disabled">'
-                                . 'Rent'
+                                . __("Rent", "myMovies")
                                 . '</button>';
                             }
                                
