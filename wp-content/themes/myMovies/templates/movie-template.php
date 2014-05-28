@@ -78,7 +78,7 @@ else $global_rating = 0;
                         <div class="rating col-md-12 col-sm-6 padding-bottom-15">
                             Rating<br>
                             <!--<span class="star stars-empty movie-<?php echo $post->ID ?>"><?php echo $global_rating; ?></span>-->
-                            <span class="rating-show" data-score="<?php echo $global_rating; ?>">lalala</span>
+                            <span class="rating-show" data-score="<?php echo $global_rating; ?>"></span>
 
                         </div>
                         <div class="buttons col-md-12 col-sm-6">
@@ -94,19 +94,22 @@ else $global_rating = 0;
                                     echo '<button '
                                     . 'class="mm_user_bookmark btn btn-primary bookmarked"'
                                     . 'data-post_id="' . $post->ID . '">'
-                                    . '<i class="icon ion-checkmark"></i> Watchlist'
+                                    . '<i class="icon ion-checkmark"></i> '
+                                    .__("Watchlist", "myMovies")
                                     . '</button>';
                                 } else {
                                     echo '<button '
                                     . 'class="mm_user_bookmark btn btn-primary"'
                                     . 'data-post_id="' . $post->ID . '">'
-                                    . '<i class="icon ion-plus"></i> Watchlist'
+                                    . '<i class="icon ion-plus"></i> '
+                                    .__("Watchlist", "myMovies")
                                     . '</button>';
                                 }
                             } else {
                                 echo '<button '
                                 . 'class="btn btn-disabled">'
-                                . '<i class="icon ion-plus"></i> Watchlist'
+                                . '<i class="icon ion-plus"></i> '
+                                .__("Watchlist", "myMovies")
                                 . '</button>';
                             }
                             ?>
@@ -116,7 +119,7 @@ else $global_rating = 0;
                                 echo 'btn-info';
                             else
                                 echo 'btn-disabled';
-                            ?>">Rent</button>
+                            ?>"><?php echo __("Rent", "myMovies");?></button>
 
                         </div>
                     </div>
@@ -135,7 +138,7 @@ else $global_rating = 0;
     <div class="row">
         <div class="col-md-12">
             <div class="open-modal-<?php echo $post->ID; ?>" data-toggle="modal" data-target="mm-comment-<?php echo $post->ID; ?>-modal">
-                <a>Comment</a>
+                <a><?php echo __("Comment", "myMovies");?></a>
             </div>
         </div>
     </div>

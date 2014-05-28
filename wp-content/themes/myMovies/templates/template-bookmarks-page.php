@@ -109,8 +109,8 @@ get_header(); //gets header.php
             
             echo "<span class='mm-watchlist-icon-close ion-ios7-close-outline mm_user_bookmark' data-post_id='" . $bookmark_id . "' ></span>";
             echo "<div class='mm-watchlist-overlay text-center'>";
-            echo "<span><a href=''>Rating</a></span>"; //GET RATING
-            echo "<span><a href=''>Rent</a></span>";//AJAX CALL RENT MOVIE
+            echo "<span><a href=''>".__("Rating", "myMovies")."</a></span>"; //GET RATING
+            echo "<span><a href=''>".__("Rent", "myMovies")."</a></span>";//AJAX CALL RENT MOVIE
             echo "</div>";
             
             echo "</div></li>";

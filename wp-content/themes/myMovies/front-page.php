@@ -47,7 +47,7 @@ wp_reset_query();  // Restore global post data stomped by the_post().
     <div class="multicol-2">
         <?php echo $customvalues->getValue('Frontpage Text'); ?>
     </div>
-    <a class="btn btn-primary"><?php echo $customvalues->getValue('SignUp Button Text'); ?></a>
+    <a class="btn btn-primary"><?php __("Sign up", "myMovies"); ?></a>
 </div>
 <?php endif; ?>
 

@@ -21,13 +21,13 @@ get_header();
 
 <div id="mm-all-movies-posts">
     
-    <h2 class="container">All movies</h2>
+    <h2 class="container"><?php __("All movies", "myMovies"); ?></h2>
     
 </div>
 
 <div id="mm-all-movie-ajax-loading" class="container text-center">
     
-    <span>Loading movies...</span><br/>
+    <span><?php __("Loading movies...", "myMovies"); ?></span><br/>
     <span class="ion-loading-c" id="mm-all-movie-ajax-loading-icon"></span>
     
 </div>
