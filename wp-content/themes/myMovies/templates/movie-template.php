@@ -76,9 +76,27 @@ else $global_rating = 0;
                 <div class="col-md-4 col-sm-12 movie-addon-block">
                     <div class="row">
                         <div class="rating col-md-12 col-sm-6 padding-bottom-15">
-                            Rating<br>
-                            <!--<span class="star stars-empty movie-<?php echo $post->ID ?>"><?php echo $global_rating; ?></span>-->
-                            <span class="rating-show" data-score="<?php echo $global_rating; ?>"></span>
+                           <?php echo __('Rating', 'myMovies'); ?><br>
+                            <span class="hidden ratingvalue"><? echo $rating ?></span>
+					<ul class="color-primary">
+						<?php
+							for($i = 1; $i < 6; $i++)
+							{
+								// Setzen der Ratingklassen
+								$starvalue;
+								if($rating >= $i)
+									$starvalue = "filled";
+								
+								else if($rating > ($i-0.7))
+									$starvalue = "half";
+								
+								else
+									$starvalue = "empty";
+								
+								echo('<li class="star star1 stars-'.$starvalue.'"></li>');
+							} 
+						?>
+					</ul>
 
                         </div>
                         <div class="buttons col-md-12 col-sm-6">
@@ -119,7 +137,7 @@ else $global_rating = 0;
                                 echo 'btn-info';
                             else
                                 echo 'btn-disabled';
-                            ?>"><?php echo __("Rent", "myMovies");?></button>
+                            ?>"><?php echo __('Rent', 'myMovies');?></button>
 
                         </div>
                     </div>
@@ -138,7 +156,7 @@ else $global_rating = 0;
     <div class="row">
         <div class="col-md-12">
             <div class="open-modal-<?php echo $post->ID; ?>" data-toggle="modal" data-target="mm-comment-<?php echo $post->ID; ?>-modal">
-                <a><?php echo __("Comment", "myMovies");?></a>
+                <a><?php echo __('Comment', 'myMovies');?></a>
             </div>
         </div>
     </div>

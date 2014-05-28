@@ -6,7 +6,7 @@ $customvalues = new customValue();
 ?>
 
 <!-- BODY START -->
-<h2 class="container moviesection-header"> New movies</h2>
+<h2 class="container moviesection-header"><?php echo __('New movies', 'myMovies'); ?></h2>
 <?php
 $type = 'movies';
 $args = array(
@@ -47,7 +47,7 @@ wp_reset_query();  // Restore global post data stomped by the_post().
     <div class="multicol-2">
         <?php echo $customvalues->getValue('Frontpage Text'); ?>
     </div>
-    <a class="btn btn-primary"><?php __("Sign up", "myMovies"); ?></a>
+    <a class="btn btn-primary"><?php echo __("Sign up", "myMovies"); ?></a>
 </div>
 <?php endif; ?>
 

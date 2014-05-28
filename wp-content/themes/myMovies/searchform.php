@@ -2,7 +2,7 @@
 
 	<form role="search" action="<?php echo site_url('/'); ?>" method="get">
 
-		<input id="mm-search-input" type="search" name="s" placeholder="Search"/>
+		<input id="mm-search-input" type="search" name="s" placeholder="<?php echo __('Search', 'myMovies'); ?>"/>
 
 		<!-- <input type="hidden" name="post_type" value="movie_custom_post_type" /> --> <!-- // hidden 'your_custom_post_type' value -->
 

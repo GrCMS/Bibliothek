@@ -45,7 +45,7 @@ if ($my_query->have_posts()) {
         if (!$first)
             echo '<div class="movie-divider"></div>';
         $first = false;
-        require("template-movie.php");
+        require("movie-template.php");
 
     endwhile;
 }

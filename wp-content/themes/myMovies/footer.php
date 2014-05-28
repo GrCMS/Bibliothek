@@ -23,25 +23,25 @@
             
                 <div class="modal-header text-left">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h4 class="modal-title" id="myModalLabel"><?php __("Login", "myMovies"); ?></h4>
+                    <h4 class="modal-title" id="myModalLabel"><?php echo __("Login", "myMovies"); ?></h4>
                 </div>
                 
                 <div class="modal-body">
                 
                     <div class="form-group">
-                        <label class="sr-only" for="log"><?php __("User", "myMovies"); ?></label>
-                        <input placeholder="User" class="form-control" type="text" name="log" id="log" value="<?php echo wp_specialchars(stripslashes($user_login), 1) ?>"/> 
+                        <label class="sr-only" for="log"><?php echo __("User", "myMovies"); ?></label>
+                        <input placeholder="<?php echo __('User', 'myMovies'); ?>" class="form-control" type="text" name="log" id="log" value="<?php echo wp_specialchars(stripslashes($user_login), 1) ?>"/> 
                     </div>
                     
                     <div class="form-group">
-                        <label class="sr-only" for="pwd"><?php __("Password", "myMovies"); ?></label>
-                        <input placeholder="Password" class="form-control" type="password" name="pwd" id="pwd" size="22" /> 
+                        <label class="sr-only" for="pwd"><?php echo __("Password", "myMovies"); ?></label>
+                        <input placeholder="<?php echo __('Password', 'myMovies'); ?>" class="form-control" type="password" name="pwd" id="pwd" size="22" /> 
                     </div>
                     
                     <div class="form-group">
                         <div class="checkbox text-left">
                             <label>
-                                <input name="rememberme" type="checkbox" checked="checked" value="forever" /> <?php __("Remember me", "myMovies"); ?>
+                                <input name="rememberme" type="checkbox" checked="checked" value="forever" /> <?php echo __("Remember me", "myMovies"); ?>
                             </label>
                         </div>
                     </div>
@@ -50,8 +50,8 @@
                 
                 <div class="modal-footer">
                     
-                    <input class="btn btn-primary" type="submit" name="submit" value="Send" class="button" /><br>
-                    <p class="padding-top-15"><?php __("Not a member yet?", "myMovies"); ?> <a href="<?php echo site_url() . '/login?action=register&source=modal'; ?>"><?php __("Sign up now!", "myMovies"); ?></a></p>
+                    <input class="btn btn-primary" type="submit" name="submit" value="<?php echo __('Login', 'myMovies'); ?>" class="button" /><br>
+                    <p class="padding-top-15"><?php echo __("Not a member yet?", "myMovies"); ?> <a href="<?php echo site_url() . '/login?action=register&source=modal'; ?>"><?php echo __("Sign up now!", "myMovies"); ?></a></p>
                 </div>
         
             </form>
@@ -72,7 +72,7 @@
             <div class="modal-header">
         			
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title" id="mm-rental-modal-label"><?php __("Rent movie:", "myMovies"); ?> <span id="mm-rental-modal-title"></span></h4>
+                <h4 class="modal-title" id="mm-rental-modal-label"><?php echo __("Rent movie:", "myMovies"); ?> <span id="mm-rental-modal-title"></span></h4>
                 
             </div>
       			
@@ -92,7 +92,7 @@
       					
                     <div class="col-xs-6">
 							     
-                        <label><?php __("Rent start:", "myMovies"); ?> </label>
+                        <label><?php echo __("Rent start:", "myMovies"); ?> </label>
                         <div id="mm-dp-rent-start" class="input-group date">
   								
                             <input type="text" data-date-format="dd.mm.yyyy" class="form-control"><span class="input-group-addon"><i class="ion-calendar"></i></span>
@@ -103,12 +103,12 @@
 
                     <div class="col-xs-6">
     							
-                        <label><?php __("Duration", "myMovies"); ?></label>
+                        <label><?php echo __("Duration", "myMovies"); ?></label>
                         <select class="form-control" id="mm-rent-duration-dropdown">
-                            <option value="5"><?php __("5 days", "myMovies"); ?></option>
-                            <option value="7"><?php __("7 days", "myMovies"); ?></option>
-                            <option value="10"><?php __("10 days", "myMovies"); ?></option>
-                            <option value="14"><?php __("14 days", "myMovies"); ?></option>
+                            <option value="5"><?php echo __("5 days", "myMovies"); ?></option>
+                            <option value="7"><?php echo __("7 days", "myMovies"); ?></option>
+                            <option value="10"><?php echo __("10 days", "myMovies"); ?></option>
+                            <option value="14"><?php echo __("14 days", "myMovies"); ?></option>
                         </select>
 
                     </div>
@@ -119,8 +119,8 @@
 						
                     <div class="col-xs-12 col-lg-offset-6 col-md-offset-6 col-sm-offset-6" style="line-height: 50px">
 
-                            <label><?php __("Return date:", "myMovies"); ?></label>
-                            <span id="mm-rent-return-date">dd.mm.yyyy</span>
+                            <label><?php echo __("Return date:", "myMovies"); ?></label>
+                            <span id="mm-rent-return-date"><?php echo __("dd.mm.yyyy", "myMovies"); ?></span>
 
                     </div>
 
@@ -130,8 +130,8 @@
       			
             <div class="modal-footer">
         			
-                <button type="button" class="btn btn-default" data-dismiss="modal"><?php __("Close", "myMovies"); ?></button>
-                <button type="button" class="btn btn-primary" id="mm-rent-movie-ajax"><?php __("Rent", "myMovies"); ?></button>
+                <button type="button" class="btn btn-default" data-dismiss="modal"><?php echo __("Close", "myMovies"); ?></button>
+                <button type="button" class="btn btn-primary" id="mm-rent-movie-ajax"><?php echo __("Rent", "myMovies"); ?></button>
       			
             </div>
             

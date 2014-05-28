@@ -31,7 +31,7 @@ get_header(); //gets header.php
       float:left;
       position: relative;
       text-align: center;
-      padding: 10px;
+      padding: 10px 20px 10px 0px;
     }
 
     .mm-watchlist-item-wrapper {
@@ -54,6 +54,14 @@ get_header(); //gets header.php
       right: 10px;
       cursor: pointer;
       font-size: 18px;
+      text-shadow: 0px 0px 5px #000000;
+      background: rgba(0,0,0,0.5);
+      width: 22px;
+      height: 22px;
+      line-height: 22px;
+      -webkit-border-radius: 50%;
+      -moz-border-radius: 50%;
+      border-radius: 50%;
     }
 
     .mm-watchlist-overlay {
@@ -86,14 +94,14 @@ get_header(); //gets header.php
 <!-- BODY START -->
 <div class="container">
     
-    <h1>Bookmarks</h1>
+    <h1><?php echo __('Watchlist', 'myMovies'); ?></h1>
 
     <?php
 
         $current_bookmarks = new bookmarks();
         $count = $current_bookmarks->count();
         
-        echo "<div id='bookmark_counter'> Bookmarks: (<span>$count</span>) </div><br/>";
+        echo "<div id='bookmark_counter'> ".__('My watchlist', 'myMovies')." | <span class='color-primary'>$count</span></div><br/>";
         echo "<ul id='mm-watchlist'>";
     
         foreach($current_bookmarks->get_bookmarks() as $bookmark_id)
@@ -109,8 +117,8 @@ get_header(); //gets header.php
             
             echo "<span class='mm-watchlist-icon-close ion-ios7-close-outline mm_user_bookmark' data-post_id='" . $bookmark_id . "' ></span>";
             echo "<div class='mm-watchlist-overlay text-center'>";
-            echo "<span><a href=''>".__("Rating", "myMovies")."</a></span>"; //GET RATING
-            echo "<span><a href=''>".__("Rent", "myMovies")."</a></span>";//AJAX CALL RENT MOVIE
+            echo "<span><a href=''>". __('Rating', 'myMovies')."</a></span>"; //GET RATING
+            echo "<span><a href=''>". __('Rent', 'myMovies')."</a></span>";//AJAX CALL RENT MOVIE
             echo "</div>";
             
             echo "</div></li>";

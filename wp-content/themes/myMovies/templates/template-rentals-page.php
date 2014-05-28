@@ -88,14 +88,14 @@ get_header(); //gets header.php
 <!-- BODY START -->
 <div class="container">
 
-    <h1>Rentals</h1>
+    <h1><?php echo __('Rentals', 'myMovies'); ?></h1>
 
     <?php
 
         $current_rentals = new movie_rentals();
         $count = $current_rentals->getCount();
         
-        echo "<div id='rentals_counter'>".__("Current rentals:", "myMovies")."(<span>$count</span>) </div><br/>";
+        echo "<div id='rentals_counter'>".__("Current rentals", "myMovies")." | <span class='color-primary'>$count</span> </div><br/>";
         echo "<ul id='mm-rentals'>";
 
         foreach($current_rentals->getRentedMovies() as $movie) {
@@ -125,11 +125,11 @@ get_header(); //gets header.php
     <?php
 
         $history_count = $current_rentals->getCountHistory();
-        echo "<div id='rentals_history_counter'> History: (<span>$history_count</span>) </div><br/>";
+        echo "<div id='rentals_history_counter'> ". __('History', 'myMovies') ." | <span class='color-primary'>$history_count</span> </div><br/>";
         
         echo "<div class='table-responsive'>";
         echo "<table id='mm-rentals-history' class='table table-striped'>";
-        echo "<thead><tr><th>". __("Movie", "myMovies") ."</th><th>". __("Rented", "myMovies") ."</th><th>". __("Returned", "myMovies") ."</th></tr></thead>";
+        echo "<thead><tr><th>". __('Movie', 'myMovies') ."</th><th>". __("Rented", "myMovies") ."</th><th>". __("Returned", "myMovies") ."</th></tr></thead>";
         echo "<tbody>";
                         
         foreach($current_rentals->getHistory() as $movie_rented)

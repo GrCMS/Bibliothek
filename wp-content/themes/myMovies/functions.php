@@ -39,9 +39,14 @@ include_once('includes/custom-backend-menu.php');
 add_action('after_setup_theme', 'myMovies_theme_setup');
 
 function myMovies_theme_setup() {
-
+    // Load language files
+    load_theme_textdomain('myMovies', get_template_directory() . '/languages');
+    
+    //include(get_template_directory() . '/languages/myMovies-de_DE.po');
+    
     //Allows post thumbnails
     add_theme_support('post-thumbnails');
+    
 }
 
 // Add custom image sizes
