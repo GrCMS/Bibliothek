@@ -12,19 +12,9 @@ $comments = get_approved_comments($post->ID);
 
 $Rate = new Rating();
 $global_rating = $Rate->get_public_movie_rating($post->ID);
-$user_rating = $Rate->get_user_movie_rating($post->ID);
-
-$rates = array();
-$val = 0;
-foreach($comments as $comment) {
-    $meta = get_comment_meta($comment->comment_ID, 'rating');
-    foreach($meta as $met => $rating) {
-        array_push($rates, $rating);
-        $val += (int)$rating;
-    }
-    
-}
+$rating = $global_rating[0]['rating'];
 ?>
+
 <div class="container">
     <div class="row movie padding-top-15">
         <div class="col-md-3 col-sm-4 col-xs-5">
@@ -73,7 +63,7 @@ foreach($comments as $comment) {
                     <div class="row">
                         <div class="rating col-md-12 col-sm-6 padding-bottom-15">
                             <?php echo __("Rating", "myMovies"); ?>
-                            <span class="hidden ratingvalue"><? echo $rating ?></span>
+                            <span class="hidden ratingvalue"><?php echo $rating ?></span>
                             <ul class="color-primary">
                                 <?php
                                 for ($i = 1; $i < 6; $i++) {
@@ -164,12 +154,22 @@ foreach($comments as $comment) {
             </div>
             <div class="row padding-top-15">
                 <div class="col-xs-12">
-<?php
-if (isset($moviedescription))
-    echo $moviedescription;
-?>
+                    <?php
+                    if (isset($moviedescription))
+                        echo $moviedescription;
+                    ?>
                 </div>
             </div>
         </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="open-modal" data-toggle="modal" data-target="#modal-<?php echo $post->ID; ?>">
+                <a href='#'><?php echo __('Comment', 'myMovies'); ?></a>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="modal-<?php echo $post->ID; ?>">
+        <?php comments_template('/comments-popup.php'); ?>
     </div>
 </div>
