@@ -23,10 +23,10 @@ function mm_movie_post_loader()
     
     $movie_query = new WP_Query($args);
     while($movie_query->have_posts()) : $movie_query->the_post();
-                       
-        echo '<div class="movie-divider"></div>';        
+                           
         get_template_part( 'templates/template', 'movie' );
-            
+        echo '<div class="movie-divider"></div>';
+        
     endwhile;
     wp_reset_query();
 }
