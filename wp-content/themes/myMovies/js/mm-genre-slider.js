@@ -296,16 +296,19 @@
       			},
 
       			slideIn:function(sOut, sIn, d, f) {
-
+                                                                                    
                             //create a clone from sOut for animation
                             var outClone = $(sOut).clone();
+                            //$(sOut).closest('li.has').css('border-bottom', 'none');
+
+                            //remove after element from clone
                             $(outClone).appendTo(gs.selectors.container);
                             $(outClone).css('position', 'absolute');
 
                             //clone created, hide original
                             //show original again after animation
                             $(sOut).hide();
-
+                                                        
                             //create a clone from sIn for animation
                             var inClone = $(sIn).clone();
                             $(inClone).appendTo(gs.selectors.container);
@@ -380,6 +383,7 @@
                                         $(sOut).show();
 
                                         //callback function fired => animation completed
+                                        //$(sOut).closest('li.has').css('border-bottom', '1px solid #fff');
                                         f.complete();
                                     }
                                 });
