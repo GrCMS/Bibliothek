@@ -156,6 +156,16 @@
             </div>
       			
             <div class="modal-body">
+                
+                <div class="row">
+            
+                    <div class="col-xs-12">
+              
+                        <div id="mm-comment-response-output"></div>
+
+                    </div>
+
+                </div>
 
                 <div class="row">
                 
