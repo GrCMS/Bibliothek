@@ -8,7 +8,7 @@
             commentSend : "#mm-comment-movie-ajax",
             commentOpen : ".mm-comment-movie",
             modalTitle : "#mm-comment-movie-modal-title",
-            modalAlert : "mm-comment-response-output",
+            modalAlert : "#mm-comment-response-output",
             modal : "#mm-comment-movie-modal",
             commentRating: "#mm-comment-movie-rating",
             commentContent: "#mm-comment-movie-content",
@@ -88,7 +88,8 @@
 
         //set:
         commentMovie.vars.comment_rating = null;
-        $(commentMovie.controls.modalAlert).text("not implemented");
+        $(commentMovie.controls.modalAlert).text("not implemented...")
+        .removeClass().addClass('alert alert-danger');
     
         console.log("sending comment: ");
         console.log("=================");
@@ -103,7 +104,6 @@
         //append click function in order to open a modal dialog
         $(commentMovie.controls.commentOpen).live('click', function() {
             
-            console.log("clicked");
             //get the event trigger and store it
             commentMovie.controls.modalTrigger = $(this);
 
