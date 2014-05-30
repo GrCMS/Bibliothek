@@ -10,8 +10,7 @@ $userloggedin = is_user_logged_in() ? true : false;
 
 $rate = new Rating();
 $rating = $rate->get_public_movie_rating($post->ID);
-$rating = $rating[0]['rating']; 
-
+$rating = $rating[0]['rating'];
 ?>
 <div class="container">
     <div class="row movie padding-top-15">
@@ -60,68 +59,66 @@ $rating = $rating[0]['rating'];
                 <div class="col-md-4 col-sm-12 movie-addon-block">
                     <div class="row">
                         <div class="rating col-md-12 col-sm-6 padding-bottom-15">
-                           <?php echo __('Rating', 'myMovies'); ?><br>
+                            <?php echo __('Rating', 'myMovies'); ?><br>
                             <span class="hidden ratingvalue"><?php echo $rating ?></span>
-					<ul class="color-primary">
-						<?php
-							for($i = 1; $i < 6; $i++)
-							{
-								// Setzen der Ratingklassen
-								$starvalue;
-								if($rating >= $i)
-									$starvalue = "filled";
-								
-								else if($rating > ($i-0.7))
-									$starvalue = "half";
-								
-								else
-									$starvalue = "empty";
-								
-								echo('<li class="star star1 stars-'.$starvalue.'"></li>');
-							} 
-						?>
-					</ul>
+                            <ul class="color-primary">
+                                <?php
+                                for ($i = 1; $i < 6; $i++) {
+                                    // Setzen der Ratingklassen
+                                    $starvalue;
+                                    if ($rating >= $i)
+                                        $starvalue = "filled";
+
+                                    else if ($rating > ($i - 0.7))
+                                        $starvalue = "half";
+                                    else
+                                        $starvalue = "empty";
+
+                                    echo('<li class="star star1 stars-' . $starvalue . '"></li>');
+                                }
+                                ?>
+                            </ul>
 
                         </div>
                         <div class="buttons col-md-12 col-sm-6">
 
-                            <?php
-                            //generate code for bookmark button
-                            if ($userloggedin) {
+<?php
+//generate code for bookmark button
+if ($userloggedin) {
 
-                                $current_bookmarks = new bookmarks();
+    $current_bookmarks = new bookmarks();
 
-                                if ($current_bookmarks->is_bookmarked($post->ID)) {
+    if ($current_bookmarks->is_bookmarked($post->ID)) {
 
-                                    echo '<button '
-                                    . 'class="mm_user_bookmark btn btn-primary bookmarked"'
-                                    . 'data-post_id="' . $post->ID . '">'
-                                    . '<i class="icon ion-checkmark"></i> '
-                                    .__("Watchlist", "myMovies")
-                                    . '</button>';
-                                } else {
-                                    echo '<button '
-                                    . 'class="mm_user_bookmark btn btn-primary"'
-                                    . 'data-post_id="' . $post->ID . '">'
-                                    . '<i class="icon ion-plus"></i> '
-                                    .__("Watchlist", "myMovies")
-                                    . '</button>';
-                                }
-                            } else {
-                                echo '<button '
-                                . 'class="btn btn-disabled">'
-                                . '<i class="icon ion-plus"></i> '
-                                .__("Watchlist", "myMovies")
-                                . '</button>';
-                            }
-                            ?>
+        echo '<button '
+        . 'class="mm_user_bookmark btn btn-primary bookmarked"'
+        . 'data-post_id="' . $post->ID . '">'
+        . '<i class="icon ion-checkmark"></i> '
+        . __("Watchlist", "myMovies")
+        . '</button>';
+    } else {
+        echo '<button '
+        . 'class="mm_user_bookmark btn btn-primary"'
+        . 'data-post_id="' . $post->ID . '">'
+        . '<i class="icon ion-plus"></i> '
+        . __("Watchlist", "myMovies")
+        . '</button>';
+    }
+} else {
+    echo '<button '
+    . 'class="btn btn-disabled">'
+    . '<i class="icon ion-plus"></i> '
+    . __("Watchlist", "myMovies")
+    . '</button>';
+}
+?>
 
                             <button class="btn <?php
                             if ($userloggedin)
                                 echo 'btn-info';
                             else
                                 echo 'btn-disabled';
-                            ?>"><?php echo __('Rent', 'myMovies');?></button>
+                            ?>"><?php echo __('Rent', 'myMovies'); ?></button>
 
                         </div>
                     </div>
@@ -129,10 +126,10 @@ $rating = $rating[0]['rating'];
             </div>
             <div class="row padding-top-15">
                 <div class="col-xs-12">
-                    <?php
-                    if (isset($moviedescription))
-                        echo $moviedescription;
-                    ?>
+<?php
+if (isset($moviedescription))
+    echo $moviedescription;
+?>
                 </div>
             </div>
         </div>
@@ -140,12 +137,12 @@ $rating = $rating[0]['rating'];
     <div class="row">
         <div class="col-md-12">
             <div class="open-modal" data-toggle="modal" data-target="#modal-<?php echo $post->ID; ?>">
-                <a href="javascript:void(0)"><?php echo __('Comment', 'myMovies');?></a>
+                <a href="javascript:void(0)"><?php echo __('Comment', 'myMovies'); ?></a>
             </div>
         </div>
     </div> 
 </div>
 
 <div class="modal fade" id="modal-<?php echo $post->ID; ?>">
-    <?php comments_template('/comments-popup.php'); ?>
+<?php comments_template('/comments-popup.php'); ?>
 </div>

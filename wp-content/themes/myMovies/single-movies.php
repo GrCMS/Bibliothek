@@ -15,8 +15,7 @@
 
     echo "<div class='container'>";
 
-    foreach($comments as $comment)
-    {
+    foreach($comments as $comment) {
         if($comment->comment_content) {
             echo "<article>";
             echo "<h5>". $comment->comment_author ."</h5>";

@@ -41,12 +41,10 @@ add_action('after_setup_theme', 'myMovies_theme_setup');
 function myMovies_theme_setup() {
     // Load language files
     load_theme_textdomain('myMovies', get_template_directory() . '/languages');
-    
+
     //include(get_template_directory() . '/languages/myMovies-de_DE.po');
-    
     //Allows post thumbnails
     add_theme_support('post-thumbnails');
-    
 }
 
 // Add custom image sizes
@@ -73,7 +71,7 @@ function create_rentals_table() {
 
     $table_name = $wpdb->prefix . 'rentals';
 
-    $sql = 'CREATE TABLE '.$table_name .' (
+    $sql = 'CREATE TABLE ' . $table_name . ' (
             id int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
             user int(11),
             movie int(11),
@@ -94,7 +92,7 @@ function create_ratings_table() {
 
     $table_name = $wpdb->prefix . 'ratings';
 
-    $sql = 'CREATE TABLE '.$table_name.' (
+    $sql = 'CREATE TABLE ' . $table_name . ' (
             user int(11) NOT NULL,
             movie int(11) NOT NULL,
             rating int(11),
@@ -241,6 +239,32 @@ if (!function_exists('get_comment_popup')) {
         include('comments-popup.php');
     }
 
+}
+
+/**
+ * Creates a shortcode new_movies with attribute count
+ */
+add_shortcode('new_movies', 'new_movies_shortcode');
+
+function new_movies_shortcode($atts) {
+    $a = shortcode_atts(array(
+        'count' => '10',
+            ), $atts);
+
+    $args = array(
+        'post_type' => 'movies',
+        'posts_per_page' => intval($a['count']),
+
+    );
+    $output = '';
+    $movie_query = new WP_Query($args);
+    while($movie_query->have_posts()) : $movie_query->the_post();
+                           
+        get_template_part( 'templates/template', 'movie' );
+        
+    endwhile;
+    
+    return $output; 
 }
 
 ?>

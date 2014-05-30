@@ -165,7 +165,7 @@ $rating = $global_rating[0]['rating'];
     <div class="row">
         <div class="col-md-12">
             <div class="open-modal" data-toggle="modal" data-target="#modal-<?php echo $post->ID; ?>">
-                <a href='#'><?php echo __('Comment', 'myMovies'); ?></a>
+                <a href='javascript:void(0);'><?php echo __('Comment', 'myMovies'); ?></a>
             </div>
         </div>
     </div>
