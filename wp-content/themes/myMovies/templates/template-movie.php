@@ -164,12 +164,20 @@ $rating = $global_rating[0]['rating'];
     </div>
     <div class="row">
         <div class="col-md-12">
-            <div class="open-modal" data-toggle="modal" data-target="#modal-<?php echo $post->ID; ?>">
-                <a href='javascript:void(0);'><?php echo __('Comment', 'myMovies'); ?></a>
-            </div>
+            <?php 
+                
+            if($userloggedin)
+            {
+                echo '<a href="#" class="mm-comment-movie" '
+                . 'data-post_id="'. $post->ID .'" '
+                . 'data-post_title="'. $movietitle .'" '
+                . 'data-toggle="modal" '
+                . 'data-target="#mm-comment-movie-modal">'
+                . 'Bewerten'
+                . '</a>';
+            }
+            ?>
+            
         </div>
-    </div>
-    <div class="modal fade" id="modal-<?php echo $post->ID; ?>">
-        <?php comments_template('/comments-popup.php'); ?>
     </div>
 </div>
