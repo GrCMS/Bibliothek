@@ -15,6 +15,9 @@ include_once('includes/movie-post-loader-service.php');
 //Include movie post loader ajax service
 include_once('includes/movie-rental-service.php');
 
+//Include movie comments ajax service
+include_once('includes/movie-comments-service.php');
+
 //Include custom menu registration in order to user custom menus
 include_once('includes/custom-menu-registration.php');
 

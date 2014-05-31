@@ -179,8 +179,10 @@
 
                 <div class="row">
 
-                    <div class="col-xs-12">
-
+                    <div id="mm-comment-movie-rating" class="col-xs-12">
+                        
+                        <span class="comment-rating-stars"></span>
+                                                                        
                     </div>
 
                 </div>

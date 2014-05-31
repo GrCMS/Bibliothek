@@ -28,6 +28,8 @@
 
             $(commentMovie.controls.modalTitle).text("");
             $(commentMovie.controls.modalAlert).text("").removeClass();
+            $(commentMovie.controls.commentRating + ' span').raty({score: 0});
+            $(commentMovie.controls.commentContent).val('');
       
             commentMovie.controls.modalTrigger = null;
             commentMovie.vars.post_id = null;
@@ -35,39 +37,67 @@
             commentMovie.vars.comment_id = null;
             commentMovie.vars.comment_content = null;
         },
-
+        
+        setRating: function(rating) {
+            
+            $(commentMovie.controls.commentRating + ' span').raty({
+                score: rating,
+                readOnly: false,
+                halfShow: true,
+                starOff: 'movie-off.png',
+                starOn: 'movie-full.png',
+                starHalf: 'movie-half.png',
+                width: 150
+            });
+        },
+        
         getCommentData: function() {
 
             //ajax call to get movie comment
-            console.log("get comment: ");
-            console.log("=============");
-            console.log("post_id: " +  commentMovie.vars.post_id);
-            console.log("comment_id: " + commentMovie.vars.comment_id);
-            console.log("Rating: " + commentMovie.vars.comment_rating);
-            console.log("Content: " + commentMovie.vars.comment_content);
+            $.ajax({
+                type : "POST",
+                dataType : "json",
+                url : myAjax.ajaxurl,
+                data: {
+                    
+                    action: "mm_get_comment_movie", 
+                    post_id : commentMovie.vars.post_id                    
+                },
 
-            //success
+                success: function(data) {
+                    
+                    console.log(data);
+                    if(data != null)
+                    {
+                        commentMovie.vars.comment_id = data.comment_id;
+                        commentMovie.vars.comment_rating = data.comment_rating;
+                        commentMovie.vars.comment_content = data.comment_content;
+                    
+                        if(commentMovie.vars.comment_id != null)
+                        {
+                            if(commentMovie.vars.comment_rating != null)
+                            {
+                                commentMovie.setRating(commentMovie.vars.comment_rating);
+                            }
+                            
+                            if(commentMovie.vars.comment_content != null)
+                            {
+                                $(commentMovie.controls.commentContent).val(commentMovie.vars.comment_content);
+                            }
+                            
+                        } else {
+                         
+                            commentMovie.setRating(0);
+                        }
+                    }
+                },
 
-            //set data:
-            commentMovie.vars.comment_id = null;
-            commentMovie.vars.comment_rating = null;
-            commentMovie.vars.comment_content = null;
+                error: function(data) {
 
-            if(commentMovie.vars.comment_id != null)
-            {
-                //comment exists
-                if(commentMovie.vars.comment_rating != null)
-                {
-                    $(commentMovie.controls.commentRating).val(commentMovie.vars.comment_rating);
                 }
 
-                if(commentMovie.vars.comment_content != null)
-                {
-                    $(commentMovie.controls.commentContent).val(commentMovie.vars.comment_content);
-                }
-            }
+            });
         }
-
     };
 
     //event fired when modal dialog is beeing closed
@@ -75,28 +105,55 @@
 
         //reset vars and fields
         commentMovie.resetModal();
-
     });
 
     //ajax call to send movie comments
     $.fn.commentMovieAjax = function() {
 
-        if($.trim($(commentMovie.controls.commentContent).val()))
-        {
+        if($.trim($(commentMovie.controls.commentContent).val())) {
+            
             commentMovie.vars.comment_content =  $(commentMovie.controls.commentContent).val();
         }
+        
+        if($(commentMovie.controls.commentRating + ' input[name=score]').val()) {
+            
+            if($(commentMovie.controls.commentRating + ' input[name=score]').val().length > 0);
+            {
+                commentMovie.vars.comment_rating = $(commentMovie.controls.commentRating + ' input[name=score]').val();
+            }
+        }
+        
+        if(commentMovie.vars.comment_rating != null && commentMovie.vars.post_id != null) {
+            
+            $.ajax({
+                type : "POST",
+                dataType : "json",
+                url : myAjax.ajaxurl,
+                data: {
+                    
+                    action: "mm_comment_movie", 
+                    post_id : commentMovie.vars.post_id,   
+                    comment_id: commentMovie.vars.comment_id,
+                    comment_rating: commentMovie.vars.comment_rating,
+                    comment_content: commentMovie.vars.comment_content
+                },
 
-        //set:
-        commentMovie.vars.comment_rating = null;
-        $(commentMovie.controls.modalAlert).text("not implemented...")
-        .removeClass().addClass('alert alert-danger');
-    
-        console.log("sending comment: ");
-        console.log("=================");
-        console.log("Post_id: " + commentMovie.vars.post_id);
-        console.log("Comment_id: " + commentMovie.vars.comment_id);
-        console.log("Rating: " + commentMovie.vars.comment_rating);
-        console.log("Content: " + commentMovie.vars.comment_content);
+                success: function(data) {
+                                        
+                },
+
+                error: function(data) {
+                    
+                    //$(commentMovie.controls.modalAlert).text("not implemented...")
+                    //.removeClass().addClass('alert alert-danger');
+                }
+
+            });
+            
+        } else {
+            
+            //set error msg
+        }
     };
 
     $(document).ready(function() {
