@@ -36,15 +36,13 @@ function mm_enqueue_scripts() {
     wp_register_script('movie-rental-js', get_template_directory_uri() . '/js/ajax/movie-rental.js', array('jquery'), '1.0', true);
     wp_register_script('movie-rentals-list-js', get_template_directory_uri() . '/js/mm-rentals-list.js', array('jquery'), '1.0', true);
     wp_register_script('movie-rentals-return-js', get_template_directory_uri() . '/js/ajax/movie-rentals-return.js', array('jquery'), '1.0', true);
-    wp_register_script('movie-comment-js', get_template_directory_uri() . '/js/ajax/movie-comment.js', array('jquery'), '1.0', true);
-    
+        
     //localization for ajax scripts
     wp_localize_script('bookmarks-js', 'myAjax', array('ajaxurl' => admin_url('admin-ajax.php')));
     wp_localize_script('ratings-js', 'myAjax', array('ajaxurl' => admin_url('admin-ajax.php')));
     wp_localize_script('movie-post-loader-js', 'myAjax', array('ajaxurl' => admin_url('admin-ajax.php')));
     wp_localize_script('movie-rental-js', 'myAjax', array('ajaxurl' => admin_url('admin-ajax.php')));
     wp_localize_script('movie-rentals-return-js', 'myAjax', array('ajaxurl' => admin_url('admin-ajax.php')));
-    wp_localize_script('movie-comment-js', 'myAjax', array('ajaxurl' => admin_url('admin-ajax.php')));
     
     //Always enqueue jQuery
     wp_enqueue_script('jquery');
@@ -70,7 +68,6 @@ function mm_enqueue_scripts() {
             wp_enqueue_script('bootstrap-datepicker-js');
             wp_enqueue_script('movie-post-loader-js');
             wp_enqueue_script('movie-rental-js');
-            wp_enqueue_script('movie-comment-js');
         }
         
         if(is_page('Rentals'))

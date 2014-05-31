@@ -65,8 +65,7 @@
                 },
 
                 success: function(data) {
-                    
-                    console.log(data);
+                                        
                     if(data != null)
                     {
                         commentMovie.vars.comment_id = data.comment_id;
@@ -139,20 +138,23 @@
                 },
 
                 success: function(data) {
-                                        
+                    
+                    $(commentMovie.controls.modalAlert).text("Thank you for rating: " + commentMovie.vars.post_title)
+                    .removeClass().addClass('alert alert-success');
                 },
 
                 error: function(data) {
                     
-                    //$(commentMovie.controls.modalAlert).text("not implemented...")
-                    //.removeClass().addClass('alert alert-danger');
+                    $(commentMovie.controls.modalAlert).text("error occured.")
+                    .removeClass().addClass('alert alert-danger');
                 }
 
             });
             
         } else {
             
-            //set error msg
+            $(commentMovie.controls.modalAlert).text("Please set a rating!")
+            .removeClass().addClass('alert alert-danger');
         }
     };
 

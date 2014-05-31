@@ -5,7 +5,6 @@
     the_post();
     require("templates/template-movie.php"); 
     
-    
     $args = array(
         
         'post_id' => get_the_ID()
@@ -23,7 +22,7 @@
             echo "</article>";
         }
     }
-
+    
     echo "</div>";
  
     get_footer(); 

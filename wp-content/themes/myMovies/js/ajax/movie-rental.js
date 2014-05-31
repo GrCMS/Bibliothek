@@ -164,7 +164,7 @@
                 error: function(data) {
 
                     //set error msg
-                    $(rentMovie.controls.modalAlert).text("error occured")
+                    $(rentMovie.controls.modalAlert).text("error occured.")
                     .removeClass().addClass('alert alert-danger');
 
                 }
