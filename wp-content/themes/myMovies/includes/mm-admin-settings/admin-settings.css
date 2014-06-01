@@ -1,0 +1,16 @@
+label {
+
+}
+
+input[type=text] {
+    width: 100%;
+}
+
+.widefat thead th {
+    border-bottom: 1px solid #e1e1e1;
+}
+
+.column-identifier {
+    width: 20%;
+}
+
