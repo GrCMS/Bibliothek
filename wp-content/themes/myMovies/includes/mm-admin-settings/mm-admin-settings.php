@@ -2,6 +2,22 @@
 
 include_once('mm-admin-customValue.php');
 
+add_action("admin_enqueue_scripts", "mm_admin_settings_script_registration");
+
+function mm_admin_settings_script_registration() {
+    
+    wp_register_style('mm-admin-settings-style', get_template_directory_uri() . '/includes/mm-admin-settings/admin-settings.css', array(), '1.0', false);
+    wp_register_style('tablesorter-bootstrap-style', get_template_directory_uri() . '/css/tablesorter/theme.default.css', array(), '1.0', false);
+        
+    wp_register_script('jquery-metadata-js', get_template_directory_uri() . '/js/jquery.metadata.js', array('jquery'), '1.0', true);
+    wp_register_script('jquery-tablesorter-js', get_template_directory_uri() . '/js/jquery.tablesorter.min.js', array('jquery'), '1.0', true);
+        
+    wp_enqueue_style('mm-admin-settings-style');
+    wp_enqueue_style('tablesorter-bootstrap-style');
+    wp_enqueue_script('jquery-metadata-js');
+    wp_enqueue_script('jquery-tablesorter-js');
+}
+
 add_action("admin_menu", "setup_theme_mm_admin_settings_menu");
 
 function setup_theme_mm_admin_settings_menu() {
@@ -30,7 +46,7 @@ function mm_top_level_settings_page() {
         wp_die('You do not have sufficient permissions to access this page.');
     }
     
-    include_once(get_template_directory_uri() .'/includes/mm-admin-settings/mm-admin-top-level-settings-page.php');
+    include_once('mm-admin-top-level-settings-page.php');
 }
 
 function mm_admin_page_front_page_settings() {
@@ -45,12 +61,22 @@ function mm_admin_page_front_page_settings() {
 
 function mm_admin_page_rentals_overview() {
     
-    include_once(get_template_directory_uri() .'/includes/mm-admin-settings/mm-admin-rentals-overview-page.php');
+    if (!current_user_can('edit_themes')) {
+        
+        wp_die('You do not have sufficient permissions to access this page.');
+    }
+    
+    include_once('mm-admin-rentals-overview-page.php');
 }
 
 function mm_admin_page_theme_settings() {
     
-    include_once(get_template_directory_uri() .'/includes/mm-admin-settings/mm-admin-theme-settings-page.php');
+    if (!current_user_can('edit_themes')) {
+        
+        wp_die('You do not have sufficient permissions to access this page.');
+    }
+    
+    include_once('mm-admin-theme-settings-page.php');
 }
 
 

@@ -103,8 +103,8 @@ class movie_rentals {
     
     public function getRentedMovies() {
         
-        if($this->dbExists())
-        {
+        if($this->dbExists()) {
+            
             global $wpdb;
             $table_rentals = $wpdb->prefix . $this->db_rentals_table;
             $table_posts = $wpdb->prefix . $this->db_posts_table;
@@ -124,6 +124,25 @@ class movie_rentals {
                 JOIN $table_rentals ON $table_rentals.movie = $table_posts.ID
                 WHERE $table_rentals.user = $user_id
                 AND $table_rentals.returned =0;"
+            );
+                        
+            return $result;
+        }
+    }
+    
+    public function getAllRentedMovies() {
+        
+        if($this->dbExists()) {
+            
+            global $wpdb;
+            $table_rentals = $wpdb->prefix . $this->db_rentals_table;
+            $table_posts = $wpdb->prefix . $this->db_posts_table;
+            
+            $result = $wpdb->get_results(
+                    
+                "SELECT * FROM $table_posts
+                JOIN $table_rentals ON $table_rentals.movie = $table_posts.ID
+                WHERE $table_rentals.returned =0;"
             );
                         
             return $result;
