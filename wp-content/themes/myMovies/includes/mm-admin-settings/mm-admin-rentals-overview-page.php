@@ -155,7 +155,10 @@ $mostRented = $rentals->getMostRented();
                     {
                         echo "<tr>";
                         echo "<td> $rental->Anzahl </td>";
-                        echo "<td> $rental->movie </td>";
+                        
+                        $post = get_post( $rental->movie);
+                        
+                        echo "<td> $post->post_title</td>";
                         echo "</tr>";
                     }
 
