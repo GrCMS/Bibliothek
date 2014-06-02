@@ -26,6 +26,8 @@ function mm_admin_settings_script_registration() {
     wp_enqueue_script('ion-tabs-js');
 }
 
+//ADD CREATE TABLE FRONT PAGE VALUES!!!
+
 add_action("admin_menu", "setup_theme_mm_admin_settings_menu");
 
 function setup_theme_mm_admin_settings_menu() {
