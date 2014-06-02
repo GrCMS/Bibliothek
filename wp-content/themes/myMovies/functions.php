@@ -62,7 +62,6 @@ add_action('after_switch_theme', 'create_tables');
 
 function create_tables() {
     create_rentals_table();
-    create_ratings_table();
     //create_mymovies_admin_table();
 }
 
@@ -85,33 +84,6 @@ function create_rentals_table() {
 
     require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
     dbDelta($sql);
-}
-
-/**
- * Creates the rentals table in the database
- */
-function create_ratings_table() {
-    global $wpdb;
-
-    $table_name = $wpdb->prefix . 'ratings';
-
-    $sql = 'CREATE TABLE ' . $table_name . ' (
-            user int(11) NOT NULL,
-            movie int(11) NOT NULL,
-            rating int(11),
-            PRIMARY KEY(user,movie));';
-
-    require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
-    dbDelta($sql);
-}
-
-add_action("switch_theme", "drop_rentals_table");
-
-/**
- * Creates the rentals table in the database
- */
-function drop_rentals_table() {
-    echo '<script type="text/javascript">alert("Des war deine falsche Entscheidung mein kleiner Sportsfreund!")</script>';
 }
 
 add_action('admin_init', 'restrict_admin', 1);
