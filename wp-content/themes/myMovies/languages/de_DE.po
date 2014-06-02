@@ -258,3 +258,7 @@ msgstr "Leihhistorie"
 #: ../templates/template-rentals-page.php:132
 msgid "Returned"
 msgstr "Zurückgegeben"
+
+#: ../includes/mm-admin-settings/mm-admin-rentals-overview-page.php:23
+msgid "Rentals Overview"
+msgstr "Übersicht aller derzeit ausgeliehenen Filme"

@@ -54,8 +54,8 @@ class movie_rentals {
     
     public function getHistory() {
         
-        if($this->dbExists())
-        {
+        if($this->dbExists()) {
+            
             global $wpdb;
             $table_rentals = $wpdb->prefix . $this->db_rentals_table;
             $table_posts = $wpdb->prefix . $this->db_posts_table;
@@ -75,6 +75,50 @@ class movie_rentals {
                 JOIN $table_rentals ON $table_rentals.movie = $table_posts.ID
                 WHERE $table_rentals.user = $user_id
                 AND $table_rentals.returned =1;"
+            );
+                        
+            return $result;
+        }
+    }
+    
+    public function getAllRentedMoviesHistory() {
+        
+        if($this->dbExists())
+        {
+            global $wpdb;
+            $table_rentals = $wpdb->prefix . $this->db_rentals_table;
+            $table_posts = $wpdb->prefix . $this->db_posts_table;
+            
+            /*
+             * SELECT * FROM wp_posts 
+             * JOIN wp_rentals 
+             * ON wp_rentals.movie = wp_posts.ID 
+             * WHERE wp_rentals.user = 'user_id' 
+             * AND wp_rentals.returned = 1;
+             */
+            
+            $result = $wpdb->get_results(
+                    
+                "SELECT * FROM $table_posts
+                JOIN $table_rentals ON $table_rentals.movie = $table_posts.ID
+                WHERE $table_rentals.returned = 1;"
+            );
+                        
+            return $result;
+        }
+    }
+    
+    public function getAllRentedMoviesHistoryCount() {
+        
+        if($this->dbExists()) {
+            
+            global $wpdb;
+            $table_rentals = $wpdb->prefix . $this->db_rentals_table;
+                        
+            $result = $wpdb->get_var(
+                    
+                "SELECT COUNT(ID) as 'count' FROM $table_rentals
+                WHERE $table_rentals.returned = 1;"
             );
                         
             return $result;
@@ -148,7 +192,45 @@ class movie_rentals {
             return $result;
         }
     }
-
+    
+    public function getAllRentedMoviesCount() {
+        
+        if($this->dbExists()) {
+            
+            global $wpdb;
+            $table_rentals = $wpdb->prefix . $this->db_rentals_table;
+                        
+            $result = $wpdb->get_var(
+                    
+                "SELECT COUNT(ID) as 'count' FROM $table_rentals
+                WHERE $table_rentals.returned =0;"
+            );
+                        
+            return $result;
+        }
+    }
+    
+    public function getMostRented() {
+        
+        if($this->dbExists()) {
+            
+            global $wpdb;
+            $table_rentals = $wpdb->prefix . $this->db_rentals_table;
+            $table_posts = $wpdb->prefix . $this->db_posts_table;
+           
+            $result = $wpdb->get_results(
+                    
+                "SELECT COUNT($table_rentals.movie) as 'Anzahl', $table_rentals.movie FROM $table_posts
+                JOIN $table_rentals ON $table_rentals.movie = $table_posts.ID
+                WHERE $table_rentals.returned =1
+                GROUP BY $table_rentals.movie
+                ORDER BY Anzahl DESC;"
+            );
+                        
+            return $result;
+        }
+    }
+            
     public function returnMovie($m_id) {
         
         if($this->dbExists())
@@ -207,8 +289,8 @@ class movie_rentals {
     
     public function getCountHistory() {
         
-        if($this->dbExists())
-        {
+        if($this->dbExists()) {
+            
             global $wpdb;
             $table_rentals = $wpdb->prefix . $this->db_rentals_table;
             $user_id = $this->current_user->ID;

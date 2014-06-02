@@ -8,14 +8,22 @@ function mm_admin_settings_script_registration() {
     
     wp_register_style('mm-admin-settings-style', get_template_directory_uri() . '/includes/mm-admin-settings/admin-settings.css', array(), '1.0', false);
     wp_register_style('tablesorter-bootstrap-style', get_template_directory_uri() . '/css/tablesorter/theme.default.css', array(), '1.0', false);
+    wp_register_style('ion-tabs-style', get_template_directory_uri() . '/css/ion.tabs.css', array(), '1.0', false);
+    wp_register_style('ion-tabs-skin-flat-style', get_template_directory_uri() . '/css/ion.tabs.skinFlat.css', array(), '1.0', false);
+    wp_register_style('ion-tabs-skin-bordered-style', get_template_directory_uri() . '/css/ion.tabs.skinBordered.css', array(), '1.0', false);
         
     wp_register_script('jquery-metadata-js', get_template_directory_uri() . '/js/jquery.metadata.js', array('jquery'), '1.0', true);
     wp_register_script('jquery-tablesorter-js', get_template_directory_uri() . '/js/jquery.tablesorter.min.js', array('jquery'), '1.0', true);
+    wp_register_script('ion-tabs-js', get_template_directory_uri() . '/js/ion.tabs.min.js', array('jquery'), '1.0', true);
         
     wp_enqueue_style('mm-admin-settings-style');
     wp_enqueue_style('tablesorter-bootstrap-style');
+    wp_enqueue_style('ion-tabs-style');
+    //wp_enqueue_style('ion-tabs-skin-flat-style');
+    wp_enqueue_style('ion-tabs-skin-bordered-style');
     wp_enqueue_script('jquery-metadata-js');
     wp_enqueue_script('jquery-tablesorter-js');
+    wp_enqueue_script('ion-tabs-js');
 }
 
 add_action("admin_menu", "setup_theme_mm_admin_settings_menu");
