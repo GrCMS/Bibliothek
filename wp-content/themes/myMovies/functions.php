@@ -34,7 +34,7 @@ include_once('includes/script-registration.php');
 include_once('includes/custom-backend-menu.php');
 
 //Include admin backend custom settings
-//include_once('includes/mm-admin-settings/mm-admin-settings.php');
+include_once('includes/mm-admin-settings/mm-admin-settings.php');
 
 /**
  * Hook called on 'after_setup_theme' to add settings after the theme has been activated

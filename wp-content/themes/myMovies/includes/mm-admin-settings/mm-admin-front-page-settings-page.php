@@ -1,11 +1,8 @@
 <?php
 
-//print_r($_POST);
 $customvaulue = new customValue();
-//echo $_POST['fp_headline'];
 
 if(count($_POST) > 0){
-    
     $customvaulue->setValue('Frontpage Headline', $_POST['fp_headline']);
     $customvaulue->setValue('Frontpage Subheadline', $_POST['fp_subheadline']);
     $customvaulue->setValue('Frontpage Text', $_POST['fp_welcometext']);
@@ -23,22 +20,21 @@ $allvalues = $customvaulue->getAllValues();
 <div class="wrap">
     <h2><?php echo __('Frontapage text', 'myMovies'); ?></h2>
     <form id="mm_values_form" action="<?php the_permalink(); ?>" method="POST">
-        
         <input name="action" type="hidden" value="update" />
         <input name="page_options" type="hidden" value="fp_headline,fp_subheadline,fp_welcometext" />
-    
+
         <table class="wp-list-table widefat fixed">
             <thead>
                 <tr>
                     <th class="column-identifier">
                         <?php echo __('Item', 'myMovies'); ?>
                     </th>
-
                     <th>
                         <?php echo __('Value', 'myMovies'); ?>
                     </th>
                 </tr>
             </thead>
+
             <tr>
                 <td><label for='fp_headline'><?php echo __('Frontpage Headline', 'myMovies'); ?></label></td>
                 <td><input type='text' name='fp_headline' id='fp_headline' value='<?php echo $customvaulue->getValue('Frontpage Headline')?>'></td>
@@ -55,11 +51,9 @@ $allvalues = $customvaulue->getAllValues();
             </tr>
 
         </table>
-    
+
         <div class="tablenav bottom">
             <input type="submit" class="button action" value="<?php echo __('Apply', 'myMovies'); ?>">
         </div>
-    
     </form>
-
 </div>
