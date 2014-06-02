@@ -49,7 +49,7 @@ if (!is_user_logged_in()) {
     } else { ?>
 
         <div id="login-form">
-            <form role="form" action="<?php echo wp_login_url(get_permalink(get_page(163))); ?>" method="post">
+            <form role="form" action="<?php echo wp_login_url(get_permalink()); ?>" method="post">
                 <h1>Login</h1>
                 <div class="form-group">
                     <label class="sr-only" for="log">User</label>
