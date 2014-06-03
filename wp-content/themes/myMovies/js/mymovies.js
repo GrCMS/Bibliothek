@@ -7,7 +7,7 @@
          $('.flexslider').flexslider({
             animation: "slide",
             animationLoop: true,
-            itemWidth: 250,
+            itemWidth: 200,
             itemMargin: 10,
             controlNav: true,
             directionNav: false,

@@ -6,11 +6,13 @@ $customvalues = new customValue();
 ?>
 
 <!-- BODY START -->
+
+<!-- Slider: new movies -->
 <h2 class="container moviesection-header"><?php echo __('New movies', 'myMovies'); ?></h2>
 <?php
-$type = 'movies';
+
 $args = array(
-    'post_type' => $type,
+    'post_type' => 'movies',
     'orderby' => 'post_date',
     'post_status' => 'publish',
     'posts_per_page' => 10,
@@ -39,7 +41,73 @@ if ($my_query->have_posts()) {
 wp_reset_query();  // Restore global post data stomped by the_post().
 ?>
 
-<?php if(!is_user_logged_in()): ?>
+
+<?php 
+
+if(is_user_logged_in()) { 
+    
+    //Slider: best rated movies
+    $rated_movies = new Rating();
+    $best_rated = $rated_movies->get_top_rated_movies(20);
+    
+    echo "<h2 class='container moviesection-header'>" . __('Best rated movies', 'myMovies') . "</h2>";
+    echo '<div class="flexslider">';
+    echo '<ul class="slides">';
+    
+    foreach($best_rated as $rated) {
+        
+        $movieimagepath = wp_get_attachment_image_src(get_post_thumbnail_id($rated['movie']), 'movie_poster', false);
+        $movieimagepath = $movieimagepath[0];
+        $permalink = get_permalink( $rated['movie'] );
+        
+         echo "<li><a href='$permalink'><img src='$movieimagepath' /></li></a>";
+    }
+    
+    echo '</ul>';
+    echo '</div>';
+
+    //Slider: most rented movies
+    $rentals = new movie_rentals();
+    $most_rented = $rentals->getMostRented();
+    
+    echo "<h2 class='container moviesection-header'>" . __('Most rented movies', 'myMovies') . "</h2>";
+    echo '<div class="flexslider">';
+    echo '<ul class="slides">';
+    
+    foreach($most_rented as $rented) {
+        
+        $movieimagepath = wp_get_attachment_image_src(get_post_thumbnail_id($rented->movie), 'movie_poster', false);
+        $movieimagepath = $movieimagepath[0];
+        $permalink = get_permalink( $rented->movie );
+        
+         echo "<li><a href='$permalink'><img src='$movieimagepath' /></li></a>";
+    }
+    
+    echo '</ul>';
+    echo '</div>';
+}
+
+//posts archive: latest 5 posts
+echo "<h2 class='container moviesection-header'>" . __('Latest news', 'myMovies') . "</h2>";
+$recent_posts_args = array(
+    'numberposts' => '5',
+    'orderby' => 'post_date',
+    'order' => 'DESC',
+    'post_type' => 'post' 
+    );
+
+$recent_posts = wp_get_recent_posts($recent_posts_args, OBJECT);
+
+foreach($recent_posts as $post)
+{
+    setup_postdata( $post );
+    get_template_part( 'templates/template', 'post' );
+}
+
+?>
+
+<?php if(!is_user_logged_in()) : ?>
+
 <div class="movie-divider"></div>
 <div class="container">
     <h2 class="color-primary"> <?php echo $customvalues->getValue('Frontpage Headline'); ?></h2>	
@@ -50,6 +118,7 @@ wp_reset_query();  // Restore global post data stomped by the_post().
     </div>
     <a class="btn btn-primary"><?php echo __("Sign up", "myMovies"); ?></a>
 </div>
+
 <?php endif; ?>
 
 <!-- BODY END -->

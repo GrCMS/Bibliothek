@@ -262,3 +262,15 @@ msgstr "Zurückgegeben"
 #: ../includes/mm-admin-settings/mm-admin-rentals-overview-page.php:23
 msgid "Rentals Overview"
 msgstr "Übersicht aller derzeit ausgeliehenen Filme"
+
+#: ../front-page.php:53
+msgid "Best rated movies"
+msgstr "Am besten bewertete Filme"
+
+#: ../front-page.php:73
+msgid "Most rented movies"
+msgstr "Am häufigsten ausgeliehene Filme"
+
+#: ../front-page.php:91
+msgid "Latest news"
+msgstr "Aktuelles"
