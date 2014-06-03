@@ -1,6 +1,7 @@
 <?php
 $movieimagepath = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), 'movie_poster', false);
 $movieimagepath = $movieimagepath[0];
+$permalink = get_permalink($post->ID);
 $movietitle = get_the_title();
 $moviesubtitle = get_field('subtitle');
 $moviestudio = get_field('studio');
@@ -20,7 +21,9 @@ $rating = $global_rating[0]['rating'];
         <div class="col-md-3 col-sm-4 col-xs-5">
             <?php
             if (isset($movieimagepath))
+                echo "<a href='$permalink'>";
                 echo "<img src='$movieimagepath' class='img-responsive'>";
+                echo "</a>";
             ?>
         </div>
         <div class="col-md-9 col-sm-8 col-xs-7">
@@ -28,7 +31,7 @@ $rating = $global_rating[0]['rating'];
                 <div class="col-md-8">
                     <?php
                     if ($movietitle)
-                        echo "<h2 class='color-primary'>$movietitle</h2>";
+                        echo "<a href='$permalink'><h2 class='color-primary'>$movietitle</h2></a>";
 
                     if ($moviesubtitle)
                         echo "<h3>$moviesubtitle</h3>";

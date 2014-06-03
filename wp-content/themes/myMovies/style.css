@@ -746,6 +746,19 @@ REGISTER FORM
 
 /*
 
+SHORTCODE MOVIES
+================
+
+*/
+
+#mm-movie-shortcode-container.container {
+        
+    width:auto;
+    float:left;
+}
+
+/*
+
 BOOKMARKS
 =========
 

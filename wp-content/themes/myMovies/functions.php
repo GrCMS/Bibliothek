@@ -231,15 +231,27 @@ function new_movies_shortcode($atts) {
         'posts_per_page' => intval($a['count']),
 
     );
-    $output = '';
+    
+    ob_start();
     $movie_query = new WP_Query($args);
+    
+    echo "<div class='container text-center'>";
+    echo "<div style='margin: auto; max-width:960px'>";
+        
     while($movie_query->have_posts()) : $movie_query->the_post();
                            
-        get_template_part( 'templates/template', 'movie' );
+        get_template_part( 'templates/template', 'movie-shortcode' );
         
     endwhile;
     
-    return $output; 
+    echo "</div>";
+    echo "</div>";
+    echo "<span class='clearfix'></span>";
+    
+    $ret = ob_get_contents();
+    ob_end_clean();
+    
+    return $ret; 
 }
 
 ?>

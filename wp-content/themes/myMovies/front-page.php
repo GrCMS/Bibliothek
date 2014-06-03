@@ -108,7 +108,6 @@ foreach($recent_posts as $post)
 
 <?php if(!is_user_logged_in()) : ?>
 
-<div class="movie-divider"></div>
 <div class="container">
     <h2 class="color-primary"> <?php echo $customvalues->getValue('Frontpage Headline'); ?></h2>	
     <h3> <?php echo $customvalues->getValue('Frontpage Subheadline'); ?></h3>
