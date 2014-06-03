@@ -69,11 +69,14 @@ $mostRented = $rentals->getMostRented();
                         echo "<tr>";
                         echo "<td> $rental->post_title </td>";
 
-                        $user_info = get_userdata($rental->user);
-
+                        $user_info = get_userdata($rental->user);                                               
                         echo "<td> $user_info->display_name</td>";
-                        echo "<td> $rental->rental_date </td>";
-                        echo "<td> $rental->return_date </td>";
+                        
+                        $rental_date = new DateTime($rental->rental_date);
+                        echo "<td>" . $rental_date->format('d-m-Y') . "</td>";
+                        
+                        $return_date = new DateTime($rental->return_date);
+                        echo "<td>" . $return_date->format('d-m-Y') . "</td>";
                         echo "</tr>";
                     }
 
@@ -118,10 +121,13 @@ $mostRented = $rentals->getMostRented();
                         echo "<td> $rental->post_title </td>";
 
                         $user_info = get_userdata($rental->user);
-
                         echo "<td> $user_info->display_name</td>";
-                        echo "<td> $rental->rental_date </td>";
-                        echo "<td> $rental->return_date </td>";
+                        
+                        $rental_date = new DateTime($rental->rental_date);
+                        echo "<td>" . $rental_date->format('d-m-Y') . "</td>";
+                        
+                        $return_date = new DateTime($rental->return_date);
+                        echo "<td>" . $return_date->format('d-m-Y') . "</td>";
                         echo "</tr>";
                     }
 
