@@ -1,13 +1,29 @@
 <div class="container">
 
-    <h3 class="color-primary"><?php echo the_title(); ?></h3>
+    <h3 class="color-primary"><?php echo the_title(); ?> </h3>
     
-    <div>
-    
-        <?php echo the_content(); ?>
-    
-    </div>
+    <div class="row">
+        
+        <div class="col-xs-12">
             
+            Published: <?php echo the_date('d.m.y'); ?>
+            
+        </div>
+        
+    </div>
+    
+    <br/>
+    
+    <div class="row">
+        
+        <div class="col-xs-12">
+            
+            <?php echo the_content(); ?>
+        
+        </div>
+        
+    </div>
+                    
 </div>
 
 <div class="movie-divider"></div>
