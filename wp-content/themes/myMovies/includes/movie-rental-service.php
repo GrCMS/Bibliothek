@@ -346,7 +346,16 @@ function mm_return_movie() {
         $current_rentals = new movie_rentals();
     
         $result['post_id'] = $post_id;
-        $result['updated'] = $current_rentals->returnMovie($post_id);
+        $updated = $current_rentals->returnMovie($post_id);
+        $result['updated'] = $updated;
+        
+        if($updated) {
+            
+            $result['post_title'] = "test";
+            $result['rented_date'] = "test";
+            $result['returned_date'] = "test";
+        }
+        
         $result['rentals_count'] = $current_rentals->getCount();
         $result = json_encode($result);
         echo $result;

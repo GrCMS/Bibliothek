@@ -1,6 +1,6 @@
 <div class="container">
 
-    <h3 class="color-primary"><?php echo the_title(); ?> </h3>
+    <h3 class="color-primary"><?php echo the_title(); ?></h3>
     
     <div class="row">
         

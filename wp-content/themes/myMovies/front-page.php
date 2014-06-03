@@ -41,7 +41,6 @@ if ($my_query->have_posts()) {
 wp_reset_query();  // Restore global post data stomped by the_post().
 ?>
 
-
 <?php 
 
 if(is_user_logged_in()) { 
@@ -88,6 +87,7 @@ if(is_user_logged_in()) {
 }
 
 //posts archive: latest 5 posts
+echo '<div class="movie-divider"></div>';
 echo "<h2 class='container moviesection-header'>" . __('Latest news', 'myMovies') . "</h2>";
 $recent_posts_args = array(
     'numberposts' => '5',
