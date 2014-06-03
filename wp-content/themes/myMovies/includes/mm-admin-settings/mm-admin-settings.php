@@ -47,7 +47,26 @@ function setup_theme_mm_admin_settings_menu() {
     //create sub menu page "Theme Settings"
     add_submenu_page('mm_top_level_admin_menu', 'Theme Settings', 'Theme Settings', 
             'edit_themes', 'mm_admin_menu_theme_settings', 'mm_admin_page_theme_settings');
+    
+    create_customvalues_admin_table();
 }
+
+/**
+ * Creates the custom values table
+ */
+ function create_customvalues_admin_table() {
+     global $wpdb;
+ 
+     $table_name = $wpdb->prefix . 'mymovies_value_identifiers';
+ 
+     $sql = "CREATE TABLE $table_name (
+             identifier varchar(128) NOT NULL,
+             value text NOT NULL,
+             PRIMARY KEY(identifier));";
+ 
+     require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
+     dbDelta($sql);
+ }
 
 function mm_top_level_settings_page() {
     
