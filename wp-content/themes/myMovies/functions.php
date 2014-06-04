@@ -164,44 +164,50 @@ add_action('template_redirect', 'register_a_user');
 function register_a_user() {
     if (isset($_GET['do']) && $_GET['do'] == 'register'):
         $errors = array();
-        if (empty($_POST['user']) || empty($_POST['email']))
+        /* Check if nonce is verified */
+        if(isset($_POST['register-nonce']) && wp_verify_nonce($_POST['register-nonce'], 'register-user')) {
+            if (empty($_POST['user']) || empty($_POST['email']))
             $errors[] = __('provide a user and email');
-        if (!empty($_POST['spam']))
-            $errors[] = __('gtfo spammer');
+            if (!empty($_POST['spam']))
+                $errors[] = __('gtfo spammer');
 
-        $user_login = esc_attr($_POST['user']);
-        $user_email = esc_attr($_POST['email']);
-        require_once(ABSPATH . WPINC . '/registration.php');
+            $user_login = esc_attr($_POST['user']);
+            $user_email = esc_attr($_POST['email']);
+            require_once(ABSPATH . WPINC . '/registration.php');
 
-        $sanitized_user_login = sanitize_user($user_login);
-        $user_email = apply_filters('user_registration_email', $user_email);
+            $sanitized_user_login = sanitize_user($user_login);
+            $user_email = apply_filters('user_registration_email', $user_email);
 
-        if (!is_email($user_email))
-            $errors[] = __('invalid e-mail');
-        elseif (email_exists($user_email))
-            $errors[] = __('this email is already registered, bla bla...');
+            if (!is_email($user_email))
+                $errors[] = __('invalid e-mail');
+            elseif (email_exists($user_email))
+                $errors[] = __('this email is already registered, bla bla...');
 
-        if (empty($sanitized_user_login) || !validate_username($user_login))
-            $errors[] = __('invalid user name');
-        elseif (username_exists($sanitized_user_login))
-            $errors[] = __('user name already exists');
+            if (empty($sanitized_user_login) || !validate_username($user_login))
+                $errors[] = __('invalid user name');
+            elseif (username_exists($sanitized_user_login))
+                $errors[] = __('user name already exists');
 
-        if (empty($errors)):
-            $user_pass = wp_generate_password();
-            $user_id = wp_create_user($sanitized_user_login, $user_pass, $user_email);
+            if (empty($errors)):
+                $user_pass = wp_generate_password();
+                $user_id = wp_create_user($sanitized_user_login, $user_pass, $user_email);
 
-            if (!$user_id):
-                $errors[] = __('registration failed...');
-            else:
-                update_user_option($user_id, 'default_password_nag', true, true);
-                wp_new_user_notification($user_id, $user_pass);
+                if (!$user_id):
+                    $errors[] = __('registration failed...');
+                else:
+                    update_user_option($user_id, 'default_password_nag', true, true);
+                    wp_new_user_notification($user_id, $user_pass);
+                endif;
             endif;
-        endif;
 
-        if (!empty($errors))
-            define('REGISTRATION_ERROR', serialize($errors));
-        else
-            define('REGISTERED_A_USER', $user_email);
+            if (!empty($errors))
+                define('REGISTRATION_ERROR', serialize($errors));
+            else
+                define('REGISTERED_A_USER', $user_email);
+        } else {
+            $errors[] = __('Request does not come from this site. Registration interrupted.');
+        }
+        
     endif;
 }
 
