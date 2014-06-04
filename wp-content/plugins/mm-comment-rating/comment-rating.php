@@ -1,7 +1,9 @@
 <?php
 /**
- * Plugin Name: myMovies Comment Rating
+ * Plugin Name: Comment Rating
  * Description: Adds rating to wordpress comments
+ * Version: 1.0
+ * Author: Team GrCMS
  */
 
 include_once('includes/comment-rating-service.php');
