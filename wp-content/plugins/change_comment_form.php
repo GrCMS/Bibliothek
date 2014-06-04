@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: Add ratings to comments
+Plugin Name: Rating-Form removed by Dani
 Version: 1.0
 Description: A plugin to add ratings to the standard comments
 Author: Team GrCMS
