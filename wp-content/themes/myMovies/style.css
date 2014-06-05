@@ -86,6 +86,11 @@ BASIC THEME STYLES
 
 */
 
+a:hover {
+    
+    text-decoration: none;
+}
+
 body {
 
 	/* fallback if background image not working */
@@ -538,6 +543,13 @@ POST STYLES
 
 */
 
+#mm-movie-ajax-loading-icon {
+        
+    font-size: 30px;
+    color: #1c2a2b;
+    margin-top:10px;
+    margin-bottom: 30px;
+}
 
 /*
 

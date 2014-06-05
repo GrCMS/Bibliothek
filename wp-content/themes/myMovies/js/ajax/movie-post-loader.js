@@ -3,8 +3,10 @@
     var page = 1;
     var loading = true;
     var $window = $(window);
-    var $content = $('#mm-all-movies-posts');
-    var $loading_container = $('#mm-all-movie-ajax-loading');
+    var $content = $('#mm-movies-posts');
+    var $loading_container = $('#mm-movie-ajax-loading');
+    var args = $.parseJSON($('#mm_query_args').val());
+    
     $loading_container.hide();
     
     var load_posts = function(){
@@ -16,7 +18,8 @@
                 data       : {
                                 action: "mm_movie_post_loader", 
                                 numPosts : 6, 
-                                pageNumber: page
+                                pageNumber: page,
+                                args: args
                             },
                 
                 beforeSend : function(){

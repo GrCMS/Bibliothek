@@ -11,17 +11,25 @@ function mm_movie_post_loader()
 {
     $numPosts = (isset($_GET['numPosts'])) ? $_GET['numPosts'] : 0;
     $page = (isset($_GET['pageNumber'])) ? $_GET['pageNumber'] : 0;
+    $post_args_json = (isset($_GET['args'])) ? $_GET['args'] : null;
     
     $args = array( 
         
         'posts_per_page' => $numPosts,
         'paged' => $page,
-        'post_type' => 'movies' 
+        'post_type' => 'movies'
     );
     
-    //$posts = get_posts($args);
+    if($post_args_json != null)
+    {
+        $query_args = array_merge($args, $post_args_json);
+        $movie_query = new WP_Query($query_args);
     
-    $movie_query = new WP_Query($args);
+    } else {
+        
+        $movie_query = new WP_Query($args);
+    }
+    
     while($movie_query->have_posts()) : $movie_query->the_post();
                            
         get_template_part( 'templates/template', 'movie' );

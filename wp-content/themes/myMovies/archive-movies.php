@@ -8,33 +8,31 @@ get_header();
 
 ?>
 
-<style>
-    
-    #mm-all-movie-ajax-loading-icon {
-        
-        font-size: 30px;
-        color: #1c2a2b;
-        margin-top:10px;
-        margin-bottom: 30px;
-    }
-    
-</style>
+<?php 
 
-<div id="mm-all-movies-posts">
+    $args = array(
+        
+        'post_type' => 'movies'
+    );
+    
+    $args_json = json_encode($args);
+
+?>
+
+<input type="hidden" id="mm_query_args" value='<?php echo $args_json ?>'>
+
+<div id="mm-movies-posts">
     
     <h3 class="container color-primary"><?php echo __('All movies', 'myMovies'); ?></h3>
     
 </div>
 
-<div id="mm-all-movie-ajax-loading" class="container text-center">
+<div id="mm-movie-ajax-loading" class="container text-center">
     
     <span><?php echo __("Loading movies...", "myMovies"); ?></span><br/>
     <span class="ion-loading-c" id="mm-all-movie-ajax-loading-icon"></span>
     
 </div>
-
-
-
     
 <?php 
 

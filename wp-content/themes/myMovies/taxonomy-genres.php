@@ -1,41 +1,37 @@
-<?php
-
-/** 
- * Theme fallback if there is no taxonomy-$taxonomy-$term.php
- */
-
-?>
-
 <?php get_header(); ?>
 
-<div class="container">
-<h4>Genres</h4>
 <?php
-    $term =	$wp_query->queried_object;
-    echo '<h3 class="color-primary large">'.$term->name.'</h3>';
-?>
-</div>
 
-<?php
+$term = $wp_query->queried_object;
 
 $args = array(
     'genres' => $term->name,
     'post_type' => 'movies',
     'post_status' => 'publish',
-    'posts_per_page' => 5,
-    'caller_get_posts' => 1
+    'posts_per_page' => 6
 );
-$my_query = null;
-$my_query = new WP_Query($args);
-$first = true;
-if ($my_query->have_posts()) {
-    while ($my_query->have_posts()) : $my_query->the_post();
-        if(!$first)
-            echo '<div class="movie-divider"></div>';
-        $first = false;
-        require("templates/template-movie.php");
 
-    endwhile;
-}?>
+$args_json = json_encode($args);
+
+?>
+
+<input type="hidden" id="mm_query_args" value='<?php echo $args_json ?>'>
+
+<div id="mm-movies-posts">
+
+    <h4 class="container">Genres</h4>
+    <?php
+        echo '<h3 class="container color-primary large">'.$term->name.'</h3>';
+    ?>
+
+</div>
+
+<div id="mm-movie-ajax-loading" class="container text-center">
+
+    <span><?php echo __("Loading movies...", "myMovies"); ?></span><br/>
+    <span class="ion-loading-c" id="mm-all-movie-ajax-loading-icon"></span>
+
+</div>
+    
 
 <?php get_footer(); ?>
