@@ -171,15 +171,7 @@ $rating = $global_rating[0]['rating'];
                 
             if($userloggedin)
             {
-                /*echo '<a href="#" class="mm-comment-movie" '
-                . 'data-post_id="'. $post->ID .'" '
-                . 'data-post_title="'. $movietitle .'" '
-                . 'data-toggle="modal" '
-                . 'data-target="#mm-comment-movie-modal">'
-                . 'Bewerten'
-                . '</a>';*/
-                
-                get_mm_comment_link($post->ID, $movietitle);
+                comments_popup_link($post->ID, $movietitle);
             }
             ?>
             
