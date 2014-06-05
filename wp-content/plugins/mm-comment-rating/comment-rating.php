@@ -1,7 +1,9 @@
 <?php
 /**
- * Plugin Name: myMovies Comment Rating
+ * Plugin Name: Comment Rating
  * Description: Adds rating to wordpress comments
+ * Version: 1.0
+ * Author: Team GrCMS
  */
 
 include_once('includes/comment-rating-service.php');
@@ -20,7 +22,7 @@ function register_comment_rating_scripts() {
 
 function get_mm_comment_link($post_id, $post_title) {
     
-    echo '<a href="#" class="mm-comment-movie" '
+    echo '<a href="javascript:void(0)" class="mm-comment-movie" '
         . 'data-post_id="'. $post_id .'" '
         . 'data-post_title="'. $post_title .'" '
         . 'data-toggle="modal" '

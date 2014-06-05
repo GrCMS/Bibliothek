@@ -43,6 +43,7 @@ if (!is_user_logged_in()) {
                     <hr />
                     <p>A password will be e-mailed to you.</p>
                     <input class="btn btn-default" id="register" type="submit" name="submit" value="Register" class="button" />
+                    <?php wp_nonce_field('register-user','register-nonce') ?>
                 </form>
             </div>
         <?php }
@@ -67,8 +68,8 @@ if (!is_user_logged_in()) {
                     </div>
                 </div>
                 <a href="<?php echo site_url() . '/login?action=register'; ?>">Register</a>
-
                 <input class="btn btn-default" type="submit" name="submit" value="Login" class="button" />
+                <?php wp_nonce_field('login-user','login-nonce') ?>
             </form>
         </div>
         <?php
