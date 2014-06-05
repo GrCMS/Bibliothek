@@ -795,3 +795,17 @@ USER PROFILE
     padding: 40px 50px 40px 50px;
     background: rgba(255,255,255,.4);
 }
+
+/*
+
+COMMENTS STYLE
+==============
+
+*/
+
+.mm-comments-style {
+    
+    padding-top: 10px;
+    padding-bottom:10px;
+    border-bottom: 1px dotted #ccc;
+}
