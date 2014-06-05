@@ -171,7 +171,7 @@ $rating = $global_rating[0]['rating'];
                 
             if($userloggedin)
             {
-                comments_popup_link($post->ID, $movietitle);
+                echo get_comments_link();
             }
             ?>
             

@@ -11,7 +11,6 @@ include_once('includes/comment-rating-service.php');
 /**
  * Hook called on 'wp_enqueue_scripts' to register stlyes an scripts
  */
-
 add_action("wp_enqueue_scripts", "register_comment_rating_scripts");
 
 /**
@@ -27,7 +26,6 @@ function register_comment_rating_scripts() {
 /**
  * Hook called on 'wp_footer' to add custom modal dialog for comments
  */
-
 add_action("wp_footer","add_modal_dialog_to_footer");
 
 /**
@@ -39,13 +37,10 @@ function add_modal_dialog_to_footer() {
 }
 
 /**
- * Overrides wordpress function for comment_popup_link
- * in order to render the link to show the plugins
- * comments modal dialoag
+ * function to echo the comments link for the given post id and post title
+ * can be used to add this plugins comments to the post
  */
-if(!function_exists('comments_popup_link')) {
-    
-    function comments_popup_link($post_id, $post_title) {
+function comment_rating_link($post_id, $post_title) {
         
         echo '<a href="javascript:void(0)" class="mm-comment-movie" '
         . 'data-post_id="'. $post_id .'" '
@@ -54,5 +49,26 @@ if(!function_exists('comments_popup_link')) {
         . 'data-target="#mm-comment-movie-modal">'
         . 'Bewerten'
         . '</a>';
-    }
+}
+
+/**
+ * filter used to override the wordpress default comments link
+ */
+add_filter('get_comments_link', 'comment_rating_link_no_param');
+
+/**
+ * called by 'get_comments_link' filter in order to return and override
+ * the wordpress default comments link
+ */
+function comment_rating_link_no_param() {
+    
+    $comments_link = '<a href="javascript:void(0)" class="mm-comment-movie" '
+        . 'data-post_id="'. get_the_ID() .'" '
+        . 'data-post_title="'. get_the_title() .'" '
+        . 'data-toggle="modal" '
+        . 'data-target="#mm-comment-movie-modal">'
+        . 'Bewerten'
+        . '</a>';
+    
+    return $comments_link;
 }
