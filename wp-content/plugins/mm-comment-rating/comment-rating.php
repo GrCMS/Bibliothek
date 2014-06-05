@@ -67,7 +67,7 @@ function comment_rating_link_no_param() {
         . 'data-post_title="'. get_the_title() .'" '
         . 'data-toggle="modal" '
         . 'data-target="#mm-comment-movie-modal">'
-        . 'Bewerten'
+        . 'Diesen Film bewerten'
         . '</a>';
     
     return $comments_link;

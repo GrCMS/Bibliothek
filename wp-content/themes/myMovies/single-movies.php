@@ -29,56 +29,63 @@
     echo "<div class='container'>";   
 
     foreach($comments as $comment) {
-                        
-        if($comment->comment_content) {
-            
-            echo "<article class='mm-comments-style'>";
-            echo "<div class='row'>";
-            echo "<div class='col-xs-8'><h5 class='color-primary'> Bewertung von: ". $comment->comment_author ."</h5></div>";
-            echo "<div class='col-xs-4'><h5 class='rating text-right'>"; 
-            
-            ?>    
-            
-                <?php 
-                
-                if($show_rating): 
-                
-                    $rating = $current_post_comments->getUserRating($comment->comment_post_ID, $comment->comment_ID);
-                    
-                ?>
-                    
-                <span class="hidden ratingvalue"><?php echo $rating; ?></span>
-                <ul class="color-primary">
-                    <?php
-                    for ($i = 1; $i < 6; $i++) {
-                        // Setzen der Ratingklassen
-                        $starvalue;
-                        if ($rating >= $i)
-                            $starvalue = "filled";
+                              
+        echo "<article class='mm-comments-style'>";
+        echo "<div class='row'>";
+        echo "<div class='col-xs-8'><h5 class='color-primary'> Bewertung von: ". $comment->comment_author ."</h5></div>";
+        echo "<div class='col-xs-4'><h5 class='rating text-right'>"; 
 
-                        else if ($rating > ($i - 0.7))
-                            $starvalue = "half";
-                        else
-                            $starvalue = "empty";
+        ?>    
 
-                        echo('<li class="star star1 stars-' . $starvalue . '"></li>');
-                    }
-                    ?>
-
-                </ul>
-                
-                <?php endif; ?>
-                            
             <?php 
-            
-            echo "</h5></div>";
-            echo "</div>";
-            echo "<div class='row'>";
+
+            if($show_rating): 
+
+                $rating = $current_post_comments->getCommentRating($comment->comment_ID);
+
+            ?>
+
+            <span class="hidden ratingvalue"><?php echo $rating; ?></span>
+            <ul class="color-primary">
+                <?php
+                for ($i = 1; $i < 6; $i++) {
+                    // Setzen der Ratingklassen
+                    $starvalue;
+                    if ($rating >= $i)
+                        $starvalue = "filled";
+
+                    else if ($rating > ($i - 0.7))
+                        $starvalue = "half";
+                    else
+                        $starvalue = "empty";
+
+                    echo('<li class="star star1 stars-' . $starvalue . '"></li>');
+                }
+                ?>
+
+            </ul>
+
+            <?php endif; ?>
+
+        <?php 
+
+        echo "</h5></div>";
+        echo "</div>";
+        echo "<div class='row'>";
+        
+        if($comment->comment_content) {
+        
             echo "<div class='col-xs-12'>" .$comment->comment_content . "</div>";
-            echo "</div>";
-            echo "</article>";
+        
+        } else {
+            
+            echo "<div class='col-xs-12'>Der Benutzer hat keinen Kommentar abgegeben.</div>";
         }
+        
+        echo "</div>";
+        echo "</article>";
     }
+    
     
     echo "</div>";
  

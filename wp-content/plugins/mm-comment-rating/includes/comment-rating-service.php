@@ -132,6 +132,12 @@ class movie_comments {
         
         return null;
     }
+    
+    public function getCommentRating($comment_id) {
+        
+        $meta_values = get_comment_meta( $comment_id, $this->ratings_meta_key);
+        return $meta_values[0];
+    }
         
     public function getCommentCount($post_id) {
        

@@ -14,6 +14,7 @@ $comments = get_approved_comments($post->ID);
 $Rate = new Rating();
 $global_rating = $Rate->get_public_movie_rating($post->ID);
 $rating = $global_rating[0]['rating'];
+
 ?>
 
 <div class="container">
@@ -167,6 +168,9 @@ $rating = $global_rating[0]['rating'];
     </div>
     <div class="row">
         <div class="col-md-12">
+            
+            <br>
+            
             <?php 
                 
             if($userloggedin)
