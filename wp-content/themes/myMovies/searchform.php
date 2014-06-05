@@ -4,7 +4,7 @@
 
 		<input id="mm-search-input" type="search" name="s" placeholder="<?php echo __('Search', 'myMovies'); ?>"/>
 
-		<!-- <input type="hidden" name="post_type" value="movie_custom_post_type" /> --> <!-- // hidden 'your_custom_post_type' value -->
+		<input type="hidden" name="post_type" value="movies" /><!-- // hidden 'movie' value in order to search only for posts with cpt movies -->
 
 		<input id="mm-search-button" type="image" alt="Search" src="<?php bloginfo('template_url'); ?>/images/layout/search-icon.png" />
 

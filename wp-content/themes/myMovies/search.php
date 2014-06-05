@@ -17,8 +17,8 @@ get_header();
 
     <?php while ( have_posts() ) : the_post(); ?>
         
-        <div class="movie-divider"></div>
         <?php get_template_part( 'templates/template', 'movie' ); ?>
+        <div class="movie-divider"></div>
 
     <?php endwhile; ?>
 

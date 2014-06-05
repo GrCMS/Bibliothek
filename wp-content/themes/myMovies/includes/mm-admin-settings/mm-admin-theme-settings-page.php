@@ -13,24 +13,15 @@ function mm_register_theme_settings() {
 <div class="wrap">
 <h2>myMovies Theme Settings</h2>
 
-<form method="post" action="">
+<form method="POST" action="">
     
-    <?php settings_fields( 'mm-theme-settings-group' ); ?>
-    <?php do_settings_sections( 'mm-theme-settings-group' ); ?>
-    <table class="form-table">
-        <tr valign="top">
-        <th scope="row">Show Slider: best rated on front page</th>
-        <td><input type="checkbox" name="mm_show_best_rated_slider" id="mm_show_best_rated_slider" value="<?php echo get_option('mm_show_best_rated_slider'); ?>" /></td>
-        </tr>
-         
-        <tr valign="top">
-        <th scope="row">Show Slider: most rented on front page</th>
-        <td><input type="checkbox" name="mm_show_most_rented_slider" id="mm_show_most_rented_slider" value="<?php echo get_option('mm_show_most_rented_slider'); ?>" /></td>
-        </tr>
-        
-    </table>
+    <input type="hidden" name="update_themeoptions" value="true" />
     
-    <?php submit_button(); ?>
-
+    <h4><input type="checkbox" name="mm_show_best_rated_slider" id="mm_show_best_rated_slider" /> Display best rated slider</h4>
+ 
+    <h4><input type="checkbox" name="mm_show_most_rented_slider" id="mm_show_most_rented_slider" /> Display most rented slider</h4>
+    
+    <p><input type="submit" name="search" value="Update Options" class="button" /></p>
+    
 </form>
 </div>
