@@ -100,14 +100,8 @@
                                     <!-- sm, md, lg: account navigation trigger -->
                                     <div id="mm-header-account-navigation-trigger">
 
-                                        <div class="visible-sm visible-md visible-lg">    
-
-                                            <span id="mm-header-account-image">
-
-                                                <img src="<?php bloginfo('template_url'); ?>/images/layout/user_blank.png" />
-
-                                            </span>
-
+                                        <div class="text-center visible-sm visible-md visible-lg">    
+                                            
                                             <span id="mm-header-account-name"><?php echo $current_user->display_name; ?></span>
                                             <span id="mm-header-account-dropdown-icon"></span>
 
