@@ -861,6 +861,77 @@ USER PROFILE
 
 /*
 
+RENTALS
+=======
+
+*/
+
+
+#mm-rentals {
+
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
+}
+
+#mm-rentals li {
+
+    float:left;
+    position: relative;
+    text-align: center;
+    padding: 10px;
+}
+
+.mm-rentals-item-wrapper {
+
+    position: relative;
+}
+
+.mm-rentals-image {
+
+    position: relative;
+    z-index: 9;
+}
+    
+.mm-rentals-overlay {
+
+    background-color: rgba(0,0,0,0.75);
+    height: 100px;
+    width: 100%;
+    position: absolute;
+    z-index: 10;
+    bottom: 0px;
+    left: 0px;
+}
+
+.mm-rentals-overlay span {
+
+    color: #fff;
+    line-height: 50px;
+    display: block;
+    white-space: nowrap;
+}
+
+.mm-rentals-overlay span > span {
+
+    color: #77b5b4;
+    line-height: 50px;
+    white-space: nowrap;
+    display: inline-block;
+}
+
+.mm-rentals-overlay button {
+
+    width: 90%;
+}
+    
+#mm-rentals-history tbody {
+
+    background: #eee;
+}
+
+/*
+
 COMMENTS STYLE
 ==============
 

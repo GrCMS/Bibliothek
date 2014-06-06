@@ -33,19 +33,19 @@ add_action("admin_menu", "setup_theme_mm_admin_settings_menu");
 function setup_theme_mm_admin_settings_menu() {
     
     //create top level menu page
-    add_menu_page('MM Settings', 'MM Settings', 'edit_themes', 
+    add_menu_page('MM Settings', __('MM Settings', 'myMovies'), 'edit_themes', 
         'mm_top_level_admin_menu', 'mm_top_level_settings_page');
     
     //create sub menu page "Front Page"
-    add_submenu_page('mm_top_level_admin_menu', 'Front Page', 'Front Page', 
+    add_submenu_page('mm_top_level_admin_menu', __('Front Page', 'myMovies'), 'Front Page', 
             'edit_themes', 'mm_admin_menu_front_page','mm_admin_page_front_page_settings');
     
     //create sub menu page "Rentals"
-    add_submenu_page('mm_top_level_admin_menu', 'Rentals Overview', 'Rentals Overview', 
+    add_submenu_page('mm_top_level_admin_menu', __('Rentals Overview', 'myMovies'), 'Rentals Overview', 
             'edit_themes', 'mm_admin_menu_rentals_overview', 'mm_admin_page_rentals_overview');
 
     //create sub menu page "Theme Settings"
-    add_submenu_page('mm_top_level_admin_menu', 'Theme Settings', 'Theme Settings', 
+    add_submenu_page('mm_top_level_admin_menu', __('Theme settings', 'myMovies'), 'Theme Settings', 
             'edit_themes', 'mm_admin_menu_theme_settings', 'mm_admin_page_theme_settings');
     
     create_customvalues_admin_table();
