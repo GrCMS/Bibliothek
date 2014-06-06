@@ -7,7 +7,7 @@ include_once('includes/genre-slider-walker.php');
 include_once('includes/bookmarks-service.php');
 
 //Include ratings ajax service
-include_once('includes/ratings-service.php');
+include_once('includes/ratings.php');
 
 //Include movie post loader ajax service
 include_once('includes/movie-post-loader-service.php');
