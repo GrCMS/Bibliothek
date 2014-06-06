@@ -1,6 +1,7 @@
 <?php
 /**
  * Plugin Name: Comment Rating
+ * Text Domain: comment-rating
  * Description: Adds rating to wordpress comments (Bootstrap must be installed)
  * Version: 1.0
  * Author: Team GrCMS
@@ -12,6 +13,13 @@ include_once('includes/comment-rating-service.php');
  * Hook called on 'wp_enqueue_scripts' to register stlyes an scripts
  */
 add_action("wp_enqueue_scripts", "register_comment_rating_scripts");
+add_action( 'plugins_loaded', 'myplugin_load_textdomain' );
+
+
+function myplugin_load_textdomain() {
+    // Localization
+    load_plugin_textdomain('comment-rating', false, basename( dirname( __FILE__ ) ) . '/languages/' );
+}
 
 /**
  * Registers scripts used in this plugin
@@ -47,7 +55,7 @@ function comment_rating_link($post_id, $post_title) {
         . 'data-post_title="'. $post_title .'" '
         . 'data-toggle="modal" '
         . 'data-target="#mm-comment-movie-modal">'
-        . 'Bewerten'
+        . __('Rate','comment-rating')
         . '</a>';
 }
 
@@ -67,8 +75,8 @@ function comment_rating_link_no_param() {
         . 'data-post_title="'. get_the_title() .'" '
         . 'data-toggle="modal" '
         . 'data-target="#mm-comment-movie-modal">'
-        . 'Diesen Film bewerten'
+        . __('Rate this movie','comment-rating')
         . '</a>';
-    
+
     return $comments_link;
 }

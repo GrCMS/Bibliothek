@@ -8,7 +8,7 @@
             <div class="modal-header">
         			
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title" id="mm-comment-movie-modal-label">Film: <span id="mm-comment-movie-modal-title"></span></h4>
+                <h4 class="modal-title" id="mm-comment-movie-modal-label"><?php echo __('Movie', 'comment-rating') ?> <span id="mm-comment-movie-modal-title"></span></h4>
 
             </div>
       			
@@ -28,7 +28,7 @@
                 
                     <div class="col-xs-12">
 
-                        <h5>Bewertung:</h5>
+                        <h5><?php echo __('Rating', 'comment-rating') ?></h5>
 
                     </div>                
 
@@ -48,7 +48,7 @@
                 
                     <div class="col-xs-12">
 
-                        <h5>Kommentar (optional):</h5>
+                        <h5><?php echo __('Comment (optional)', 'comment-rating') ?></h5>
 
                     </div>                
 
@@ -68,10 +68,10 @@
       			
             <div class="modal-footer">
         			
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        			
+                <button type="button" class="btn btn-default" data-dismiss="modal"><?php echo __('Cancel', 'comment-rating') ?></button>
                 <!-- button triggers ajax call -->
-                <button type="button" class="btn btn-primary" id="mm-comment-movie-ajax">Bewerten</button>
+                <button type="button" class="btn btn-primary" id="mm-comment-movie-ajax"><?php echo __('Rate movie', 'comment-rating') ?></button>
+                
       			
             </div>
         
