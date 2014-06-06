@@ -7,7 +7,7 @@ include_once('includes/genre-slider-walker.php');
 include_once('includes/bookmarks-service.php');
 
 //Include ratings ajax service
-include_once('includes/ratings-service.php');
+include_once('includes/ratings.php');
 
 //Include movie post loader ajax service
 include_once('includes/movie-post-loader-service.php');
@@ -29,9 +29,6 @@ include_once('includes/custom-taxonomy-genres.php');
 
 //Include script registration in order to add styles and scripts to the theme
 include_once('includes/script-registration.php');
-
-//Include script backend custom menu
-include_once('includes/custom-backend-menu.php');
 
 //Include admin backend custom settings
 include_once('includes/mm-admin-settings/mm-admin-settings.php');

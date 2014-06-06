@@ -12,7 +12,6 @@ add_action("wp_enqueue_scripts", "mm_enqueue_scripts");
 function mm_enqueue_scripts() {
     //Style registration
     wp_register_style('bootstrap-style', get_template_directory_uri() . '/bootstrap/css/bootstrap.min.css', array(), '3.1.1', false);
-    wp_register_style('icomoon', get_template_directory_uri() . '/fonts/icomoon/style.css', array(), '1.0', false);
     wp_register_style('ionicons', get_template_directory_uri() . '/css/ionicons.min.css', array(), '1.0', false);
     wp_register_style('stars', get_template_directory_uri() . '/css/stars.css', array(), '1.0', false);
     wp_register_style('genre-slider-style', get_template_directory_uri() . '/css/genre-slider.css', array(), '1.0', false);
@@ -26,7 +25,7 @@ function mm_enqueue_scripts() {
     wp_register_script('toggle-navigation-js', get_template_directory_uri() . '/js/mm-toggle-navigation.js', array('jquery'), '1.0', true);
     wp_register_script('genre-slider-js', get_template_directory_uri() . '/js/mm-genre-slider.js', array('jquery'), '1.0', true);
     wp_register_script('bookmarks-js', get_template_directory_uri() . '/js/ajax/bookmarks.js', array('jquery'), '1.1', true);
-    wp_register_script('ratings-js', get_template_directory_uri() . '/js/ajax/ratings.js', array('jquery'), '1.0', true);
+    wp_register_script('ratings-js', get_template_directory_uri() . '/js/ratings.js', array('jquery'), '1.0', true);
     wp_register_script('raty-js', get_template_directory_uri() . '/js/raty/jquery.raty.js', array('jquery'), '2.5.2', true);
     wp_register_script('mymovies-js', get_template_directory_uri() . '/js/mymovies.js', array('jquery'), '1.0', true);
     wp_register_script('flexslider-js', get_template_directory_uri() . '/js/jquery.flexslider.js', array('jquery'), '1.0', true);
@@ -77,7 +76,6 @@ function mm_enqueue_scripts() {
 
         //Only enqueued on frontend (CSS)
         wp_enqueue_style('bootstrap-style');
-        wp_enqueue_style('icomoon');
         wp_enqueue_style('ionicons');
         wp_enqueue_style('stars');
         wp_enqueue_style('genre-slider-style');
