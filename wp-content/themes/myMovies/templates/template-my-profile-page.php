@@ -61,7 +61,7 @@ get_header();
 
 <!-- BODY START -->
 <div class="container">
-<h1><?php __('Profile', 'myMovies'); ?></h1>
+<h1><?php echo __('Profile', 'myMovies'); ?></h1>
     <?php
     if (have_posts()) : while (have_posts()) : the_post();
             ?>
@@ -72,7 +72,7 @@ get_header();
                     if (!is_user_logged_in()) :
                         ?>
                         <p class="warning">
-                            <?php __('You must be logged in to edit your profile.', 'myMovies'); ?>
+                            <?php echo __('You must be logged in to edit your profile.', 'myMovies'); ?>
                         </p><!-- .warning -->
                         <?php
                     else :
@@ -81,31 +81,31 @@ get_header();
                         ?>
                         <form role="form" method="post" id="adduser" action="<?php the_permalink(); ?>">
                             <div class="form-group">
-                                <label for="first-name"><?php __('First Name', 'myMovies'); ?></label>
+                                <label for="first-name"><?php echo __('First Name', 'myMovies'); ?></label>
                                 <input class="form-control" name="first-name" type="text" id="first-name" value="<?php the_author_meta('first_name', $current_user->ID); ?>" />
                             </div><!-- .form-username -->
                             <div class="form-group">
-                                <label for="last-name"><?php __('Last Name', 'myMovies'); ?></label>
+                                <label for="last-name"><?php echo __('Last Name', 'myMovies'); ?></label>
                                 <input class="form-control" name="last-name" type="text" id="last-name" value="<?php the_author_meta('last_name', $current_user->ID); ?>" />
                             </div><!-- .form-username -->
                             <div class="form-group">
-                                <label for="email"><?php __('E-mail *', 'myMovies'); ?></label>
+                                <label for="email"><?php echo __('E-mail *', 'myMovies'); ?></label>
                                 <input class="form-control" name="email" type="text" id="email" value="<?php the_author_meta('user_email', $current_user->ID); ?>" />
                             </div><!-- .form-email -->
                             <div class="form-group">
-                                <label for="url"><?php __('Website', 'myMovies'); ?></label>
+                                <label for="url"><?php echo __('Website', 'myMovies'); ?></label>
                                 <input class="form-control" name="url" type="text" id="url" value="<?php the_author_meta('user_url', $current_user->ID); ?>" />
                             </div><!-- .form-url -->
                             <div class="form-group">
-                                <label for="pass1"><?php __('Password *', 'myMovies'); ?> </label>
+                                <label for="pass1"><?php echo __('Password *', 'myMovies'); ?> </label>
                                 <input class="form-control" name="pass1" type="password" id="pass1" />
                             </div><!-- .form-password -->
                             <div class="form-group">
-                                <label for="pass2"><?php __('Repeat Password *', 'myMovies'); ?></label>
+                                <label for="pass2"><?php echo __('Repeat Password *', 'myMovies'); ?></label>
                                 <input class="form-control" name="pass2" type="password" id="pass2" />
                             </div><!-- .form-password -->
                             <div class="form-group">
-                                <label for="description"><?php __('Biographical Information', 'myMovies') ?></label>
+                                <label for="description"><?php echo __('Biographical Information', 'myMovies') ?></label>
                                 <textarea class="form-control" name="description" id="description" rows="3" cols="50"><?php the_author_meta('description', $current_user->ID); ?></textarea>
                             </div><!-- .form-textarea -->
 
@@ -115,7 +115,7 @@ get_header();
                             ?>
                             <div class="form-group">
                                 <?php echo $referer; ?>
-                                <button name="updateuser" type="submit" id="updateuser" class="btn btn-default"><?php __('Update', 'myMovies'); ?></button>
+                                <button name="updateuser" type="submit" id="updateuser" class="btn btn-default"><?php echo __('Update', 'myMovies'); ?></button>
                                 <?php wp_nonce_field('update-user','user-nonce') ?>
                                 <input name="action" type="hidden" id="action" value="update-user" />
                             </div><!-- .form-submit -->
@@ -126,7 +126,7 @@ get_header();
         <?php endwhile; ?>
     <?php else: ?>
         <p class="no-data">
-            <?php __('Sorry, no page matched your criteria.', 'myMovies'); ?>
+            <?php echo __('Sorry, no page matched your criteria.', 'myMovies'); ?>
         </p><!-- .no-data -->
     <?php endif; ?>
 
