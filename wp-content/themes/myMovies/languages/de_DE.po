@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: myMovies\n"
-"POT-Creation-Date: 2014-06-06 13:54+0100\n"
-"PO-Revision-Date: 2014-06-06 13:58+0100\n"
+"POT-Creation-Date: 2014-06-06 14:11+0100\n"
+"PO-Revision-Date: 2014-06-06 14:15+0100\n"
 "Last-Translator: \n"
 "Language-Team: Jörg Lautenschlager, Daniel Meier, Jerry Kies\n"
 "Language: German\n"
@@ -99,7 +99,6 @@ msgid "New movies"
 msgstr "Neue Filme"
 
 #: ../front-page.php:54
-#, fuzzy
 msgid "Top rated movies"
 msgstr "Am besten bewertete Filme"
 
@@ -170,9 +169,8 @@ msgid "Register"
 msgstr "Registrieren"
 
 #: ../login.php:35 ../login.php:56
-#, fuzzy
 msgid "Username"
-msgstr "Benutzer"
+msgstr "Benutzername"
 
 #: ../login.php:39
 msgid "E-Mail"
@@ -236,11 +234,11 @@ msgid "Apply"
 msgstr "Anwenden"
 
 #: ../includes/mm-admin-settings/mm-admin-rentals-overview-page.php:27
+#: ../includes/mm-admin-settings/mm-admin-settings.php:44
 msgid "Rentals Overview"
 msgstr "Übersicht aller derzeit ausgeliehenen Filme"
 
 #: ../includes/mm-admin-settings/mm-admin-rentals-overview-page.php:32
-#, fuzzy
 msgid "Current"
 msgstr "Aktuelle Leihvorgänge"
 
@@ -250,25 +248,34 @@ msgid "History"
 msgstr "Leihhistorie"
 
 #: ../includes/mm-admin-settings/mm-admin-rentals-overview-page.php:34
-#, fuzzy
 msgid "Most rented"
 msgstr "Am häufigsten ausgeliehene Filme"
 
 #: ../includes/mm-admin-settings/mm-admin-rentals-overview-page.php:54
 #: ../includes/mm-admin-settings/mm-admin-rentals-overview-page.php:105
-#, fuzzy
 msgid "Rent date"
-msgstr "Rückgabedatum:"
+msgstr "Rückgabedatum"
 
 #: ../includes/mm-admin-settings/mm-admin-rentals-overview-page.php:58
 #: ../includes/mm-admin-settings/mm-admin-rentals-overview-page.php:109
-#, fuzzy
 msgid "Return date"
-msgstr "Rückgabedatum:"
+msgstr "Rückgabedatum"
 
 #: ../includes/mm-admin-settings/mm-admin-rentals-overview-page.php:148
 msgid "Amount"
 msgstr "Anzahl"
+
+#: ../includes/mm-admin-settings/mm-admin-settings.php:36
+msgid "MM Settings"
+msgstr "myMovies Einstellungen"
+
+#: ../includes/mm-admin-settings/mm-admin-settings.php:40
+msgid "Front Page"
+msgstr "Startseite Text"
+
+#: ../includes/mm-admin-settings/mm-admin-settings.php:48
+msgid "Theme settings"
+msgstr "Theme Einstellungen"
 
 #: ../includes/mm-admin-settings/mm-admin-theme-settings-page.php:25
 msgid "myMovies theme settings"
@@ -279,9 +286,8 @@ msgid "Show top rated slider"
 msgstr "Zeige \"Best Bewertet\" Slider"
 
 #: ../includes/mm-admin-settings/mm-admin-theme-settings-page.php:33
-#, fuzzy
 msgid "Show most rented slider"
-msgstr "Am häufigsten ausgeliehene Filme"
+msgstr "Zeige \"Häufig ausgeliehen\" Solider"
 
 #: ../includes/mm-admin-settings/mm-admin-theme-settings-page.php:35
 msgid "Update settings"
@@ -308,7 +314,6 @@ msgid "Comment"
 msgstr "Kommentar"
 
 #: ../templates/template-bookmarks-page.php:32
-#, fuzzy
 msgid "My watchlist"
 msgstr "Merkliste"
 
