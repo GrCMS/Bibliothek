@@ -17,80 +17,6 @@ get_header(); //gets header.php
 
 </script>
 
-<style>
-    
-    #mm-watchlist {
-
-      list-style-type: none;
-      margin: 0px auto;
-      padding: 0px;
-    }
-
-    #mm-watchlist li {
-
-      float:left;
-      position: relative;
-      text-align: center;
-      padding: 10px 20px 10px 0px;
-    }
-
-    .mm-watchlist-item-wrapper {
-
-      position: relative;
-    }
-
-    .mm-watchlist-image {
-
-      position: relative;
-      z-index: 9;
-    }
-
-    .mm-watchlist-icon-close {
-
-      position: absolute;
-      z-index: 11;
-      color: #fff;
-      top: 10px;
-      right: 10px;
-      cursor: pointer;
-      font-size: 18px;
-      text-shadow: 0px 0px 5px #000000;
-      background: rgba(0,0,0,0.5);
-      width: 22px;
-      height: 22px;
-      line-height: 22px;
-      -webkit-border-radius: 50%;
-      -moz-border-radius: 50%;
-      border-radius: 50%;
-    }
-
-    .mm-watchlist-overlay {
-
-      height: 0px;
-      display: none;
-      width: 100%;
-      position: absolute;
-      z-index: 10;
-      bottom: 0px;
-      left: 0px;
-      opacity: 0;
-      background-color: #000;
-    }
-
-    .mm-watchlist-overlay span {
-
-      display: block;
-      line-height: 50px;
-    }
-
-    .mm-watchlist-overlay span a {
-
-      color:#77b5b4;
-      font-size: 16px;
-    }
-    
-</style>
-
 <!-- BODY START -->
 <div class="container">
     
@@ -101,6 +27,8 @@ get_header(); //gets header.php
         $current_bookmarks = new bookmarks();
         $count = $current_bookmarks->count();
         
+        $Rate = new Rating();
+                
         echo "<div id='bookmark_counter'> ".__('My watchlist', 'myMovies')." | <span class='color-primary'>$count</span></div><br/>";
         echo "<ul id='mm-watchlist'>";
     
@@ -110,6 +38,9 @@ get_header(); //gets header.php
             $movieimagepath = $movieimagepath[0];
             $permalink = get_permalink( $bookmark_id );
             
+            $global_rating = $Rate->get_public_movie_rating($bookmark_id);
+            $rating = $global_rating[0]['rating'];
+            
             echo "<li><div class='mm-watchlist-item-wrapper'>";
             echo "<a href='" . $permalink . "'>";
             echo "<img class='mm-watchlist-image' src='" . $movieimagepath . "' />";
@@ -117,10 +48,10 @@ get_header(); //gets header.php
             
             echo "<span class='mm-watchlist-icon-close ion-ios7-close-outline mm_user_bookmark' data-post_id='" . $bookmark_id . "' ></span>";
             echo "<div class='mm-watchlist-overlay text-center'>";
-            echo "<span><a href=''>". __('Rating', 'myMovies')."</a></span>"; //GET RATING
-            echo "<span><a href=''>". __('Rent', 'myMovies')."</a></span>";//AJAX CALL RENT MOVIE
+            echo "<span class='text-center'><a href='#'>Rating:</a></span>";
+            echo "<span class='rating-in-star'><a href='#'>$rating</a></span>"; 
+                                   
             echo "</div>";
-            
             echo "</div></li>";
         }
     
