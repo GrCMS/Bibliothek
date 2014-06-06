@@ -12,7 +12,6 @@ add_action("wp_enqueue_scripts", "mm_enqueue_scripts");
 function mm_enqueue_scripts() {
     //Style registration
     wp_register_style('bootstrap-style', get_template_directory_uri() . '/bootstrap/css/bootstrap.min.css', array(), '3.1.1', false);
-    wp_register_style('icomoon', get_template_directory_uri() . '/fonts/icomoon/style.css', array(), '1.0', false);
     wp_register_style('ionicons', get_template_directory_uri() . '/css/ionicons.min.css', array(), '1.0', false);
     wp_register_style('stars', get_template_directory_uri() . '/css/stars.css', array(), '1.0', false);
     wp_register_style('genre-slider-style', get_template_directory_uri() . '/css/genre-slider.css', array(), '1.0', false);
@@ -77,7 +76,6 @@ function mm_enqueue_scripts() {
 
         //Only enqueued on frontend (CSS)
         wp_enqueue_style('bootstrap-style');
-        wp_enqueue_style('icomoon');
         wp_enqueue_style('ionicons');
         wp_enqueue_style('stars');
         wp_enqueue_style('genre-slider-style');

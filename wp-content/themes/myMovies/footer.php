@@ -185,7 +185,7 @@
             gsm.functions.reset();
         }});  
     });
-    
+        
   </script>
   
   </body>
