@@ -30,9 +30,6 @@ include_once('includes/custom-taxonomy-genres.php');
 //Include script registration in order to add styles and scripts to the theme
 include_once('includes/script-registration.php');
 
-//Include script backend custom menu
-include_once('includes/custom-backend-menu.php');
-
 //Include admin backend custom settings
 include_once('includes/mm-admin-settings/mm-admin-settings.php');
 
