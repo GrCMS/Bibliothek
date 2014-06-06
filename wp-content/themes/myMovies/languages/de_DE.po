@@ -254,7 +254,7 @@ msgstr "Am häufigsten ausgeliehene Filme"
 #: ../includes/mm-admin-settings/mm-admin-rentals-overview-page.php:54
 #: ../includes/mm-admin-settings/mm-admin-rentals-overview-page.php:105
 msgid "Rent date"
-msgstr "Rückgabedatum"
+msgstr "Ausleihdatum"
 
 #: ../includes/mm-admin-settings/mm-admin-rentals-overview-page.php:58
 #: ../includes/mm-admin-settings/mm-admin-rentals-overview-page.php:109

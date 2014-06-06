@@ -83,7 +83,7 @@
 
                             <div class="visible-xs">
 
-                                <span id="mm-header-search-trigger" class="icon-search"></span>
+                                <span id="mm-header-search-trigger" class="ion ion-search"></span>
 
                             </div>
 
