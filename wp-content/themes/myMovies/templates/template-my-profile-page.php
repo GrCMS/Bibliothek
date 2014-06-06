@@ -21,7 +21,7 @@ if('POST' == $_SERVER['REQUEST_METHOD'] && !empty($_POST['action']) && $_POST['a
             if ($_POST['pass1'] == $_POST['pass2'])
                 wp_update_user(array('ID' => $current_user->ID, 'user_pass' => esc_attr($_POST['pass1'])));
             else
-                $error[] = __('The passwords you entered do not match.  Your password was not updated.', 'profile');
+                $error[] = __('The passwords you entered do not match.  Your password was not updated.', 'myMovies');
         }
 
         /* Update user information. */
@@ -29,9 +29,9 @@ if('POST' == $_SERVER['REQUEST_METHOD'] && !empty($_POST['action']) && $_POST['a
             update_user_meta($current_user->ID, 'user_url', esc_url($_POST['url']));
         if (!empty($_POST['email'])) {
             if (!is_email(esc_attr($_POST['email'])))
-                $error[] = __('The Email you entered is not valid.  please try again.', 'profile');
+                $error[] = __('The Email you entered is not valid.  please try again.', 'myMovies');
             elseif (email_exists(esc_attr($_POST['email'])) != $current_user->id)
-                $error[] = __('This email is already used by another user.  try a different one.', 'profile');
+                $error[] = __('This email is already used by another user.  try a different one.', 'myMovies');
             else {
                 wp_update_user(array('ID' => $current_user->ID, 'user_email' => esc_attr($_POST['email'])));
             }
@@ -52,7 +52,7 @@ if('POST' == $_SERVER['REQUEST_METHOD'] && !empty($_POST['action']) && $_POST['a
             exit;
         }
     } else {
-        $error[] = __('Request does not come from this site. No updates were made', 'profile');
+        $error[] = __('Request does not come from this site. No updates were made', 'myMovies');
     }   
 } 
 
@@ -61,7 +61,7 @@ get_header();
 
 <!-- BODY START -->
 <div class="container">
-<h1>Profile</h1>
+<h1><?php __('Profile', 'myMovies'); ?></h1>
     <?php
     if (have_posts()) : while (have_posts()) : the_post();
             ?>
@@ -72,7 +72,7 @@ get_header();
                     if (!is_user_logged_in()) :
                         ?>
                         <p class="warning">
-                            <?php _e('You must be logged in to edit your profile.', 'profile'); ?>
+                            <?php __('You must be logged in to edit your profile.', 'myMovies'); ?>
                         </p><!-- .warning -->
                         <?php
                     else :
@@ -81,31 +81,31 @@ get_header();
                         ?>
                         <form role="form" method="post" id="adduser" action="<?php the_permalink(); ?>">
                             <div class="form-group">
-                                <label for="first-name"><?php _e('First Name', 'profile'); ?></label>
+                                <label for="first-name"><?php __('First Name', 'myMovies'); ?></label>
                                 <input class="form-control" name="first-name" type="text" id="first-name" value="<?php the_author_meta('first_name', $current_user->ID); ?>" />
                             </div><!-- .form-username -->
                             <div class="form-group">
-                                <label for="last-name"><?php _e('Last Name', 'profile'); ?></label>
+                                <label for="last-name"><?php __('Last Name', 'myMovies'); ?></label>
                                 <input class="form-control" name="last-name" type="text" id="last-name" value="<?php the_author_meta('last_name', $current_user->ID); ?>" />
                             </div><!-- .form-username -->
                             <div class="form-group">
-                                <label for="email"><?php _e('E-mail *', 'profile'); ?></label>
+                                <label for="email"><?php __('E-mail *', 'myMovies'); ?></label>
                                 <input class="form-control" name="email" type="text" id="email" value="<?php the_author_meta('user_email', $current_user->ID); ?>" />
                             </div><!-- .form-email -->
                             <div class="form-group">
-                                <label for="url"><?php _e('Website', 'profile'); ?></label>
+                                <label for="url"><?php __('Website', 'myMovies'); ?></label>
                                 <input class="form-control" name="url" type="text" id="url" value="<?php the_author_meta('user_url', $current_user->ID); ?>" />
                             </div><!-- .form-url -->
                             <div class="form-group">
-                                <label for="pass1"><?php _e('Password *', 'profile'); ?> </label>
+                                <label for="pass1"><?php __('Password *', 'myMovies'); ?> </label>
                                 <input class="form-control" name="pass1" type="password" id="pass1" />
                             </div><!-- .form-password -->
                             <div class="form-group">
-                                <label for="pass2"><?php _e('Repeat Password *', 'profile'); ?></label>
+                                <label for="pass2"><?php __('Repeat Password *', 'myMovies'); ?></label>
                                 <input class="form-control" name="pass2" type="password" id="pass2" />
                             </div><!-- .form-password -->
                             <div class="form-group">
-                                <label for="description"><?php _e('Biographical Information', 'profile') ?></label>
+                                <label for="description"><?php __('Biographical Information', 'myMovies') ?></label>
                                 <textarea class="form-control" name="description" id="description" rows="3" cols="50"><?php the_author_meta('description', $current_user->ID); ?></textarea>
                             </div><!-- .form-textarea -->
 
@@ -115,7 +115,7 @@ get_header();
                             ?>
                             <div class="form-group">
                                 <?php echo $referer; ?>
-                                <button name="updateuser" type="submit" id="updateuser" class="btn btn-default"><?php _e('Update', 'profile'); ?></button>
+                                <button name="updateuser" type="submit" id="updateuser" class="btn btn-default"><?php __('Update', 'myMovies'); ?></button>
                                 <?php wp_nonce_field('update-user','user-nonce') ?>
                                 <input name="action" type="hidden" id="action" value="update-user" />
                             </div><!-- .form-submit -->
@@ -126,7 +126,7 @@ get_header();
         <?php endwhile; ?>
     <?php else: ?>
         <p class="no-data">
-            <?php _e('Sorry, no page matched your criteria.', 'profile'); ?>
+            <?php __('Sorry, no page matched your criteria.', 'myMovies'); ?>
         </p><!-- .no-data -->
     <?php endif; ?>
 
