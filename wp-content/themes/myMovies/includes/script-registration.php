@@ -59,7 +59,7 @@ function mm_enqueue_scripts() {
         wp_enqueue_script('bookmarks-js');
         wp_enqueue_script('ratings-js');
         
-        if(is_post_type_archive('movies') || is_tax('genres')) {   
+        if(is_post_type_archive('movies') || is_tax('genres') || is_single()) {   
             wp_enqueue_style('datepicker-style');
             
             //Only enqueued on archive-movies.php
@@ -68,7 +68,7 @@ function mm_enqueue_scripts() {
             wp_enqueue_script('movie-rental-js');
         }
                 
-        if(is_page('Rentals')) {
+        if(is_page_template('templates/template-rentals-page.php')) {
             
             wp_enqueue_script('movie-rentals-list-js');
             wp_enqueue_script('movie-rentals-return-js');
