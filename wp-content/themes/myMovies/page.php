@@ -10,7 +10,7 @@
                 </div>
             </div>
                 <?php endwhile;
-            endif; ?>
+            endif; ?> 
 
 </div>
     <?php
