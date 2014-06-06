@@ -216,17 +216,6 @@ function register_a_user() {
 }
 
 /**
- * Function for the comment-popup
- */
-if (!function_exists('get_comment_popup')) {
-
-    function get_comment_popup() {
-        include('comments-popup.php');
-    }
-
-}
-
-/**
  * Creates a shortcode new_movies with attribute count
  */
 add_shortcode('new_movies', 'new_movies_shortcode');
