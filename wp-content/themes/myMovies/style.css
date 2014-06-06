@@ -838,6 +838,12 @@ BOOKMARKS
     text-decoration: none !important;
 }
 
+.rating-in-star a{
+    
+    font-size: 26px !important;
+    font-weight: bold;
+}
+
 /*
 
 USER PROFILE
