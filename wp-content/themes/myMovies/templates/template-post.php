@@ -6,7 +6,10 @@
         
         <div class="col-xs-12">
             
-            Published: <?php echo the_date('d.m.y'); ?>
+            <?php 
+            echo __('Published', 'myMovies').": ";
+            echo the_date('d.m.y'); 
+            ?>
             
         </div>
         

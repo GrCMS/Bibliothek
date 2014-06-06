@@ -14,7 +14,7 @@ $pagetitle = get_the_title();
 echo '<h3 class="color-primary large container">'.$pagetitle.'</h3>';
 
 $Rate = new Rating();
-$top_rated = $Rate->get_top_rated_movies(20);
+$top_rated = $Rate->get_top_rated_movies(6);
 
 $thePostIdArray = array();
 foreach($top_rated as $movie)
@@ -25,7 +25,7 @@ foreach($top_rated as $movie)
 
 $args = array(
     'post_type' => 'movies',
-   'post__in' => $thePostIdArray
+    'post__in' => $thePostIdArray,
 );
 
 $my_query = null;

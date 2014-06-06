@@ -43,48 +43,68 @@ wp_reset_query();  // Restore global post data stomped by the_post().
 
 <?php 
 
-if(is_user_logged_in()) { 
+if(is_user_logged_in()) {
     
-    //Slider: best rated movies
-    $rated_movies = new Rating();
-    $best_rated = $rated_movies->get_top_rated_movies(20);
-    
-    echo "<h2 class='container moviesection-header'>" . __('Best rated movies', 'myMovies') . "</h2>";
-    echo '<div class="flexslider">';
-    echo '<ul class="slides">';
-    
-    foreach($best_rated as $rated) {
-        
-        $movieimagepath = wp_get_attachment_image_src(get_post_thumbnail_id($rated['movie']), 'movie_poster', false);
-        $movieimagepath = $movieimagepath[0];
-        $permalink = get_permalink( $rated['movie'] );
-        
-         echo "<li><a href='$permalink'><img src='$movieimagepath' /></li></a>";
-    }
-    
-    echo '</ul>';
-    echo '</div>';
+    if(get_option('mm_show_top_rated_slider') == 'checked')
+    {
+        //Slider: best rated movies
+        $rated_movies = new Rating();
+        $best_rated = $rated_movies->get_top_rated_movies(20);
 
-    //Slider: most rented movies
-    $rentals = new movie_rentals();
-    $most_rented = $rentals->getMostRented();
-    
-    echo "<h2 class='container moviesection-header'>" . __('Most rented movies', 'myMovies') . "</h2>";
-    echo '<div class="flexslider">';
-    echo '<ul class="slides">';
-    
-    foreach($most_rented as $rented) {
-        
-        $movieimagepath = wp_get_attachment_image_src(get_post_thumbnail_id($rented->movie), 'movie_poster', false);
-        $movieimagepath = $movieimagepath[0];
-        $permalink = get_permalink( $rented->movie );
-        
-         echo "<li><a href='$permalink'><img src='$movieimagepath' /></li></a>";
+        echo "<h2 class='container moviesection-header'>" . __('Top rated movies', 'myMovies') . "</h2>";
+        echo '<div class="flexslider">';
+        echo '<ul class="slides">';
+
+        foreach($best_rated as $rated) {
+
+            $movieimagepath = wp_get_attachment_image_src(get_post_thumbnail_id($rated['movie']), 'movie_poster', false);
+            $movieimagepath = $movieimagepath[0];
+            $permalink = get_permalink( $rated['movie'] );
+
+             echo "<li><a href='$permalink'><img src='$movieimagepath' /></li></a>";
+        }
+
+        echo '</ul>';
+        echo '</div>';
     }
     
-    echo '</ul>';
-    echo '</div>';
+    if(get_option('mm_show_most_rented_slider') == 'checked')
+    {
+        //Slider: most rented movies
+        $rentals = new movie_rentals();
+        $most_rented = $rentals->getMostRented();
+
+        echo "<h2 class='container moviesection-header'>" . __('Most rented movies', 'myMovies') . "</h2>";
+        echo '<div class="flexslider">';
+        echo '<ul class="slides">';
+
+        foreach($most_rented as $rented) {
+
+            $movieimagepath = wp_get_attachment_image_src(get_post_thumbnail_id($rented->movie), 'movie_poster', false);
+            $movieimagepath = $movieimagepath[0];
+            $permalink = get_permalink( $rented->movie );
+
+             echo "<li><a href='$permalink'><img src='$movieimagepath' /></li></a>";
+        }
+
+        echo '</ul>';
+        echo '</div>';
+    }
 }
+
+if(!is_user_logged_in()) : ?>
+<div class="movie-divider">
+<div class="container">
+    <h2 class="color-primary moviesection-header"> <?php echo $customvalues->getValue('Frontpage Headline'); ?></h2>	
+    <h3> <?php echo $customvalues->getValue('Frontpage Subheadline'); ?></h3>
+    <? the_post(); ?>
+    <div class="multicol-2">
+        <?php echo $customvalues->getValue('Frontpage Text'); ?>
+    </div>
+    <a class="btn btn-primary"><?php echo __("Sign up", "myMovies"); ?></a>
+</div>
+
+<?php endif;
 
 //posts archive: latest 5 posts
 echo '<div class="movie-divider"></div>';
@@ -105,20 +125,6 @@ foreach($recent_posts as $post)
 }
 
 ?>
-
-<?php if(!is_user_logged_in()) : ?>
-
-<div class="container">
-    <h2 class="color-primary"> <?php echo $customvalues->getValue('Frontpage Headline'); ?></h2>	
-    <h3> <?php echo $customvalues->getValue('Frontpage Subheadline'); ?></h3>
-    <? the_post(); ?>
-    <div class="multicol-2">
-        <?php echo $customvalues->getValue('Frontpage Text'); ?>
-    </div>
-    <a class="btn btn-primary"><?php echo __("Sign up", "myMovies"); ?></a>
-</div>
-
-<?php endif; ?>
 
 <!-- BODY END -->
 
