@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: myMovies\n"
-"POT-Creation-Date: 2014-05-28 12:25+0100\n"
-"PO-Revision-Date: 2014-05-28 12:26+0100\n"
+"POT-Creation-Date: 2014-06-06 13:54+0100\n"
+"PO-Revision-Date: 2014-06-06 13:58+0100\n"
 "Last-Translator: \n"
 "Language-Team: Jörg Lautenschlager, Daniel Meier, Jerry Kies\n"
 "Language: German\n"
@@ -15,31 +15,29 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPath-1: ..\n"
 
-#: ../archive-movies.php:24
+#: ../archive-movies.php:26
 msgid "All movies"
 msgstr "Alle Filme"
 
-#: ../archive-movies.php:30
+#: ../archive-movies.php:32 ../taxonomy-genres.php:31
 msgid "Loading movies..."
 msgstr "Lade Filme..."
 
-#: ../comments-popup.php:9
-msgid "Rate it!"
-msgstr "Bewerte!"
-
-#: ../footer.php:26 ../footer.php:53
+#: ../footer.php:26 ../footer.php:53 ../login.php:71
 msgid "Login"
 msgstr "Login"
 
 #: ../footer.php:32 ../footer.php:33
+#: ../includes/mm-admin-settings/mm-admin-rentals-overview-page.php:50
+#: ../includes/mm-admin-settings/mm-admin-rentals-overview-page.php:101
 msgid "User"
 msgstr "Benutzer"
 
-#: ../footer.php:37 ../footer.php:38
+#: ../footer.php:37 ../footer.php:38 ../login.php:60 ../login.php:61
 msgid "Password"
 msgstr "Passwort"
 
-#: ../footer.php:44
+#: ../footer.php:44 ../login.php:66
 msgid "Remember me"
 msgstr "Angemeldet bleiben"
 
@@ -91,47 +89,98 @@ msgstr ""
 msgid "Close"
 msgstr "Schließen"
 
-#: ../footer.php:134 ../templates/movie-template.php:140
-#: ../templates/template-bookmarks-page.php:113
-#: ../templates/template-movie.php:129 ../templates/template-movie.php:137
+#: ../footer.php:134 ../templates/movie-template.php:121
+#: ../templates/template-movie.php:143 ../templates/template-movie.php:150
 msgid "Rent"
 msgstr "Ausleihen"
 
-#: ../front-page.php:9
+#: ../front-page.php:11
 msgid "New movies"
 msgstr "Neue Filme"
 
-#: ../front-page.php:50
+#: ../front-page.php:54
+#, fuzzy
+msgid "Top rated movies"
+msgstr "Am besten bewertete Filme"
+
+#: ../front-page.php:77
+msgid "Most rented movies"
+msgstr "Am häufigsten ausgeliehene Filme"
+
+#: ../front-page.php:104
 msgid "Sign up"
 msgstr "Anmelden"
 
-#: ../functions.php:195
-msgid "provide a user and email"
-msgstr ""
+#: ../front-page.php:111
+msgid "Latest news"
+msgstr "Aktuelles"
 
-#: ../functions.php:197
+#: ../functions.php:174
+msgid "provide a user and email"
+msgstr "Geben Sie Benutzername und E-Mail an."
+
+#: ../functions.php:176
 msgid "gtfo spammer"
 msgstr ""
 
-#: ../functions.php:207
+#: ../functions.php:186
 msgid "invalid e-mail"
-msgstr ""
+msgstr "Ungültige E-Mail Adresse"
 
-#: ../functions.php:209
+#: ../functions.php:188
 msgid "this email is already registered, bla bla..."
-msgstr ""
+msgstr "Die E-Mail Adresse wird bereits verwendet."
 
-#: ../functions.php:212
+#: ../functions.php:191
 msgid "invalid user name"
 msgstr "Der Benutzername ist ungültig."
 
-#: ../functions.php:214
+#: ../functions.php:193
 msgid "user name already exists"
 msgstr "Der Benutzer existiert bereits."
 
-#: ../functions.php:221
+#: ../functions.php:200
 msgid "registration failed..."
 msgstr "Registrierung fehlgeschlagen..."
+
+#: ../functions.php:212
+msgid "Request does not come from this site. Registration interrupted."
+msgstr ""
+"Die Anfrage kommt von einer fremden Seite. Der Anmeldevorgang wurde "
+"abgebrochen."
+
+#: ../functions.php:266
+msgid "Enter subtitle here"
+msgstr "Untertitel"
+
+#: ../login.php:10
+msgid ""
+"Login failed: You have entered an incorrect Username or password, please try "
+"again."
+msgstr ""
+"Login fehlgeschlagen: Der Benutzername oder das Passwort sind nicht richtig. "
+"Bitte versuchen Sie es erneut."
+
+#: ../login.php:25
+msgid "a email has been sent to "
+msgstr "Eine E-Mail wurde versendet an "
+
+#: ../login.php:33 ../login.php:45 ../login.php:70
+msgid "Register"
+msgstr "Registrieren"
+
+#: ../login.php:35 ../login.php:56
+#, fuzzy
+msgid "Username"
+msgstr "Benutzer"
+
+#: ../login.php:39
+msgid "E-Mail"
+msgstr "E-Mail"
+
+#: ../login.php:44
+msgid "A password will be e-mailed to you."
+msgstr "Das Passwort wird per E-Mail verschickt."
 
 #: ../search.php:14
 #, php-format
@@ -147,7 +196,10 @@ msgid "Movies"
 msgstr "Filme"
 
 #: ../includes/custom-post-type-movies.php:15
-#: ../templates/template-rentals-page.php:132
+#: ../includes/mm-admin-settings/mm-admin-rentals-overview-page.php:46
+#: ../includes/mm-admin-settings/mm-admin-rentals-overview-page.php:97
+#: ../includes/mm-admin-settings/mm-admin-rentals-overview-page.php:152
+#: ../templates/template-rentals-page.php:65
 msgid "Movie"
 msgstr "Film"
 
@@ -155,127 +207,284 @@ msgstr "Film"
 msgid "Genres"
 msgstr "Genres"
 
-#: ../templates/movie-template.php:79
-#: ../templates/template-bookmarks-page.php:112
-#: ../templates/template-movie.php:63
+#: ../includes/mm-admin-settings/mm-admin-front-page-settings-page.php:21
+msgid "Frontapage text"
+msgstr "Startseite Text"
+
+#: ../includes/mm-admin-settings/mm-admin-front-page-settings-page.php:30
+msgid "Item"
+msgstr "Element"
+
+#: ../includes/mm-admin-settings/mm-admin-front-page-settings-page.php:33
+msgid "Value"
+msgstr "Wert"
+
+#: ../includes/mm-admin-settings/mm-admin-front-page-settings-page.php:39
+msgid "Frontpage Headline"
+msgstr "Startseite Überschrift"
+
+#: ../includes/mm-admin-settings/mm-admin-front-page-settings-page.php:44
+msgid "Frontpage Subheadline"
+msgstr "Startseite Unterüberschrift"
+
+#: ../includes/mm-admin-settings/mm-admin-front-page-settings-page.php:49
+msgid "Frontpage welcome text"
+msgstr "Startseite Willkommenstext"
+
+#: ../includes/mm-admin-settings/mm-admin-front-page-settings-page.php:56
+msgid "Apply"
+msgstr "Anwenden"
+
+#: ../includes/mm-admin-settings/mm-admin-rentals-overview-page.php:27
+msgid "Rentals Overview"
+msgstr "Übersicht aller derzeit ausgeliehenen Filme"
+
+#: ../includes/mm-admin-settings/mm-admin-rentals-overview-page.php:32
+#, fuzzy
+msgid "Current"
+msgstr "Aktuelle Leihvorgänge"
+
+#: ../includes/mm-admin-settings/mm-admin-rentals-overview-page.php:33
+#: ../templates/template-rentals-page.php:61
+msgid "History"
+msgstr "Leihhistorie"
+
+#: ../includes/mm-admin-settings/mm-admin-rentals-overview-page.php:34
+#, fuzzy
+msgid "Most rented"
+msgstr "Am häufigsten ausgeliehene Filme"
+
+#: ../includes/mm-admin-settings/mm-admin-rentals-overview-page.php:54
+#: ../includes/mm-admin-settings/mm-admin-rentals-overview-page.php:105
+#, fuzzy
+msgid "Rent date"
+msgstr "Rückgabedatum:"
+
+#: ../includes/mm-admin-settings/mm-admin-rentals-overview-page.php:58
+#: ../includes/mm-admin-settings/mm-admin-rentals-overview-page.php:109
+#, fuzzy
+msgid "Return date"
+msgstr "Rückgabedatum:"
+
+#: ../includes/mm-admin-settings/mm-admin-rentals-overview-page.php:148
+msgid "Amount"
+msgstr "Anzahl"
+
+#: ../includes/mm-admin-settings/mm-admin-theme-settings-page.php:25
+msgid "myMovies theme settings"
+msgstr "myMovies Theme Einstellungen"
+
+#: ../includes/mm-admin-settings/mm-admin-theme-settings-page.php:31
+msgid "Show top rated slider"
+msgstr "Zeige \"Best Bewertet\" Slider"
+
+#: ../includes/mm-admin-settings/mm-admin-theme-settings-page.php:33
+#, fuzzy
+msgid "Show most rented slider"
+msgstr "Am häufigsten ausgeliehene Filme"
+
+#: ../includes/mm-admin-settings/mm-admin-theme-settings-page.php:35
+msgid "Update settings"
+msgstr "Einstellungen aktualisieren"
+
+#: ../includes/mm-admin-settings/mm-admin-top-level-settings-page.php:3
+msgid "myMovies Settings"
+msgstr "myMovies Einstellungen"
+
+#: ../templates/movie-template.php:62 ../templates/template-movie.php:69
 msgid "Rating"
 msgstr "Bewertung"
 
-#: ../templates/movie-template.php:116 ../templates/movie-template.php:123
-#: ../templates/movie-template.php:130
-#: ../templates/template-bookmarks-page.php:96
-#: ../templates/template-movie.php:87 ../templates/template-movie.php:94
-#: ../templates/template-movie.php:101
+#: ../templates/movie-template.php:97 ../templates/movie-template.php:104
+#: ../templates/movie-template.php:111
+#: ../templates/template-bookmarks-page.php:23
+#: ../templates/template-movie.php:104 ../templates/template-movie.php:111
+#: ../templates/template-movie.php:118
 msgid "Watchlist"
 msgstr "Merkliste"
 
-#: ../templates/movie-template.php:159
+#: ../templates/movie-template.php:140
 msgid "Comment"
 msgstr "Kommentar"
 
-#: ../templates/template-movie.php:118
-#: ../templates/template-rentals-page.php:132
+#: ../templates/template-bookmarks-page.php:32
+#, fuzzy
+msgid "My watchlist"
+msgstr "Merkliste"
+
+#: ../templates/template-bookmarks-page.php:52
+msgid "Rating:"
+msgstr "Bewertung:"
+
+#: ../templates/template-movie.php:133
+#: ../templates/template-rentals-page.php:65
 msgid "Rented"
 msgstr "Geliehen"
 
-#: ../templates/template-my-profile-page.php:22
+#: ../templates/template-my-profile-page.php:24
 msgid "The passwords you entered do not match.  Your password was not updated."
 msgstr ""
 "Die eingegebenen Passwörter stimmen nicht überein. Das Passwort wurde nicht "
 "aktualisiert."
 
-#: ../templates/template-my-profile-page.php:30
+#: ../templates/template-my-profile-page.php:32
 msgid "The Email you entered is not valid.  please try again."
 msgstr ""
 "Dein eingegebene E-Mail Adresse ist nicht gültig. Bitte nochmals versuchen."
 
-#: ../templates/template-my-profile-page.php:32
+#: ../templates/template-my-profile-page.php:34
 msgid "This email is already used by another user.  try a different one."
 msgstr ""
 "Die E-Mail Adresse wird bereits von einem anderen Nutzer verwendet. Bitte "
 "versuchen Sie eine andere."
 
-#: ../templates/template-my-profile-page.php:70
+#: ../templates/template-my-profile-page.php:55
+msgid "Request does not come from this site. No updates were made"
+msgstr "Anfrage von fremder Seite. Änderungen nicht vorgenommen."
+
+#: ../templates/template-my-profile-page.php:64
+msgid "Profile"
+msgstr "Profil"
+
+#: ../templates/template-my-profile-page.php:75
 msgid "You must be logged in to edit your profile."
 msgstr "Sie müssen eingeloggt sein, um Ihr Profil bearbeiten zu können."
 
-#: ../templates/template-my-profile-page.php:79
+#: ../templates/template-my-profile-page.php:84
 msgid "First Name"
 msgstr "Vorname"
 
-#: ../templates/template-my-profile-page.php:83
+#: ../templates/template-my-profile-page.php:88
 msgid "Last Name"
 msgstr "Nachname"
 
-#: ../templates/template-my-profile-page.php:87
+#: ../templates/template-my-profile-page.php:92
 msgid "E-mail *"
 msgstr "E-Mail *"
 
-#: ../templates/template-my-profile-page.php:91
+#: ../templates/template-my-profile-page.php:96
 msgid "Website"
 msgstr "Website"
 
-#: ../templates/template-my-profile-page.php:95
+#: ../templates/template-my-profile-page.php:100
 msgid "Password *"
 msgstr "Passwort *"
 
-#: ../templates/template-my-profile-page.php:99
+#: ../templates/template-my-profile-page.php:104
 msgid "Repeat Password *"
 msgstr "Wiederhole Passwort *"
 
-#: ../templates/template-my-profile-page.php:103
+#: ../templates/template-my-profile-page.php:108
 msgid "Biographical Information"
 msgstr "Profil Info"
 
-#: ../templates/template-my-profile-page.php:113
+#: ../templates/template-my-profile-page.php:118
 msgid "Update"
 msgstr "Aktualisieren"
 
-#: ../templates/template-my-profile-page.php:124
+#: ../templates/template-my-profile-page.php:129
 msgid "Sorry, no page matched your criteria."
 msgstr "Tut uns leid, keine Seite entspricht Ihren Suchkriterien."
 
-#: ../templates/template-rentals-page.php:91
+#: ../templates/template-post.php:10
+msgid "Published"
+msgstr "Veröffentlicht"
+
+#: ../templates/template-rentals-page.php:24
 msgid "Rentals"
 msgstr "Leihvorgänge"
 
-#: ../templates/template-rentals-page.php:98
+#: ../templates/template-rentals-page.php:31
 msgid "Current rentals"
 msgstr "Aktuelle Leihvorgänge"
 
-#: ../templates/template-rentals-page.php:115
+#: ../templates/template-rentals-page.php:48
 msgid "Return:"
 msgstr "Rückgabe:"
 
-#: ../templates/template-rentals-page.php:116
+#: ../templates/template-rentals-page.php:49
 msgid "Return"
 msgstr "Rückgabe"
 
-#: ../templates/template-rentals-page.php:128
-msgid "History"
-msgstr "Leihhistorie"
-
-#: ../templates/template-rentals-page.php:132
+#: ../templates/template-rentals-page.php:65
 msgid "Returned"
 msgstr "Zurückgegeben"
 
-#: ../includes/mm-admin-settings/mm-admin-rentals-overview-page.php:23
-msgid "Rentals Overview"
-msgstr "Übersicht aller derzeit ausgeliehenen Filme"
+#, fuzzy
+#~ msgid "Location"
+#~ msgstr "Dauer"
 
-#: ../front-page.php:53
-msgid "Best rated movies"
-msgstr "Am besten bewertete Filme"
+#, fuzzy
+#~ msgid "Email Field"
+#~ msgstr "E-Mail *"
 
-#: ../front-page.php:73
-msgid "Most rented movies"
-msgstr "Am häufigsten ausgeliehene Filme"
+#, fuzzy
+#~ msgid "Password Field"
+#~ msgstr "Passwort *"
 
-#: ../front-page.php:91
-msgid "Latest news"
-msgstr "Aktuelles"
+#, fuzzy
+#~ msgid "Overview"
+#~ msgstr "Übersicht aller derzeit ausgeliehenen Filme"
 
-#: ..templates/template-bookmarks-page.php:51
-msgid "Rating:"
-msgstr "Bewertung:"
+#, fuzzy
+#~ msgid "Name"
+#~ msgstr "Nachname"
 
+#, fuzzy
+#~ msgid "Email"
+#~ msgstr "E-Mail *"
+
+#, fuzzy
+#~ msgid "Update File"
+#~ msgstr "Aktualisieren"
+
+#, fuzzy
+#~ msgid "Return Value"
+#~ msgstr "Rückgabedatum:"
+
+#, fuzzy
+#~ msgid "Locating"
+#~ msgstr "Bewertung"
+
+#, fuzzy
+#~ msgid "Center"
+#~ msgstr "Geliehen"
+
+#, fuzzy
+#~ msgid "Update Image"
+#~ msgstr "Aktualisieren"
+
+#, fuzzy
+#~ msgid "Red"
+#~ msgstr "Geliehen"
+
+#, fuzzy
+#~ msgid "Search..."
+#~ msgstr "Suche"
+
+#, fuzzy
+#~ msgid "Return Format"
+#~ msgstr "Rückgabedatum:"
+
+#, fuzzy
+#~ msgid "Formatting"
+#~ msgstr "Bewertung"
+
+#, fuzzy
+#~ msgid "New Field"
+#~ msgstr "Neue Filme"
+
+#, fuzzy
+#~ msgid "Field Name"
+#~ msgstr "Vorname"
+
+#, fuzzy
+#~ msgid "Close Field"
+#~ msgstr "Schließen"
+
+#, fuzzy
+#~ msgid "Comments"
+#~ msgstr "Kommentar"
+
+#~ msgid "Rate it!"
+#~ msgstr "Bewerte!"
