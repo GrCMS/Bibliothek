@@ -36,6 +36,10 @@ include_once('includes/custom-backend-menu.php');
 //Include admin backend custom settings
 include_once('includes/mm-admin-settings/mm-admin-settings.php');
 
+//Include Advanced Custom Fields and hide in Backend
+define('ACF_LITE', true);
+include_once('includes/advanced-custom-fields/acf.php');
+
 /**
  * Hook called on 'after_setup_theme' to add settings after the theme has been activated
  */
@@ -165,11 +169,11 @@ function register_a_user() {
     if (isset($_GET['do']) && $_GET['do'] == 'register'):
         $errors = array();
         /* Check if nonce is verified */
-        if(isset($_POST['register-nonce']) && wp_verify_nonce($_POST['register-nonce'], 'register-user')) {
+        if (isset($_POST['register-nonce']) && wp_verify_nonce($_POST['register-nonce'], 'register-user')) {
             if (empty($_POST['user']) || empty($_POST['email']))
-            $errors[] = __('provide a user and email');
+                $errors[] = __('provide a user and email', 'myMovies');
             if (!empty($_POST['spam']))
-                $errors[] = __('gtfo spammer');
+                $errors[] = __('gtfo spammer', 'myMovies');
 
             $user_login = esc_attr($_POST['user']);
             $user_email = esc_attr($_POST['email']);
@@ -179,21 +183,21 @@ function register_a_user() {
             $user_email = apply_filters('user_registration_email', $user_email);
 
             if (!is_email($user_email))
-                $errors[] = __('invalid e-mail');
+                $errors[] = __('invalid e-mail', 'myMovies');
             elseif (email_exists($user_email))
-                $errors[] = __('this email is already registered, bla bla...');
+                $errors[] = __('this email is already registered, bla bla...', 'myMovies');
 
             if (empty($sanitized_user_login) || !validate_username($user_login))
-                $errors[] = __('invalid user name');
+                $errors[] = __('invalid user name', 'myMovies');
             elseif (username_exists($sanitized_user_login))
-                $errors[] = __('user name already exists');
+                $errors[] = __('user name already exists', 'myMovies');
 
             if (empty($errors)):
                 $user_pass = wp_generate_password();
                 $user_id = wp_create_user($sanitized_user_login, $user_pass, $user_email);
 
                 if (!$user_id):
-                    $errors[] = __('registration failed...');
+                    $errors[] = __('registration failed...', 'myMovies');
                 else:
                     update_user_option($user_id, 'default_password_nag', true, true);
                     wp_new_user_notification($user_id, $user_pass);
@@ -205,21 +209,10 @@ function register_a_user() {
             else
                 define('REGISTERED_A_USER', $user_email);
         } else {
-            $errors[] = __('Request does not come from this site. Registration interrupted.');
+            $errors[] = __('Request does not come from this site. Registration interrupted.', 'myMovies');
         }
-        
+
     endif;
-}
-
-/**
- * Function for the comment-popup
- */
-if (!function_exists('get_comment_popup')) {
-
-    function get_comment_popup() {
-        include('comments-popup.php');
-    }
-
 }
 
 /**
@@ -235,29 +228,90 @@ function new_movies_shortcode($atts) {
     $args = array(
         'post_type' => 'movies',
         'posts_per_page' => intval($a['count']),
-
     );
-    
+
     ob_start();
     $movie_query = new WP_Query($args);
-    
+
     echo "<div class='container text-center'>";
     echo "<div style='margin: auto; max-width:960px'>";
-        
-    while($movie_query->have_posts()) : $movie_query->the_post();
-                           
-        get_template_part( 'templates/template', 'movie-shortcode' );
-        
+
+    while ($movie_query->have_posts()) : $movie_query->the_post();
+
+        get_template_part('templates/template', 'movie-shortcode');
+
     endwhile;
-    
+
     echo "</div>";
     echo "</div>";
     echo "<span class='clearfix'></span>";
-    
+
     $ret = ob_get_contents();
     ob_end_clean();
-    
-    return $ret; 
+
+    return $ret;
 }
 
+if (function_exists("register_field_group")) {
+    register_field_group(array(
+        'id' => 'acf_movies',
+        'title' => 'Movies',
+        'fields' => array(
+            array(
+                'key' => 'field_536e0814c680b',
+                'label' => 'Subtitle',
+                'name' => 'subtitle',
+                'type' => 'text',
+                'default_value' => '',
+                'placeholder' => __('Enter subtitle here','myMovies'),
+                'prepend' => '',
+                'append' => '',
+                'formatting' => 'none',
+                'maxlength' => '',
+            ),
+            array(
+                'key' => 'field_536e085fc680c',
+                'label' => 'Year',
+                'name' => 'year',
+                'type' => 'text',
+                'default_value' => '',
+                'placeholder' => '',
+                'prepend' => '',
+                'append' => '',
+                'formatting' => 'none',
+                'maxlength' => '',
+            ),
+            array(
+                'key' => 'field_536e08f0c680d',
+                'label' => 'Studio',
+                'name' => 'studio',
+                'type' => 'text',
+                'default_value' => '',
+                'placeholder' => '',
+                'prepend' => '',
+                'append' => '',
+                'formatting' => 'none',
+                'maxlength' => '',
+            ),
+        ),
+        'location' => array(
+            array(
+                array(
+                    'param' => 'post_type',
+                    'operator' => '==',
+                    'value' => 'movies',
+                    'order_no' => 0,
+                    'group_no' => 0,
+                ),
+            ),
+        ),
+        'options' => array(
+            'position' => 'acf_after_title',
+            'layout' => 'no_box',
+            'hide_on_screen' => array(
+            ),
+        ),
+        'menu_order' => 0,
+    ));
+}
 ?>
