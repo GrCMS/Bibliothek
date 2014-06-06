@@ -36,6 +36,10 @@ include_once('includes/custom-backend-menu.php');
 //Include admin backend custom settings
 include_once('includes/mm-admin-settings/mm-admin-settings.php');
 
+//Include Advanced Custom Fields and hide in Backend
+define('ACF_LITE', true);
+include_once('includes/advanced-custom-fields/acf.php');
+
 /**
  * Hook called on 'after_setup_theme' to add settings after the theme has been activated
  */
@@ -258,6 +262,70 @@ function new_movies_shortcode($atts) {
     ob_end_clean();
     
     return $ret; 
+}
+
+if(function_exists("register_field_group"))
+{
+	register_field_group(array (
+		'id' => 'acf_movies',
+		'title' => 'Movies',
+		'fields' => array (
+			array (
+				'key' => 'field_536e0814c680b',
+				'label' => 'Subtitle',
+				'name' => 'subtitle',
+				'type' => 'text',
+				'default_value' => '',
+				'placeholder' => 'Enter subtitle here',
+				'prepend' => '',
+				'append' => '',
+				'formatting' => 'none',
+				'maxlength' => '',
+			),
+			array (
+				'key' => 'field_536e085fc680c',
+				'label' => 'Year',
+				'name' => 'year',
+				'type' => 'text',
+				'default_value' => '',
+				'placeholder' => '',
+				'prepend' => '',
+				'append' => '',
+				'formatting' => 'none',
+				'maxlength' => '',
+			),
+			array (
+				'key' => 'field_536e08f0c680d',
+				'label' => 'Studio',
+				'name' => 'studio',
+				'type' => 'text',
+				'default_value' => '',
+				'placeholder' => '',
+				'prepend' => '',
+				'append' => '',
+				'formatting' => 'none',
+				'maxlength' => '',
+			),
+		),
+		'location' => array (
+			array (
+				array (
+					'param' => 'post_type',
+					'operator' => '==',
+					'value' => 'movies',
+					'order_no' => 0,
+					'group_no' => 0,
+				),
+			),
+		),
+		'options' => array (
+			'position' => 'acf_after_title',
+			'layout' => 'no_box',
+			'hide_on_screen' => array (
+			),
+		),
+		'menu_order' => 0,
+	));
 }
 
 ?>
