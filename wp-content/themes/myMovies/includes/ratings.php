@@ -33,12 +33,3 @@ class Rating {
     }
 
 }
-
-/**
- * Add ajax bookmark hook and handle requests
- */
-add_filter('wp_ajax_mm_rating', 'mm_rating');
-
-function mm_rating() {
-
-}
