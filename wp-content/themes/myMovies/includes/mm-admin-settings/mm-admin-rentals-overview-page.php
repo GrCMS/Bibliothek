@@ -29,9 +29,9 @@ $mostRented = $rentals->getMostRented();
     <div class="ionTabs" id="tabs_1" data-name="mm_admin_rentals_overview_tabs">
         
         <ul class="ionTabs__head">
-            <li class="ionTabs__tab" data-target="mm-admin_rentals_tab_1">Current (<?php echo $currentRentalsCount; ?>)</li>
-            <li class="ionTabs__tab" data-target="mm-admin_rentals_tab_2">History (<?php echo $rentalsHistoryCount; ?>)</li>
-            <li class="ionTabs__tab" data-target="mm-admin_rentals_tab_3">Most rented</li>
+            <li class="ionTabs__tab" data-target="mm-admin_rentals_tab_1"><?php echo __("Current", "myMovies"); ?> (<?php echo $currentRentalsCount; ?>)</li>
+            <li class="ionTabs__tab" data-target="mm-admin_rentals_tab_2"><?php echo __("History", "myMovies"); ?> (<?php echo $rentalsHistoryCount; ?>)</li>
+            <li class="ionTabs__tab" data-target="mm-admin_rentals_tab_3"><?php echo __("Most rented", "myMovies"); ?></li>
         </ul>
         
         <div class="ionTabs__body">
@@ -43,19 +43,19 @@ $mostRented = $rentals->getMostRented();
                         <tr>
                             <th class="column-identifier">
                                 <!-- Add translation -->
-                                Film
+                                <?php echo __("Movie", "myMovies"); ?>
                             </th>
                             <th>
                                 <!-- Add translation -->
-                                User
+                                <?php echo __("User", "myMovies"); ?>
                             </th>
                             <th>
                                 <!-- Add translation -->
-                                Rented date:
+                                <?php echo __("Rent date", "myMovies"); ?>
                             </th>
                             <th>
                                 <!-- Add translation -->
-                                Return date:
+                                <?php echo __("Return date", "myMovies"); ?>
                             </th>
 
                         </tr>
@@ -94,19 +94,19 @@ $mostRented = $rentals->getMostRented();
                         <tr>
                             <th class="column-identifier">
                                 <!-- Add translation -->
-                                Film
+                                <?php echo __("Movie", "myMovies"); ?>
                             </th>
                             <th>
                                 <!-- Add translation -->
-                                User
+                                <?php echo __("User", "myMovies"); ?>
                             </th>
                             <th>
                                 <!-- Add translation -->
-                                Rented date:
+                                <?php echo __("Rent date", "myMovies"); ?>
                             </th>
                             <th>
                                 <!-- Add translation -->
-                                Return date:
+                                <?php echo __("Return date", "myMovies"); ?>
                             </th>
 
                         </tr>
@@ -145,11 +145,11 @@ $mostRented = $rentals->getMostRented();
                         <tr>
                             <th class="column-identifier">
                                 <!-- Add translation -->
-                                Anzahl
+                                <?php echo __("Amount", "myMovies"); ?>
                             </th>
                             <th>
                                 <!-- Add translation -->
-                                Film
+                                <?php echo __("Movie", "myMovies"); ?>
                             </th>
                         </tr>
                     </thead>

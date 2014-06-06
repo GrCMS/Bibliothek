@@ -1,5 +1,5 @@
 <?php
 
-echo "<h1>myMovies Settings</h1>";
+echo '<h1>'. __("myMovies Settings", "myMovies") .'</h1>';
 
 ?>
