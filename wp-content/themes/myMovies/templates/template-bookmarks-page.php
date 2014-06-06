@@ -48,7 +48,9 @@ get_header(); //gets header.php
             
             echo "<span class='mm-watchlist-icon-close ion-ios7-close-outline mm_user_bookmark' data-post_id='" . $bookmark_id . "' ></span>";
             echo "<div class='mm-watchlist-overlay text-center'>";
-            echo "<span class='text-center'><a href='#'>Rating:</a></span>";
+            echo "<span class='text-center'><a href='#'>";
+            echo __('Rating:', 'myMovies'); 
+            echo "</a></span>";
             echo "<span class='rating-in-star'><a href='#'>$rating</a></span>"; 
                                    
             echo "</div>";

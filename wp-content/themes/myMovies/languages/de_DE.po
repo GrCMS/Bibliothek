@@ -274,3 +274,8 @@ msgstr "Am häufigsten ausgeliehene Filme"
 #: ../front-page.php:91
 msgid "Latest news"
 msgstr "Aktuelles"
+
+#: ..templates/template-bookmarks-page.php:51
+msgid "Rating:"
+msgstr "Bewertung:"
+
