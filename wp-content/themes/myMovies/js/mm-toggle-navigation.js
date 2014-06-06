@@ -16,7 +16,8 @@ var menu = {
             "account_m" : "#mm-mobile-account-navigation-col",
             "account" : "#mm-account-navigation-wrapper",
             "genreSlider_m" : "#mm-mobile-genre-slider-col",
-            "genreSlider" : "#mm-header-genre-slider-wrapper"
+            "genreSlider" : "#mm-header-genre-slider-wrapper",
+            "content" : "#mm-content-container"
     	}
     },
 
@@ -25,7 +26,8 @@ var menu = {
         "isMobile" : false,
         "isMenuOpen" : false,
         "currentMenu" : null,
-        "callback" : null
+        "callback" : null,
+        "marginTop" : 100
     },
     	
     setup: {
@@ -81,6 +83,13 @@ var menu = {
 
                     jQuery(m).css('height', 'auto');   
                 });
+                
+                //set the content position (not sexy, quick and dirty)
+                jQuery(menu.containers._all.content).animate({
+                    
+                    marginTop: h + menu.settings.marginTop
+                    
+                }, 150);
             },
 
             fadeSlideUp : function(m) {
@@ -116,6 +125,13 @@ var menu = {
                     jQuery(m).css('height', 'auto');
                     menu.settings.callback.complete();
                 });
+                
+                //set the content position (not sexy, quick and dirty)
+                jQuery(menu.containers._all.content).animate({
+                    
+                    marginTop: menu.settings.marginTop
+                    
+                }, 150);
             },
 
             fadeSlideDown : function(m) {
