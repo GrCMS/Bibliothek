@@ -83,13 +83,6 @@ var menu = {
 
                     jQuery(m).css('height', 'auto');   
                 });
-                
-                //set the content position (not sexy, quick and dirty)
-                jQuery(menu.containers._all.content).animate({
-                    
-                    marginTop: h + menu.settings.marginTop
-                    
-                }, 150);
             },
 
             fadeSlideUp : function(m) {
@@ -125,13 +118,6 @@ var menu = {
                     jQuery(m).css('height', 'auto');
                     menu.settings.callback.complete();
                 });
-                
-                //set the content position (not sexy, quick and dirty)
-                jQuery(menu.containers._all.content).animate({
-                    
-                    marginTop: menu.settings.marginTop
-                    
-                }, 150);
             },
 
             fadeSlideDown : function(m) {

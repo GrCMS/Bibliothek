@@ -155,8 +155,6 @@
 
             menu.settings.isMobile = false;
             menu.functions.reset_menu();
-            
-            jQuery(menu.containers._all.content).css('margin-top', '100');
         }
 
     });
@@ -167,8 +165,6 @@
         match : function() {
             menu.settings.isMobile = true;
             menu.functions.reset_menu();
-            
-            jQuery(menu.containers._all.content).css('margin-top', '100');
         }
 
     });
