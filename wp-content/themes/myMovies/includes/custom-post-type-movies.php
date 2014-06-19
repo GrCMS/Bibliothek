@@ -26,4 +26,3 @@ function create_post_type_movies() {
         )
     );
 }
-

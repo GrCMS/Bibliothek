@@ -12,7 +12,7 @@ function add_logout_link($items, $args) {
     if ($args->theme_location == 'account') {
         $loginoutlink = wp_loginout('index.php', false);
         if (current_user_can('administrator')) {
-            $backendlink = '<a href="' . site_url() . '/wp-admin">Backend</a>';
+            $backendlink = '<a href="' . get_site_url() . '/wp-admin">Backend</a>';
             $items .= '<li>' . $backendlink . '</li>';
         }
         $items .= '<li>' . $loginoutlink . '</li>';

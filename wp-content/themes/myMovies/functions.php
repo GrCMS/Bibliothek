@@ -218,9 +218,7 @@ function register_a_user() {
 add_shortcode('new_movies', 'new_movies_shortcode');
 
 function new_movies_shortcode($atts) {
-    $a = shortcode_atts(array(
-        'count' => '10',
-            ), $atts);
+    $a = shortcode_atts(array('count' => '6'), $atts);
 
     $args = array(
         'post_type' => 'movies',
